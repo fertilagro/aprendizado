@@ -1,0 +1,46 @@
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+
+    .container-login {
+        display: grid;
+        justify-content: center;
+        align-items: center;
+
+        width: 350px;
+        height: 320px;
+        background-color: aqua;
+        border: 2px solid #00BFFF;
+        border-radius: 10px;
+    }
+
+    .formulario {
+        display: grid;
+    }
+}
+
+#title-login {
+    display: flex;
+    justify-content: center;
+    color: black;
+    font-size: 30px;
+    text-align: center;
+    font-style: normal;
+    font-family: Poppins;
+    margin: 0;
+  }
+
+.btn-login {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    transition: 0.5;
+    cursor: pointer;
+}
+
+.input-login {
+    padding: 10px;
+}
