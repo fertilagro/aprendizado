@@ -10,6 +10,9 @@ import { SharedModule } from 'src/app/shared/shared.module';
   imports: [
     CommonModule,
     SharedModule
+  ],
+  exports: [
+    NavbarComponent
   ]
 })
 export class NavbarModule { }

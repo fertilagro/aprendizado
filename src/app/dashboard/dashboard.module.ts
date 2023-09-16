@@ -1,17 +1,15 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { NavbarModule } from '../components/navbar/navbar.module';
 import { SharedModule } from '../shared/shared.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { NavbarComponent } from '../components/navbar/navbar/navbar.component';
-import { NavbarModule } from '../components/navbar/navbar.module';
 
 @NgModule({
   declarations: [
-    DashboardComponent,
-    NavbarComponent
+    DashboardComponent
   ],
   imports: [
-    CommonModule, 
+    CommonModule,
     SharedModule,
     NavbarModule
   ]

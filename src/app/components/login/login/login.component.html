@@ -1,9 +1,10 @@
 <div class="container">
     <div class="container-login">
-        <p id="title-login">Sistema Aprendizado</p>
+        <h1 id="title-login">Sistema Aprendizado</h1>
+        <h2 class="sub-title">Construindo Projetos Para Maior Conhecimento</h2>
 
         <form class="formulario" [formGroup]="resourceForm" >
-            
+
             <label for="email">E-mail</label>
                 <input class="input-login"
                 type="text"
@@ -12,12 +13,12 @@
                 placeholder="dígite seu email"
                 formControlName="email" />
 
-            <label for="senha">senha</label>
-                <input class="input-login" 
-                type="password" 
-                name="senha" 
+            <label for="senha">Senha</label>
+                <input class="input-login"
+                type="password"
+                name="senha"
                 id="senha"
-                placeholder="dígite sua Senha" 
+                placeholder="dígite sua Senha"
                 formControlName="senha" />
 
             <div class="btn-login">
