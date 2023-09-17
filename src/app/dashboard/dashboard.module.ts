@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { NavbarModule } from '../components/navbar/navbar.module';
 import { SharedModule } from '../shared/shared.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { SidebarModule } from '../components/sidebar/sidebar.module';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
   imports: [
     CommonModule,
     SharedModule,
-    NavbarModule
+    NavbarModule,
+    SidebarModule
+  ],
+  exports: [
+    DashboardComponent
   ]
 })
 export class DashboardModule { }

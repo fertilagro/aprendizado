@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
+import { NavbarModule } from '../components/navbar/navbar.module';
 
 @NgModule({
   declarations: [],
@@ -10,7 +11,7 @@ import { InputTextModule } from 'primeng/inputtext';
     CommonModule,
     InputTextModule,
     FormsModule,
-    ButtonModule,
+    ButtonModule
   ],
   exports: [
     CommonModule,
