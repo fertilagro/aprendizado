@@ -1,4 +1,29 @@
 
 .container-sidebar {
-    background-color: red;
+    background-color:  #fff;
+    height: -webkit-fill-available;
+    width: 280px;
+    box-shadow: 0 1px 4px #000000;
+    position: absolute;
+
+    .grupo-menu {
+        display: grid;
+        height: 100%;
+        width: 100%;
+    }
+
+    .caixa-menu {
+        display: grid;
+        justify-content: center;
+        font-weight: 600;
+        font-size: 30px;
+        padding: 10px;
+        cursor: pointer;
+        background-color: gray;
+    }
+
+    .itens-menu {
+        text-decoration: none;
+    }
+
 }

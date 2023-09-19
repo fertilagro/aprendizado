@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
-import { NavbarModule } from '../components/navbar/navbar.module';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [],
@@ -11,13 +11,15 @@ import { NavbarModule } from '../components/navbar/navbar.module';
     CommonModule,
     InputTextModule,
     FormsModule,
-    ButtonModule
+    ButtonModule,
+    MatMenuModule
   ],
   exports: [
     CommonModule,
     InputTextModule,
     FormsModule,
-    ButtonModule
+    ButtonModule,
+    MatMenuModule
   ]
 })
 export class SharedModule { }

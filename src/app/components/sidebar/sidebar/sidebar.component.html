@@ -1,3 +1,11 @@
 <div class="container-sidebar">
-    <p>teste</p>
+
+    <div class="grupo-menu">
+        <ul class="menu-lista">
+            <li class="caixa-menu" *ngFor="let menu of menulista">
+                <a class="itens-menu" href="#">{{ menu.nome }}</a>
+            </li>
+        </ul>
+    </div>
+
 </div>

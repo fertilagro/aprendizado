@@ -1,8 +1,12 @@
 
-.container {
-    background-color: #ADD8E6;
-    padding: 20px;
-   /* position: absolute; */
+.container-navbar {
+    background-color: #00BFFF;
+    padding: 0px;
     width: 100%;
-    box-shadow: 0 1px 4px #00BFFF;
+    box-shadow: 0 1px 4px #ADD8E6;
 }
+
+#my-image {
+    z-index: 1000;
+    margin-left: 95px;
+}  
