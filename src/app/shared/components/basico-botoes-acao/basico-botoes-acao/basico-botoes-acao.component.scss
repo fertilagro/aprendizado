@@ -1,0 +1,32 @@
+
+.container-botoes {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+
+
+.mat-toolbar {
+    background-color: #F0FFF0;
+    border-radius: 5px;
+    border: 1px solid #e9e9e9;
+    padding: 0;
+}
+
+.botoes {
+
+    padding-top: 2px;
+    padding-bottom: 1px;
+    border-bottom: 2px solid #e9e9e9;;
+
+    .btn-acoes {
+        padding: 6px 10px 6px 10px;
+    }
+
+}
+
+.span-titulo {
+ margin-left: 20px;
+}

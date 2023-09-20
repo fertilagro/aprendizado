@@ -12,8 +12,10 @@ export class SidebarService {
   ) { }
 
   getBuscaModulos(path) {
-    const arrayModulos: Observable<any> = this.baseResourceServiceService.getDados(path);
-    return arrayModulos;
+    this.baseResourceServiceService.getDados(path)
+    .subscribe(ret => {
+      let dados = ret;
+    });
   }
 
 }

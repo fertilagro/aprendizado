@@ -1,6 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { SidebarService } from './service/sidebar.service';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,26 +10,33 @@ import { Observable } from 'rxjs';
 })
 export class SidebarComponent implements OnInit {
 
-  // menulista = [{
-  //   id: 1,
-  //   nome: "Principal",
-  // },
-  // {
-  //   id: 2,
-  //   nome: "Pessoa",
-  // },
-  // {
-  //   id: 3,
-  //   nome: "Material",
-  // },
-  // ];
+  menulista = [{
+    id: 1,
+    nome: "Principal",
+  },
+  {
+    id: 2,
+    nome: "Pessoa",
+  },
+  {
+    id: 3,
+    nome: "Material"
+  },]; 
+
+  public ret: String;
 
   constructor(
-    private sidebarService: SidebarService
+    private sidebarService: SidebarService,
+    private http: HttpClient,
+    public router: Router
   ) {}
 
   ngOnInit(): void {
-    const arrayModulos: Observable<any> = this.sidebarService.getBuscaModulos("/modulos");
+
+  }
+
+  abrirRota() {
+    this.router.navigate(['/BasicoBotoesAcaoComponent']);
   }
 
 }
