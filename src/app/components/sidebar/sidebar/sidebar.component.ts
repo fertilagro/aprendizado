@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { SidebarService } from './service/sidebar.service';
 
@@ -21,7 +21,7 @@ export class SidebarComponent implements OnInit {
   {
     id: 3,
     nome: "Material"
-  },]; 
+  },];
 
   public ret: String;
 

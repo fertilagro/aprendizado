@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
+  menuSistema: String = "Menu Sistema";
+
+  userData = {
+    email: 'tiago@email',
+    cargo: 'programador',
+  }
+
   title = '7projetos';
 }
