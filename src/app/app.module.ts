@@ -19,7 +19,7 @@ import { SharedModule } from './shared/shared.module';
       LoginComponent,
       DashboardComponent,
       SidebarComponent
-      
+
     ],
     imports: [
       BrowserModule,

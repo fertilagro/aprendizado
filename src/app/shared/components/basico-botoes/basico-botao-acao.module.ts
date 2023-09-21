@@ -1,20 +1,20 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../../shared.module';
-import { BasicoBotoesAcaoComponent } from './basico-botao/basico-botao.component';
-import { BasicoBotaoAcaoComponent } from './basico-botao-acao/basico-botao-acao.component';
+import { BasicoBotaoAcaoComponent } from './components/basico-botao-acao.component';
+import { BasicoBotaoModule } from '../basico-botao/basico-botao.module';
 
 @NgModule({
   declarations: [
-    BasicoBotoesAcaoComponent,
     BasicoBotaoAcaoComponent
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    BasicoBotaoModule
   ],
   exports: [
     BasicoBotaoAcaoComponent
   ]
 })
-export class BasicoBotoesAcaoModule { }
+export class BasicoBotaoAcaoModule { }

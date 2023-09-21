@@ -6,13 +6,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
-import { BasicoBotoesAcaoComponent } from './components/basico-botoes/basico-botao/basico-botao.component';
-import { BasicoBotoesAcaoModule } from './components/basico-botoes/basico-botao.module';
+import { BasicoBotaoAcaoModule } from './components/basico-botoes/basico-botao-acao.module';
 
 @NgModule({
-  declarations: [
-    BasicoBotoesAcaoComponent
-  ],
+  declarations: [],
   imports: [
     CommonModule,
     InputTextModule,
@@ -20,9 +17,7 @@ import { BasicoBotoesAcaoModule } from './components/basico-botoes/basico-botao.
     ButtonModule,
     MatMenuModule,
     RouterModule,
-    MatToolbarModule,
-
-    BasicoBotoesAcaoModule
+    MatToolbarModule
   ],
   exports: [
     CommonModule,
@@ -31,9 +26,7 @@ import { BasicoBotoesAcaoModule } from './components/basico-botoes/basico-botao.
     ButtonModule,
     MatMenuModule,
     RouterModule,
-    MatToolbarModule,
-    
-    BasicoBotoesAcaoModule
+    MatToolbarModule
   ]
 })
 export class SharedModule { }

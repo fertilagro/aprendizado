@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login/login.component';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
-import { BasicoBotoesAcaoComponent } from './shared/components/basico-botoes/basico-botao/basico-botao.component';
+import { BasicoBotaoAcaoComponent } from './shared/components/basico-botoes/components/basico-botao-acao.component';
 
 const routes: Routes = [
   {
@@ -20,7 +20,7 @@ const routes: Routes = [
     path:"dashboard", component: DashboardComponent
   },
   {
-    path:"teste", component: BasicoBotoesAcaoComponent
+    path:"teste", component: BasicoBotaoAcaoComponent
   }
 ];
 

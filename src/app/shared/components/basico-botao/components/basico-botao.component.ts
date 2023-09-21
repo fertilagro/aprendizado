@@ -5,12 +5,15 @@ import { Component, OnInit, Input } from '@angular/core';
   templateUrl: './basico-botao.component.html',
   styleUrls: ['./basico-botao.component.scss']
 })
-export class BasicoBotoesAcaoComponent implements OnInit {
+export class BasicoBotaoComponent implements OnInit {
 
+  // RESPONSÁVEL PELO TÍTULO DENTRO DO BUTTON
   @Input() rotulo = "";
+  // RESPONSÁVEL PELO ICONE DO BOTÃO
+  @Input() icone = "";
 
   ngOnInit(): void {
-      
+
   }
 
 }
