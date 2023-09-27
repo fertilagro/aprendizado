@@ -1,0 +1,6 @@
+<form [formGroup]="resourceForm">
+    <label>Informe o CEP:</label>
+    <input type="text" pInputText formControlName="cep" />
+    <p-button label="Submit" (click)="ok()"></p-button>
+    <input type="text" pInputText formControlName="resultado" />
+</form>
