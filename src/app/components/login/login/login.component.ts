@@ -1,33 +1,34 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validator, Validators } from '@angular/forms';
+import { Component, Injector, OnInit } from '@angular/core';
+import { Validators } from '@angular/forms';
+import { BaseResourceFormComponent } from 'src/app/shared/components/base-resource-form/base-resource-form/base-resource-form.component';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent extends BaseResourceFormComponent implements OnInit {
 
-  resourceForm: FormGroup;
+  constructor(
+    override injector: Injector,
+  ) {
+    super(injector);
+  }
 
-  constructor (
-    public formBuilder: FormBuilder
-  ) {}
-
-  ngOnInit(): void {
-    this.buildResourceForm();
+  override ngOnInit() {
+    
   }
 
   buildResourceForm() {
-    this.resourceForm = this.formBuilder.group({
+    this.resourceform = this.formBuilder.group({
       email: ['', [Validators.required]],
       senha: ['', [Validators.required]]
     });
   }
 
   public testarLogin() {
-    if (this.resourceForm.get('email').value === "55") {
-      this.resourceForm.getRawValue;
+    if (this.resourceform.get('email').value === "55") {
+      this.resourceform.getRawValue;
     }
   }
 

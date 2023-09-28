@@ -20,7 +20,6 @@ import { ConsultaCepComponent } from './components/consulta_cep/consulta-cep/con
       LoginComponent,
       DashboardComponent,
       SidebarComponent,
-      ConsultaCepComponent
 
     ],
     imports: [

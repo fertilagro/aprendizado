@@ -7,9 +7,11 @@ import { RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { BasicoBotaoAcaoModule } from './components/basico-botoes/basico-botao-acao.module';
+import { BaseResourceFormComponent } from './components/base-resource-form/base-resource-form/base-resource-form.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+  ],
   imports: [
     CommonModule,
     InputTextModule,
