@@ -1,20 +1,41 @@
 
-* {
-  padding: 0;
-  margin: 0;
-}
 
 .container-principal {
   background: #fff;
   width: 100%;
   height: 100%;
+  box-sizing: border-box;
 
   .container-botoes {
     display: flex;
     justify-content: center;
     align-items: center;
   }
+
+
 }
+
+.container-retangular {
+  background-color: blue;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 120px;
+  border-radius: 4px;
+
+
+}
+
+.retangulo {
+  justify-content: center;
+  display: grid;
+  border: 1px solid black;
+  background: aqua;
+  width: inherit;
+  height: inherit;
+  box-sizing: border-box;
+}
+
+
 
 
 
