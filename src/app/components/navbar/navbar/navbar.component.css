@@ -1,12 +1,13 @@
 
 .container-navbar {
     background-color: #00BFFF;
-    padding: 0px;
+    padding-top: 1px;
     width: 100%;
     box-shadow: 0 1px 4px #ADD8E6;
 }
 
 #my-image {
+    margin-top: 4px;
     z-index: 1000;
     margin-left: 95px;
-}  
+}

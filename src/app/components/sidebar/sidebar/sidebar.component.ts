@@ -12,7 +12,7 @@ export class SidebarComponent implements OnInit {
 
   menulista = [{
     id: 1,
-    nome: "Principal",
+    nome: "Pedido",
   },
   {
     id: 2,
@@ -22,8 +22,6 @@ export class SidebarComponent implements OnInit {
     id: 3,
     nome: "Material"
   },];
-
-  public ret: String;
 
   constructor(
     private sidebarService: SidebarService,
@@ -36,7 +34,7 @@ export class SidebarComponent implements OnInit {
   }
 
   abrirRota() {
-    this.router.navigate(['/BasicoBotoesAcaoComponent']);
+    this.router.navigate(['/login']);
   }
 
 }
