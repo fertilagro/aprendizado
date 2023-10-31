@@ -6,28 +6,27 @@
     box-shadow: 0 1px 4px #000000;
     position: absolute;
 
-    .menu-lista {
-      align-items: start;
-    }
-
-    .grupo-menu {
-        display: grid;
-        height: 100%;
-        width: 100%;
-    }
-
-    .caixa-menu {
-        align-items: start;
-        display: grid;
-        font-weight: 600;
-        font-size: 20px;
-        padding: 5px;
-        cursor: pointer;
-    }
-
     .itens-menu {
         position: relative;
         text-decoration: none;
     }
+}
 
+.menu-lista {
+    align-items: start;
+  }
+
+  .grupo-menu {
+      display: grid;
+      height: 100%;
+      width: 100%;
+  }
+
+  .caixa-menu {
+   /* align-items: start;
+   /* display: grid;*/
+    font-weight: 600;
+    font-size: 20px;
+    padding: 5px;
+    cursor: pointer;
 }
