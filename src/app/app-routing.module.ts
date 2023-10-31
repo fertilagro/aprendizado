@@ -4,6 +4,7 @@ import { LoginComponent } from './components/login/login/login.component';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { BasicoBotaoAcaoComponent } from './shared/components/basico-botoes/components/basico-botao-acao.component';
 import { ConsultaCepComponent } from './components/consulta_cep/consulta-cep/consulta-cep.component';
+import { PessoaComponent } from './components/pessoa/pessoa/pessoa.component';
 
 const routes: Routes = [
   {
@@ -24,7 +25,7 @@ const routes: Routes = [
     path:"teste", component: BasicoBotaoAcaoComponent
   },
   {
-    path:"cep", component: ConsultaCepComponent
+    path:"pessoa", component: PessoaComponent
   }
 ];
 
