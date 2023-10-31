@@ -6,6 +6,10 @@
     box-shadow: 0 1px 4px #000000;
     position: absolute;
 
+    .menu-lista {
+      align-items: start;
+    }
+
     .grupo-menu {
         display: grid;
         height: 100%;
@@ -13,16 +17,16 @@
     }
 
     .caixa-menu {
+        align-items: start;
         display: grid;
-        justify-content: center;
         font-weight: 600;
-        font-size: 30px;
-        padding: 10px;
+        font-size: 20px;
+        padding: 5px;
         cursor: pointer;
-        background-color: gray;
     }
 
     .itens-menu {
+        position: relative;
         text-decoration: none;
     }
 
