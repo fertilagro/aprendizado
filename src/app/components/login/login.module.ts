@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoginComponent } from './login/login.component';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { NgModule } from '@angular/core';
 import { NgModel } from '@angular/forms';
+import { ComponentsModule } from '../components.module';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -10,8 +10,8 @@ import { NgModel } from '@angular/forms';
   ],
   imports: [
     CommonModule,
-    SharedModule,
-    NgModel
+    NgModel,
+    ComponentsModule
   ]
 })
 export class LoginModule { }

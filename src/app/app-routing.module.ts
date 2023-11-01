@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login/login.component';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
+import { PessoaComponent } from './components/pessoa/pessoa/pessoa.component';
 
 const routes: Routes = [
   {
@@ -10,7 +11,7 @@ const routes: Routes = [
     redirectTo: "dashboard"
   },
   {
-    path:"login", component: LoginComponent
+    path:"login", component: PessoaComponent
   },
   {
     path:"", component: DashboardComponent

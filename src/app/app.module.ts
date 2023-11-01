@@ -12,7 +12,6 @@ import { NavbarModule } from './components/navbar/navbar.module';
 import { SidebarComponent } from './components/sidebar/sidebar/sidebar.component';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { SharedModule } from './shared/shared.module';
-import { ConsultaCepComponent } from './components/consulta_cep/consulta-cep/consulta-cep.component';
 
   @NgModule({
     declarations: [
@@ -26,7 +25,6 @@ import { ConsultaCepComponent } from './components/consulta_cep/consulta-cep/con
       BrowserModule,
       AppRoutingModule,
       SharedModule,
-      NavbarModule,
 
       CommonModule,
       ReactiveFormsModule,

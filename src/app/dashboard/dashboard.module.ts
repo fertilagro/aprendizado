@@ -11,9 +11,7 @@ import { SidebarModule } from '../components/sidebar/sidebar.module';
   ],
   imports: [
     CommonModule,
-    SharedModule,
-    NavbarModule,
-    SidebarModule
+    SharedModule
   ],
   exports: [
     DashboardComponent

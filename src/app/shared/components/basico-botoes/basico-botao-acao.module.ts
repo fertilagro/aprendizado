@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../../shared.module';
 import { BasicoBotaoAcaoComponent } from './components/basico-botao-acao.component';
-import { BasicoBotaoModule } from '../basico-botao/basico-botao.module';
 
 @NgModule({
   declarations: [
@@ -10,9 +9,8 @@ import { BasicoBotaoModule } from '../basico-botao/basico-botao.module';
   ],
   imports: [
     CommonModule,
-    SharedModule,
-    BasicoBotaoModule
-  ],
+    SharedModule
+    ],
   exports: [
     BasicoBotaoAcaoComponent
   ]

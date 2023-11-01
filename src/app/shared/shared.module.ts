@@ -7,7 +7,9 @@ import { RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { BasicoBotaoAcaoModule } from './components/basico-botoes/basico-botao-acao.module';
-import { BaseResourceFormComponent } from './components/base-resource-form/base-resource-form/base-resource-form.component';
+import { NavbarModule } from '../components/navbar/navbar.module';
+import { SidebarModule } from '../components/sidebar/sidebar.module';
+import { BasicoBotaoModule } from './components/basico-botao/basico-botao.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,11 @@ import { BaseResourceFormComponent } from './components/base-resource-form/base-
     ButtonModule,
     MatMenuModule,
     RouterModule,
-    MatToolbarModule
+    MatToolbarModule,
+    BasicoBotaoAcaoModule,
+    NavbarModule,
+    SidebarModule,
+    BasicoBotaoModule
   ],
   exports: [
     CommonModule,
@@ -28,7 +34,11 @@ import { BaseResourceFormComponent } from './components/base-resource-form/base-
     ButtonModule,
     MatMenuModule,
     RouterModule,
-    MatToolbarModule
+    MatToolbarModule,
+    BasicoBotaoAcaoModule,
+    NavbarModule,
+    SidebarModule,
+    BasicoBotaoModule
   ]
 })
 export class SharedModule { }

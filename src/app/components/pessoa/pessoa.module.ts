@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { PessoaComponent } from './pessoa/pessoa.component';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { ComponentsModule } from '../components.module';
 
 @NgModule({
   declarations: [
@@ -9,7 +9,10 @@ import { SharedModule } from 'src/app/shared/shared.module';
   ],
   imports: [
     CommonModule,
-    SharedModule
+    ComponentsModule
+  ],
+  exports: [
+    PessoaComponent
   ]
 })
 export class PessoaModule { }
