@@ -7,29 +7,19 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './components/login/login/login.component';
-import { NavbarModule } from './components/navbar/navbar.module';
-import { SidebarComponent } from './components/sidebar/sidebar/sidebar.component';
-import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
-import { SharedModule } from './shared/shared.module';
 
   @NgModule({
     declarations: [
-      AppComponent,
-      LoginComponent,
-      DashboardComponent,
-      SidebarComponent,
-
+      AppComponent
     ],
     imports: [
       BrowserModule,
-      AppRoutingModule,
-      SharedModule,
-
       CommonModule,
       ReactiveFormsModule,
       HttpClientModule,
-      BrowserAnimationsModule
+      BrowserAnimationsModule,
+
+      AppRoutingModule
     ],
     providers: [],
     bootstrap: [AppComponent]

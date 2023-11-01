@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { PessoaComponent } from './pessoa/pessoa.component';
-import { ComponentsModule } from '../components.module';
+import { PessoaComponent } from './components/pessoa/pessoa.component';
+import { PessoaRoutingModule } from './pessoa-routing.module';
 
 @NgModule({
   declarations: [
@@ -9,7 +9,7 @@ import { ComponentsModule } from '../components.module';
   ],
   imports: [
     CommonModule,
-    ComponentsModule
+    PessoaRoutingModule
   ],
   exports: [
     PessoaComponent
