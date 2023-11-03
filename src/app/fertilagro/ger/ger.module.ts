@@ -1,11 +1,15 @@
 import { NgModule } from '@angular/core';
 import { GerRoutingModule } from './ger-routing.module';
+import { PessoaModule } from './pessoa/pessoa.module';
 
 @NgModule({
   declarations: [],
   imports: [
-    GerRoutingModule
+    GerRoutingModule,
+    PessoaModule
   ],
-  exports: []
+  exports: [
+    PessoaModule
+  ]
 })
-export class GerModule { }
+export class GerModule {}

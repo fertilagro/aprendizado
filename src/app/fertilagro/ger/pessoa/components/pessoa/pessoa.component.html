@@ -1,2 +1,40 @@
-<!-- <app-basico-botao-acao>
-</app-basico-botao-acao> -->
+<form [formGroup]="this.resourceform">
+<div class="container-principal">
+  <div class="container-botoes">
+      <div class="container-retangular">
+        <p-button class="btn" label="Incluir">
+        </p-button>
+        <p-button class="btn" label="Alterar">
+        </p-button>
+        <p-button class="btn" label="Cancelar">
+        </p-button>
+        <p-button class="btn" label="Excluir">
+        </p-button>
+        <p-button class="btn-pesquisar" label="Pesquisar">
+        </p-button>
+        <hr >
+       
+
+ 
+          <div class="form-container">
+
+            <div>
+              <input type="text" formControlName="id" placeholder="ID"/>
+
+            </div>
+          
+            <div>
+              <input type="text" formControlName="razaoSocial" placeholder="razaoSocial"/>
+
+            </div>
+           
+            
+
+
+          </div>
+       
+
+      </div>
+  </div>
+</div>
+</form> 
