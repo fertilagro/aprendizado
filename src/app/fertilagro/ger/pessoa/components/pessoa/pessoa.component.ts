@@ -1,15 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BaseResourceFormComponent } from 'src/app/shared/components/base-resource-form/base-resource-form/base-resource-form.component';
-import { FormGroup, FormBuilder, NgModel } from '@angular/forms';
+import { PessoaModel } from './model/pessoa.model';
 
 @Component({
   selector: 'app-pessoa',
   templateUrl: './pessoa.component.html',
   styleUrls: ['./pessoa.component.scss']
 })
-export class PessoaComponent extends BaseResourceFormComponent {
+export class PessoaComponent extends BaseResourceFormComponent<PessoaModel> implements OnInit {
 
-  value = "";
+
+
   buildResourceForm() {
     this.resourceform = this.formBuilder.group({
 

@@ -1,40 +1,41 @@
-<form [formGroup]="this.resourceform">
-<div class="container-principal">
-  <div class="container-botoes">
-      <div class="container-retangular">
-        <p-button class="btn" label="Incluir">
-        </p-button>
-        <p-button class="btn" label="Alterar">
-        </p-button>
-        <p-button class="btn" label="Cancelar">
-        </p-button>
-        <p-button class="btn" label="Excluir">
-        </p-button>
-        <p-button class="btn-pesquisar" label="Pesquisar">
-        </p-button>
-        <hr >
-       
+<mat-card-content class="card-fertilagro-content">
+  <form [formGroup]="this.resourceform">
+    <div class="container-principal">
+      <div class="container-botoes">
+        <div class="container-retangular">
 
- 
+          <app-basico-botao rotulo="Incluir"></app-basico-botao>
+
+
+
+          <p-button class="btn" label="Incluir">
+          </p-button>
+          <p-button class="btn" label="Alterar">
+          </p-button>
+          <p-button class="btn" label="Cancelar">
+          </p-button>
+          <p-button class="btn" label="Salvar">
+          </p-button>
+          <p-button class="btn" label="Excluir">
+          </p-button>
+          <p-button class="btn-pesquisar" label="Pesquisar">
+          </p-button>
+          <hr>
           <div class="form-container">
 
-            <div>
-              <input type="text" formControlName="id" placeholder="ID"/>
 
-            </div>
-          
-            <div>
-              <input type="text" formControlName="razaoSocial" placeholder="razaoSocial"/>
+            <input type="text" id="input1" value="1">
+            <input type="text" id="input2" value="2">
+            <input type="text" id="input3" value="3">
+            <input type="text" id="input3" value="4">
+            <input type="text" id="input3" value="5">
+            <input type="text" id="input3" value="6">
 
-            </div>
-           
-            
 
 
           </div>
-       
-
+        </div>
       </div>
-  </div>
-</div>
-</form> 
+    </div>
+  </form>
+</mat-card-content>

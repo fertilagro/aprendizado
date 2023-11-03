@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
 import { PessoaComponent } from './components/pessoa/pessoa.component';
 import { PessoaRoutingModule } from './pessoa-routing.module';
-import { ButtonModule } from 'primeng/button';
-import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { MatCardModule } from '@angular/material/card';
+import { BasicoBotaoModule } from 'src/app/shared/components/basico-botao/basico-botao.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,9 @@ import { SharedModule } from 'src/app/shared/shared.module';
     CommonModule,
     PessoaRoutingModule,
     ButtonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatCardModule,
+    BasicoBotaoModule
   ],
   exports: [
     PessoaComponent

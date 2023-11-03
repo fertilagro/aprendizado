@@ -1,8 +1,9 @@
 import { Injector, OnInit, Directive } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { BaseResourceModel } from '../../models/base-resource.model';
 
 @Directive()
-export abstract class BaseResourceFormComponent implements OnInit {
+export abstract class BaseResourceFormComponent<T extends BaseResourceModel> implements OnInit {
 
   resourceform: FormGroup;
   protected formBuilder: FormBuilder;
@@ -14,7 +15,7 @@ export abstract class BaseResourceFormComponent implements OnInit {
    }
 
   ngOnInit() {
-     this.buildResourceForm(); 
+     this.buildResourceForm();
   }
 
   protected abstract buildResourceForm(data?: any): void;

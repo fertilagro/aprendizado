@@ -1,6 +1,13 @@
-<button class="btn"
-mat-button>
+<button
+mat-ripple
+type="button"
+[hidden]="esconder"
+[disabled]="desabilitar || isLoading"
+class="btn"
+(click)="aoClique()"
+icon="icone">
 {{rotulo}}
+<ng-content></ng-content>
 </button>
 
 
