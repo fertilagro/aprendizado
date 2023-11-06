@@ -3,10 +3,10 @@
 @import "../../../../../scss/mixins/botoes";
 
 .a2o-botao {
+  @include padrao-botao(#e4e4e4, #fff, rgb(34, 0, 78));
   display: flex;
   align-items: center;
   height: 100%;
-  @include padrao-btn(#e4e4e4, #fff, rgb(34, 0, 78));
   margin: 0 2.5px;
   flex-direction: column;
   cursor: pointer;

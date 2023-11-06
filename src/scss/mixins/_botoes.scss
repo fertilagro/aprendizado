@@ -1,6 +1,6 @@
 @import "../../scss/variaveis";
 
-@mixin padrao-btn($cor-primaria, $cor-secundaria, $cor-texto) {
+@mixin padrao-botao($cor-primaria, $cor-secundaria, $cor-texto) {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,7 +25,7 @@
   }
 
   &:hover:not(:disabled) {
-    color: rgb(245, 29, 29); //$cor-texto;
+    color: rgb(245, 29, 29);
     border: 0;
     border-top: 1px solid $cor-primaria;
     border-left: 1px solid $cor-primaria;

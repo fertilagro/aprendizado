@@ -8,6 +8,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
 
   resourceform: FormGroup;
   protected formBuilder: FormBuilder;
+  incluindoAlterarando = false;
 
   constructor (
     protected injector: Injector,

@@ -1,23 +1,32 @@
 
 <mat-card class="card-fertilagro">
-  <mat-card-header class="card_header_fertilagro d-flex justify-content-between">
+  <mat-card-header class="card_header_fertilagro">
     <mat-card-title>Cadastro de Pessoas</mat-card-title>
   </mat-card-header>
 
-<mat-card-content class="card-fertilagro-content">
-  <app-fertilagro-botoes [tela]="this"> </app-fertilagro-botoes>
-  <form [formGroup]="resourceform" novalidate>
+  <mat-card-content class="card-content_fertilagro">
+    <app-fertilagro-botoes [tela]="this"> </app-fertilagro-botoes>
 
-    <div class="row">
+    <form [formGroup]="resourceform" novalidate>
 
-      <app-fertilagro-inputs></app-fertilagro-inputs>
+      <div class="row">
 
+          <app-fertilagro-inputs></app-fertilagro-inputs>
+          <app-fertilagro-inputs></app-fertilagro-inputs>
+          <app-fertilagro-inputs></app-fertilagro-inputs>
+          <app-fertilagro-inputs></app-fertilagro-inputs>
+          <app-fertilagro-inputs></app-fertilagro-inputs>
+          <app-fertilagro-inputs></app-fertilagro-inputs>
+          <app-fertilagro-inputs></app-fertilagro-inputs>
 
-    </div>
+      </div>
 
-  </form>
-</mat-card-content>
+    </form>
+  </mat-card-content>
 
-<mat-card-header class="card_header_fertilagro">
-</mat-card-header>
+  <mat-card-footer class="card_footer_fertilagro">
+    <hr />
+  </mat-card-footer>
+</mat-card>
+
 <router-outlet></router-outlet>

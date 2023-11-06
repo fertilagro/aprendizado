@@ -1,16 +1,22 @@
 
 * {
-    font-family: "Cabin", sans-serif;
-    font-weight: 500;
+    font-family: "Roboto", sans-serif;
+    font-weight: 600;
   }
-  
+
   body {
-    background-color: rgb(92, 45, 45);
+    background-color: rgb(130, 119, 119);
   }
-  
+
   .row {
     margin-right: 0;
     margin-left: 0;
+  }
+
+  .card-content_fertilagro {
+    padding: 5px;
+    margin: 0;
+    font-size: 13.5px;
   }
 
   .card_header_fertilagro {
@@ -18,68 +24,17 @@
     padding: 10px 10px;
     border-radius: 10px;
   }
-  
+
   .card_footer_fertilagro {
-    background: #e8ffe9;
-    padding: 10px 10px;
-    border-radius: 10px;
+    width: 100%;
+    padding: 5px 10px;
   }
 
- /* .card-fertilagro {
-      &.mat-card {
-          padding: 0;
+  .col-px-1 {
+    width: 10%;
+  }
 
-          &>.mat-card-actions {
-              &:last-child {
-                  margin-bottom: 0;
-                  padding-bottom: 5px;
-              }
-          }
-      }
-
-      &.card-fertilagro-dialog {
-          height: 100%;
-      }
-
-      &.card-fertilagro-actions {
-          &:last-child {
-              padding-bottom: 0px;
-              padding-top: 0px;
-          }
-      }
-
-      .card-fertilagro-header {
-          background: #f0f0f0;
-          padding: 0px 10px;
-          // padding: 5px 10px;
-
-          .mat-card-header-text {
-              margin: 0;
-
-              .mat-card-title {
-                  margin: 0;
-                  font-size: 16px;
-                  padding: 5px 0px;
-              }
-          }
-      }
-
-      .card-fertilagro-content {
-          padding: 5px;
-          margin: 0;
-          font-size: 13.5px;
-      }
-
-      .card-fertilagro-actions {
-          margin: 0;
-          padding: 5px;
-      }
-
-      .card-fertilagro-footer {
-          width: 100%;
-          margin: 0;
-          padding: 5px 10px;
-          background: #f0f0f0;
-      }
-  }*/
+  .col-px-2 {
+    width: 20%;
+  }
 

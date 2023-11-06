@@ -1,4 +1,4 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { BaseResourceFormComponent } from '../../base-resource-form/base-resource-form/base-resource-form.component';
 
 @Component({
@@ -6,38 +6,36 @@ import { BaseResourceFormComponent } from '../../base-resource-form/base-resourc
   templateUrl: './fertilagro-botoes.component.html',
   styleUrls: ['./fertilagro-botoes.component.scss']
 })
-export class FertilAgroBotoesComponent {
+export class FertilAgroBotoesComponent implements OnInit {
 
   @Input() tela: BaseResourceFormComponent<any>;
 
-  @Input() mostrarIncluir = true;
+  @Input() desabilitarBtnIncluir = false;
 
-  @Input() mostrarAlterar = true;
+  @Input() desabilitarBtnAlterar = false;
 
-  @Input() mostrarSalvar = true;
+  @Input() desabilitarBtnSalvar = false;
 
-  @Input() mostrarExcluir = true;
+  @Input() desabilitarBtnExcluir = false;
 
-  @Input() mostrarCancelar = true;
+  @Input() desabilitarBtnCancelar = false;
 
-  @Input() mostrarPesquisar = true;
-
-  @Input() desabilitarIncluir = false;
-
-  @Input() desabilitarAlterar = false;
-
-  @Input() desabilitarSalvar = false;
-
-  @Input() desabilitarExcluir = false;
-
-  @Input() desabilitarCancelar = false;
-
-  @Input() desabilitarPesquisar = false;
+  @Input() desabilitarBtnPesquisar = false;
 
   //**************************************************** */
 
+  ngOnInit(): void {
+    if (this.tela) {
+
+    }
+  }
+
   temId(): boolean {
     return this.tela && this.tela.temId(this.tela.resource);
+  }
+
+  emEdicao(): boolean {
+    return this.tela && this.tela.incluindoAlterarando;
   }
 
   incluir() {
