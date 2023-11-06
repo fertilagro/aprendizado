@@ -6,6 +6,8 @@ import { PessoaComponent } from './components/pessoa/pessoa.component';
 import { PessoaRoutingModule } from './pessoa-routing.module';
 import { MatCardModule } from '@angular/material/card';
 import { BasicoBotaoModule } from 'src/app/shared/components/basico-botao/basico-botao.module';
+import { FertilAgroBotoesModule } from 'src/app/shared/components/fertilagro-botoes/fertilagro-botoes.module';
+import { FertilAgroInputsModule } from 'src/app/shared/components/fertilagro-inputs/fertilagro-inputs.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { BasicoBotaoModule } from 'src/app/shared/components/basico-botao/basico
     ButtonModule,
     ReactiveFormsModule,
     MatCardModule,
-    BasicoBotaoModule
+    BasicoBotaoModule,
+    FertilAgroBotoesModule,
+    FertilAgroInputsModule
   ],
   exports: [
     PessoaComponent

@@ -2,6 +2,7 @@
 * {
     font-family: "Cabin", sans-serif;
     font-weight: 500;
+    -webkit-font-smoothing: antialiased;
   }
   
   body {
@@ -13,19 +14,8 @@
     margin-left: 0;
   }
 
-  .card_header_fertilagro {
-    background: #e8ffe9;
-    padding: 10px 10px;
-    border-radius: 10px;
-  }
-  
-  .card_footer_fertilagro {
-    background: #e8ffe9;
-    padding: 10px 10px;
-    border-radius: 10px;
-  }
 
- /* .card-fertilagro {
+  .card-fertilagro {
       &.mat-card {
           padding: 0;
 
@@ -81,5 +71,5 @@
           padding: 5px 10px;
           background: #f0f0f0;
       }
-  }*/
+  }
 

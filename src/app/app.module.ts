@@ -10,8 +10,9 @@ import { ButtonModule } from 'primeng/button';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FertilAgroModule } from './fertilagro/fertilagro.module';
-import { BasicoBotaoModule } from './shared/components/basico-botao/basico-botao.module';
 import { FertilAgroBotoesModule } from './shared/components/fertilagro-botoes/fertilagro-botoes.module';
+import { FertilAgroInputsModule } from './shared/components/fertilagro-inputs/fertilagro-inputs.module';
+import { SharedModule } from './shared/shared.module';
 
   @NgModule({
     declarations: [
@@ -27,12 +28,14 @@ import { FertilAgroBotoesModule } from './shared/components/fertilagro-botoes/fe
       FormsModule,
       MatCardModule,
       FertilAgroBotoesModule,
+      SharedModule,
 
       AppRoutingModule,
       FertilAgroModule
     ],
     exports: [
       ButtonModule,
+      SharedModule
     ],
     providers: [],
     bootstrap: [AppComponent]

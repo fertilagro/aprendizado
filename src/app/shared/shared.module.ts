@@ -6,6 +6,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { InputTextModule } from 'primeng/inputtext';
     ButtonModule,
     MatMenuModule,
     RouterModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatInputModule,
   ],
   exports: [
     CommonModule,
@@ -26,7 +28,8 @@ import { InputTextModule } from 'primeng/inputtext';
     ButtonModule,
     MatMenuModule,
     RouterModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatInputModule
   ]
 })
 export class SharedModule { }

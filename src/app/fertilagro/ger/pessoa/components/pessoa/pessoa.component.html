@@ -1,41 +1,24 @@
+
+
+<mat-card class="card-fertilagro">
+  <mat-card-header class="card_header_fertilagro d-flex justify-content-between">
+    <mat-card-title>Cadastro de Pessoas</mat-card-title>
+  </mat-card-header>
+
 <mat-card-content class="card-fertilagro-content">
-  <form [formGroup]="this.resourceform">
-    <div class="container-principal">
-      <div class="container-botoes">
-        <div class="container-retangular">
+  <app-fertilagro-botoes [tela]="this"> </app-fertilagro-botoes>
+  <form [formGroup]="resourceform" novalidate>
 
-          <app-basico-botao rotulo="Incluir"></app-basico-botao>
+    <div class="row">
 
+      <app-fertilagro-inputs></app-fertilagro-inputs>
 
-
-          <p-button class="btn" label="Incluir">
-          </p-button>
-          <p-button class="btn" label="Alterar">
-          </p-button>
-          <p-button class="btn" label="Cancelar">
-          </p-button>
-          <p-button class="btn" label="Salvar">
-          </p-button>
-          <p-button class="btn" label="Excluir">
-          </p-button>
-          <p-button class="btn-pesquisar" label="Pesquisar">
-          </p-button>
-          <hr>
-          <div class="form-container">
-
-
-            <input type="text" id="input1" value="1">
-            <input type="text" id="input2" value="2">
-            <input type="text" id="input3" value="3">
-            <input type="text" id="input3" value="4">
-            <input type="text" id="input3" value="5">
-            <input type="text" id="input3" value="6">
-
-
-
-          </div>
-        </div>
-      </div>
+      <p>teste de paragrafo</p>
     </div>
+
   </form>
 </mat-card-content>
+
+<mat-card-header class="card_header_fertilagro">
+</mat-card-header>
+<router-outlet></router-outlet>

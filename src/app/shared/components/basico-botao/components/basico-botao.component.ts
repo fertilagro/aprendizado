@@ -18,6 +18,10 @@ export class BasicoBotaoComponent {
 
   @Input('loading') isLoading: boolean;
 
+  @Input() classe: string;
+
+  @Input() roteador: string;
+
   @Output() clique = new EventEmitter();
 
   constructor() { }

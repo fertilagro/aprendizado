@@ -1,13 +1,26 @@
-
 <div class="d-flex justify-content-between flex-wrap" style="margin: 0.1rem -0.1rem 0.3rem;">
-  <div class="d-flex flex-grow-1 flex-wrap">
-
-    <app-basico-botao id="btn-incluir" rotulo="Incluir" icone="fas fa-plus text-success"
-    [desabilitar]="desabilitarIncluir" [esconder]="" (clique)="incluir()"></app-basico-botao>
-
-
-
-
+  <div class="d-flex flex-grow-1 flex-wrap"> 
+    <div class="btn-cad">
+      <app-basico-botao id="btn-incluir" rotulo="Incluir" icone="fas fa-plus text-success"
+      [desabilitar]="desabilitarIncluir" [esconder]="false" (clique)="incluir()"></app-basico-botao>
+      
+      <app-basico-botao id="btn-alterar" rotulo="Alterar" icone="as fa-pencil-alt text-warning"
+      [desabilitar]="desabilitarAlterar" [esconder]="false" (clique)="alterar()"></app-basico-botao>
+      
+      <app-basico-botao id="btn-cancelar" rotulo="Cancelar" icone="fas fa-ban text-danger"
+      [desabilitar]="desabilitarCancelar" [esconder]="false" (clique)="cancelar()"></app-basico-botao>
+      
+      <app-basico-botao id="btn-salvar" rotulo="Salvar" icone="fas fa-save text-primary"
+      [desabilitar]="desabilitarSalvar" [esconder]="false" (clique)="salvar()"></app-basico-botao>
+      
+      <app-basico-botao id="btn-excluir" rotulo="Excluir" icone="fas fa-trash-alt text-danger"
+      [desabilitar]="desabilitarExcluir" [esconder]="false" (clique)="excluir()"></app-basico-botao>
+      
+      <app-basico-botao id="btn-pesquisar" rotulo="Pesquisar" icone="fas fa-search text-secondary"
+      [desabilitar]="desabilitarPesquisar" [esconder]="false" (clique)="pesquisar()"></app-basico-botao>
+    </div>
 
   </div>
 </div>
+
+<hr />

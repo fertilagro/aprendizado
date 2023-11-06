@@ -1,0 +1,41 @@
+@import "../../scss/variaveis";
+
+@mixin padrao-btn($cor-primaria, $cor-secundaria, $cor-texto) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  margin: 0;
+  padding: 3px 25px 3px 25px;
+  font-weight: bold;
+  border: 0;
+  color: $cor-texto;
+  border-top: 2px solid $cor-primaria;
+  border-left: 2px solid $cor-primaria;
+  border-right: 2px solid $cor-primaria;
+  border-bottom: 2px solid $cor-primaria;
+  background: linear-gradient($cor-secundaria, $cor-primaria);
+  font-size: $tamanho-fonte;
+  border-radius: 4px;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    border-radius: 3px;
+  }
+
+  &:hover:not(:disabled) {
+    color: rgb(245, 29, 29); //$cor-texto;
+    border: 0;
+    border-top: 1px solid $cor-primaria;
+    border-left: 1px solid $cor-primaria;
+    border-right: 1px solid $cor-primaria;
+    border-bottom: 2px solid $cor-primaria;
+    background: linear-gradient($cor-primaria, $cor-secundaria);
+    border-radius: 3px;
+  }
+
+  :focus {
+    outline: none;
+  }
+}

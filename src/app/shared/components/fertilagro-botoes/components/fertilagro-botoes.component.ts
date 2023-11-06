@@ -37,5 +37,25 @@ export class FertilAgroBotoesComponent {
   incluir() {
 
   }
+  
+  alterar() {
+
+  }
+
+  cancelar() {
+
+  }
+
+  salvar() {
+
+  }
+
+  excluir() {
+
+  }
+
+  pesquisar() {
+    
+  }
 
 }

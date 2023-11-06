@@ -1,18 +1,18 @@
 
 
-.btn {
-    background-color: white;
-    font-weight: 650;
-    border-radius: 3px;
-    border: 1px solid #D3D3D3;
-    margin: 2px;
-    box-shadow: 0.5px 0.5px;
-    width: 120px;
-    height: 25px;
-    box-sizing: border-box;
-    align-items: center;
-    justify-content: center;
+@import "../../../../../scss/mixins/botoes";
+
+.a2o-botao {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  @include padrao-btn(#e4e4e4, #fff, rgb(34, 0, 78));
+  margin: 0 2.5px;
+  flex-direction: column;
+  cursor: pointer;
+
+  &.flat {
+    padding: 3px 10px 3px 10px;
   }
-
-
+}
 

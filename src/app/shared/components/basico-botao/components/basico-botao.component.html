@@ -3,8 +3,9 @@ mat-ripple
 type="button"
 [hidden]="esconder"
 [disabled]="desabilitar || isLoading"
-class="btn"
+[ngClass]="{'a2o-botao': !classe, classe: classe}"
 (click)="aoClique()"
+[routerLink]="roteador"
 icon="icone">
 {{rotulo}}
 <ng-content></ng-content>
