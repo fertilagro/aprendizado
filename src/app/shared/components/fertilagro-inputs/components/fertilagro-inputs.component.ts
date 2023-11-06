@@ -12,18 +12,18 @@ export class FertilagroInputsComponent implements OnInit {
   @Input() aparencia = 'outline';
   @Input() titulo: string;
   @Input() desabilitar = false;
-  @Input() somenteLeitura = false;
+  @Input() soLeitura = false;
   @Input() focus: boolean;
 
   @Output() emFoco = new EventEmitter();
   @Output() outFocus = new EventEmitter();
 
-  public controlador = new FormControl();
+  public controladores = new FormControl();
   public inFocus = false;
 
   ngOnInit(): void {}
-  
-  aoSairDoCampo(obj) {
+
+  naSaidaDoCampo(obj) {
     this.outFocus.emit(obj);
   }
 

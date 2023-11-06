@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injector, OnInit } from '@angular/core';
 import { BaseResourceFormComponent } from 'src/app/shared/components/base-resource-form/base-resource-form/base-resource-form.component';
+import { HttpUtilService } from 'src/app/shared/components/services/http-util.service';
 import { PessoaModel } from './model/pessoa.model';
+import { PessoaService } from './service/pessoa.service';
 
 @Component({
   selector: 'app-pessoa',
@@ -9,7 +11,13 @@ import { PessoaModel } from './model/pessoa.model';
 })
 export class PessoaComponent extends BaseResourceFormComponent<PessoaModel> implements OnInit {
 
-
+  constructor(
+    protected Injector: Injector,
+    protected pessoaService: PessoaService,
+    private httpServ: HttpUtilService,
+  ) {
+    super(Injector, new PessoaModel(), pessoaService, PessoaModel.fromJson);
+  }
 
   buildResourceForm() {
     this.resourceform = this.formBuilder.group({

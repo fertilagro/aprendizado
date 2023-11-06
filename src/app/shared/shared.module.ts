@@ -1,12 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
-import { MatInputModule } from '@angular/material/input';
+import { AutomaticoFocusModule } from './directive/automatico-focus/automatico-focus.module';
+import { DisableControlModule } from './directive/disable-control/disable-control.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { MatInputModule } from '@angular/material/input';
     RouterModule,
     MatToolbarModule,
     MatInputModule,
+    DisableControlModule,
+    AutomaticoFocusModule
   ],
   exports: [
     CommonModule,
@@ -29,7 +33,9 @@ import { MatInputModule } from '@angular/material/input';
     MatMenuModule,
     RouterModule,
     MatToolbarModule,
-    MatInputModule
+    MatInputModule,
+    DisableControlModule,
+    AutomaticoFocusModule
   ]
 })
 export class SharedModule { }

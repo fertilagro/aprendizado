@@ -1,10 +1,11 @@
 <input matInput #input
 currencyMask
-[formControl]="controlador"
+[formControl]="controladores"
 [disableControl]="desabilitar"
-[readonly]="somenteLeitura"
-[appAutoFocus]="focus"
+[readonly]="soLeitura"
+[appAutomaticoFocus]="focus"
 onfocus="this.select();"
-(blur)="aoSairDoCampo(controlador);
-inFocus=false; emFoco.emit(inFocus)"
-(focus)="inFocus = true; emFoco.emit(inFocus)">
+(blur)="naSaidaDoCampo(controladores);
+ inFocus=false; emFoco.emit(inFocus)"
+(focus)="inFocus = true;
+emFoco.emit(inFocus)">

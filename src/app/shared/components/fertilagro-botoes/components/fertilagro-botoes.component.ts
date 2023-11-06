@@ -34,10 +34,16 @@ export class FertilAgroBotoesComponent {
 
   @Input() desabilitarPesquisar = false;
 
+  //**************************************************** */
+
+  temId(): boolean {
+    return this.tela && this.tela.temId(this.tela.resource);
+  }
+
   incluir() {
 
   }
-  
+
   alterar() {
 
   }
@@ -55,7 +61,7 @@ export class FertilAgroBotoesComponent {
   }
 
   pesquisar() {
-    
+
   }
 
 }
