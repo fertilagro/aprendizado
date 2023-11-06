@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-basico-botao',
@@ -7,7 +7,6 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class BasicoBotaoComponent {
 
-  // RESPONSÁVEL PELO TÍTULO DENTRO DO BUTTON
   @Input() rotulo = "";
 
   @Input() icone = "";
@@ -15,6 +14,8 @@ export class BasicoBotaoComponent {
   @Input() esconder = false;
 
   @Input() desabilitar = false;
+
+  @Input() estilo = '';
 
   @Input('loading') isLoading: boolean;
 

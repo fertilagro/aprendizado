@@ -4,6 +4,7 @@ type="button"
 [hidden]="esconder"
 [disabled]="desabilitar || isLoading"
 [ngClass]="{'a2o-botao': !classe, classe: classe}"
+[style]="estilo"
 (click)="aoClique()"
 [routerLink]="roteador"
 icon="icone">
