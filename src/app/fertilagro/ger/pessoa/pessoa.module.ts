@@ -8,6 +8,7 @@ import { MatCardModule } from '@angular/material/card';
 import { BasicoBotaoModule } from 'src/app/shared/components/basico-botao/basico-botao.module';
 import { FertilAgroBotoesModule } from 'src/app/shared/components/fertilagro-botoes/fertilagro-botoes.module';
 import { FertilAgroInputsModule } from 'src/app/shared/components/fertilagro-inputs/fertilagro-inputs.module';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { FertilAgroInputsModule } from 'src/app/shared/components/fertilagro-inp
     MatCardModule,
     BasicoBotaoModule,
     FertilAgroBotoesModule,
-    FertilAgroInputsModule
+    FertilAgroInputsModule,
+    MatFormFieldModule
   ],
   exports: [
     PessoaComponent

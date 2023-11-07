@@ -1,32 +1,38 @@
 
-<mat-card class="card-fertilagro">
-  <mat-card-header class="card_header_fertilagro">
+<mat-card class="card-a2o">
+  <mat-card-header class="card-a2o-header d-flex justify-content-between">
     <mat-card-title>Cadastro de Pessoas</mat-card-title>
   </mat-card-header>
 
-  <mat-card-content class="card-content_fertilagro">
+  <mat-card-content class="card-a2o-content">
     <app-fertilagro-botoes [tela]="this"> </app-fertilagro-botoes>
 
     <form [formGroup]="resourceform" novalidate>
 
 
-     
-      <div class="container text-center">
         <div class="row">
-          <div class="col">col</div>
-          <div class="col">col</div>
-          <div class="col">col</div>
-          <div class="col">col</div>
+          <div class="col-12">
+              <input matInput formControlName="descricao" maxlength="60" placeholder="Descrição"> col-12
+          </div>
         </div>
+
         <div class="row">
-          <div class="col-8">col-8</div>
-          <div class="col-4">col-4</div>
+          <div class="col-5">
+              <input matInput formControlName="numero" maxlength="60" placeholder="Num end"> col-5
+          </div>
+          <div class="col-7">
+              <input matInput formControlName="endereco" maxlength="60" placeholder="Endereço"> col-7
+          </div>
         </div>
-      </div>
-      
 
-
-
+        <div class="row">
+          <div class="col-3">
+           col-3
+          </div>
+          <div class="col-9">
+            col-9
+          </div>
+        </div>
 
     </form>
   </mat-card-content>
