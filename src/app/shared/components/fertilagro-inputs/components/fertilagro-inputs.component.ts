@@ -9,7 +9,7 @@ import { ControlValueAccessor, Validators, FormControl } from '@angular/forms';
 })
 export class FertilagroInputsComponent implements OnInit {
 
-  @Input() aparencia = 'outline';
+  @Input() aparencia = "outline";
   @Input() titulo: string;
   @Input() desabilitar = false;
   @Input() soLeitura = false;

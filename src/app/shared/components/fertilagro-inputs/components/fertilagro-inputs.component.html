@@ -1,12 +1,14 @@
-<input matInput #input
-currencyMask
-[formControl]="controladores"
-[disableControl]="desabilitar"
-[readonly]="soLeitura"
-[appAutomaticoFocus]="focus"
-onfocus="this.select();"
-(blur)="naSaidaDoCampo(controladores);
-  inFocus=false; emFoco.emit(inFocus)"
-(focus)="inFocus = true;
-emFoco.emit(inFocus)">
+<mat-label>{{titulo}}</mat-label>
+<input matInput #input class="form-control"
+  currencyMask
+  [formControl]="controladores"
+  [disableControl]="desabilitar"
+  [readonly]="soLeitura"
+  [appAutomaticoFocus]="focus"
+  onfocus="this.select();"
+  (blur)="naSaidaDoCampo(controladores);
+    inFocus=false; emFoco.emit(inFocus)"
+  (focus)="inFocus = true;
+  emFoco.emit(inFocus)">
+
 

@@ -34,15 +34,13 @@
   min-height: 1px;
   padding-right: 2px;
   padding-left: 2px;
-
-  background-color: aqua;
-  border: 0.5px solid black;
 }
 
   .card-content_fertilagro {
     padding: 5px;
     margin: 0;
     font-size: 13.5px;
+    background: red;
   }
 
   .card_header_fertilagro {
@@ -54,5 +52,6 @@
   .card_footer_fertilagro {
     width: 100%;
     padding: 5px 10px;
+    background: #e8ffe9;
   }
 
