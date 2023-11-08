@@ -26,6 +26,21 @@ export class FertilAgroBotoesComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.tela) {
+      if (this.temId()) {
+        this.desabilitarBtnIncluir = false;
+        this.desabilitarBtnAlterar = true;
+        this.desabilitarBtnCancelar = true;
+        this.desabilitarBtnSalvar = true;
+        this.desabilitarBtnExcluir = true;
+        this.desabilitarBtnPesquisar = false;
+      } else {
+        this.desabilitarBtnIncluir = false;
+        this.desabilitarBtnAlterar = true;
+        this.desabilitarBtnCancelar = true;
+        this.desabilitarBtnSalvar = true;
+        this.desabilitarBtnExcluir = true;
+        this.desabilitarBtnPesquisar = false;
+      }
 
     }
   }
@@ -39,27 +54,50 @@ export class FertilAgroBotoesComponent implements OnInit {
   }
 
   incluir() {
-
+    this.tela.incluir();
+    this.desabilitarBtnIncluir = true;
+    this.desabilitarBtnAlterar = true;
+    this.desabilitarBtnCancelar = false;
+    this.desabilitarBtnSalvar = false;
+    this.desabilitarBtnExcluir = true;
+    this.desabilitarBtnPesquisar = true;
   }
 
   alterar() {
-
+    this.tela.alterar();
+    this.desabilitarBtnIncluir = true;
+    this.desabilitarBtnAlterar = true;
+    this.desabilitarBtnCancelar = false;
+    this.desabilitarBtnSalvar = false;
+    this.desabilitarBtnExcluir = true;
+    this.desabilitarBtnPesquisar = true;
   }
 
   cancelar() {
-
+    this.tela.cancelar();
+    this.desabilitarBtnIncluir = false;
+    this.desabilitarBtnAlterar = true;
+    this.desabilitarBtnCancelar = true;
+    this.desabilitarBtnSalvar = true;
+    this.desabilitarBtnExcluir = true;
+    this.desabilitarBtnPesquisar = false;
   }
 
   salvar() {
-
+    this.tela.salvar();
+    this.desabilitarBtnIncluir = false;
+    this.desabilitarBtnAlterar = false;
+    this.desabilitarBtnCancelar = true;
+    this.desabilitarBtnSalvar = true;
+    this.desabilitarBtnExcluir = true;
+    this.desabilitarBtnPesquisar = false;
   }
 
   excluir() {
-
+    this.tela.excluir();
   }
 
   pesquisar() {
-
+    this.tela.pesquisar();
   }
-
 }

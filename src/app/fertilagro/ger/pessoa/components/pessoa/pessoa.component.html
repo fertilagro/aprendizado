@@ -1,44 +1,47 @@
-
 <mat-card>
   <mat-card-header class="card_header_fertilagro d-flex justify-content-between">
     <mat-card-title>Cadastro de Pessoas</mat-card-title>
   </mat-card-header>
 
-
   <mat-card-content class="card-content_fertilagro">
-
     <app-fertilagro-botoes [tela]="this"> </app-fertilagro-botoes>
 
     <form [formGroup]="resourceform">
+        <div class="row">
+          <div class="col-2">
+              <app-fertilagro-inputs titulo="Código" formControlName="id" [desabilitar]="disabilitarCampos">
+              </app-fertilagro-inputs>
+          </div>
+        </div>
 
         <div class="row">
           <div class="col-12">
-
-              <app-fertilagro-inputs titulo="Razão Social" formControlName="nome" ></app-fertilagro-inputs>
-
+              <app-fertilagro-inputs titulo="Razão Social" formControlName="razaoSocial" [desabilitar]="disabilitarCampos">
+              </app-fertilagro-inputs>
           </div>
         </div>
 
         <div class="row">
           <div class="col-3">
-            <app-fertilagro-inputs titulo="Núm End" formControlName="numEnd"></app-fertilagro-inputs>
+            <app-fertilagro-inputs titulo="Núm End" formControlName="numEnd" [desabilitar]="disabilitarCampos">
+            </app-fertilagro-inputs>
           </div>
           <div class="col-9">
-            <app-fertilagro-inputs titulo="Endereço" formControlName="endereco"></app-fertilagro-inputs>
+            <app-fertilagro-inputs titulo="Endereço" formControlName="endereco" [desabilitar]="disabilitarCampos">
+            </app-fertilagro-inputs>
           </div>
         </div>
 
         <div class="row">
           <div class="col-5">
-            <app-fertilagro-inputs titulo="Cidade" formControlName="cidade"></app-fertilagro-inputs>
+            <app-fertilagro-inputs titulo="Cidade" formControlName="cidade" [desabilitar]="disabilitarCampos">
+            </app-fertilagro-inputs>
           </div>
         </div>
-
     </form>
-  </mat-card-content>
 
+  </mat-card-content>
   <mat-card-footer class="card_footer_fertilagro">
-    <hr />
   </mat-card-footer>
 </mat-card>
 

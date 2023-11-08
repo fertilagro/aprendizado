@@ -9,6 +9,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
   resourceform: FormGroup;
   protected formBuilder: FormBuilder;
   incluindoAlterarando = false;
+  disabilitarCampos = true;
 
   constructor (
     protected injector: Injector,
@@ -40,6 +41,33 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
       return false;
     }
     return true;
+  }
+
+  incluir() {
+    this.disabilitarCampos = false;
+    this.incluindoAlterarando = true;
+  }
+
+  cancelar() {
+    this.disabilitarCampos = true;
+    this.incluindoAlterarando = false;
+  }
+
+  alterar() {
+    this.disabilitarCampos = false;
+    this.incluindoAlterarando = true;
+  }
+
+  salvar() {
+    this.disabilitarCampos = true;
+  }
+
+  excluir() {
+    this.disabilitarCampos = true;
+  }
+
+  pesquisar() {
+    this.disabilitarCampos = true;
   }
 
 }
