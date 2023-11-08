@@ -1,18 +1,19 @@
-
+<!-- 
 <mat-card>
   <mat-card-header class="card_header_fertilagro d-flex justify-content-between">
     <mat-card-title>Cadastro de Pessoas</mat-card-title>
-  </mat-card-header>
+  </mat-card-header> -->
+  <app-fertilagro-botoes [tela]="this"> </app-fertilagro-botoes>
+
+  <mat-card-content>
 
 
-  <mat-card-content class="card-content_fertilagro">
-
-    <app-fertilagro-botoes [tela]="this"> </app-fertilagro-botoes>
 
     <form [formGroup]="resourceform" novalidate>
 
          <div class="row">
           <div class="col-12">
+            <mat-label>Razao Social</mat-label>
               <app-fertilagro-inputs titulo="Razão Social" formControlName="nome">
               </app-fertilagro-inputs>
           </div>
@@ -30,9 +31,9 @@
     </form>
   </mat-card-content>
 
-  <mat-card-footer class="card_footer_fertilagro">
+  <!-- <mat-card-footer class="card_footer_fertilagro">
     <hr />
   </mat-card-footer>
 </mat-card>
 
-<router-outlet></router-outlet>
+<router-outlet></router-outlet> -->

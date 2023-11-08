@@ -1,5 +1,4 @@
-<mat-label>{{titulo}}</mat-label>
-<input matInput #input class="form-control"
+<input matInput #input class="inputs"
   currencyMask
   [formControl]="controladores"
   [disableControl]="desabilitar"
@@ -10,5 +9,3 @@
     inFocus=false; emFoco.emit(inFocus)"
   (focus)="inFocus = true;
   emFoco.emit(inFocus)">
-
-

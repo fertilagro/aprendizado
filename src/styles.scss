@@ -1,6 +1,6 @@
 
 // Importacao Bootstrap
-@import '~bootstrap/dist/css/bootstrap.min.css';
+//@import '~bootstrap/dist/css/bootstrap.min.css';
 
 * {
     font-family: "Roboto", sans-serif;
@@ -8,7 +8,7 @@
   }
 
   body {
-    background-color: rgb(123, 49, 49);
+    background-color: rgb(223, 17, 17);
   }
 
   .row {
@@ -29,15 +29,16 @@
 .col-11,
 .col-12,
 .col-md-8 {
-  position: relative;
-  width: 100%;
-  min-height: 1px;
-  padding-right: 2px;
-  padding-left: 2px;
+  // position: relative;
+  // width: 100%;
+  // min-height: 1px;
+  // padding-right: 2px;
+  // padding-left: 2px;
+
+  background-color: aqua;
 }
 
   .card-content_fertilagro {
-    padding: 5px;
     margin: 0;
     font-size: 13.5px;
     background: red;
