@@ -21,8 +21,15 @@ export class PessoaComponent extends BaseResourceFormComponent<PessoaModel> impl
 
   buildResourceForm() {
     this.resourceform = this.formBuilder.group({
-
+      nome: [null],
+      numEnd: [null],
+      endereco: [null],
+      cidade: [null]
     });
+  }
+
+  override ngOnInit(): void {
+    super.ngOnInit();
   }
 
 }
