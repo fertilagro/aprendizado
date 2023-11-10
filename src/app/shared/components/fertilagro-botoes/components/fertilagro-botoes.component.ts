@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { BaseResourceFormComponent } from '../../base-resource-form/base-resource-form/base-resource-form.component';
 
 @Component({
@@ -9,6 +9,18 @@ import { BaseResourceFormComponent } from '../../base-resource-form/base-resourc
 export class FertilAgroBotoesComponent implements OnInit {
 
   @Input() tela: BaseResourceFormComponent<any>;
+
+  @Input() mostrarIncluir = true;
+  
+  @Input() mostrarAlterar = true;
+  
+  @Input() mostrarSalvar = true;
+  
+  @Input() mostrarExcluir = true;
+ 
+  @Input() mostrarCancelar = true;
+
+  @Input() mostrarPesquisar = true;
 
   @Input() desabilitarBtnIncluir = false;
 
@@ -22,26 +34,64 @@ export class FertilAgroBotoesComponent implements OnInit {
 
   @Input() desabilitarBtnPesquisar = false;
 
+  @Output() btnClickEvent = new EventEmitter<any>();
+
   //**************************************************** */
+
+  bloqueioTela = false;
 
   ngOnInit(): void {
     if (this.tela) {
-      if (this.temId()) {
-        this.desabilitarBtnIncluir = false;
+        this.desabilitarBtnIncluir = true;
         this.desabilitarBtnAlterar = true;
-        this.desabilitarBtnCancelar = true;
         this.desabilitarBtnSalvar = true;
         this.desabilitarBtnExcluir = true;
-        this.desabilitarBtnPesquisar = false;
-      } else {
-        this.desabilitarBtnIncluir = false;
-        this.desabilitarBtnAlterar = true;
-        this.desabilitarBtnCancelar = true;
-        this.desabilitarBtnSalvar = true;
-        this.desabilitarBtnExcluir = true;
-        this.desabilitarBtnPesquisar = false;
-      }
+    }
+  }
 
+  incluir() {
+    if (this.tela) {
+      this.btnClickEvent.emit();
+      this.tela.incluir();
+    }
+  }
+
+  alterar() {
+    if (this.tela) {
+      this.btnClickEvent.emit();
+      this.tela.alterar();
+    }
+  }
+
+  cancelar() {
+    if (this.tela) {
+      this.btnClickEvent.emit();
+      this.bloqueioTela = true;
+      this.tela.cancelar();
+      this.bloqueioTela = false;
+    }
+  }
+
+  salvar() {
+    if (this.tela) {
+      this.btnClickEvent.emit();
+      this.bloqueioTela = true;
+      this.tela.salvar();
+      this.bloqueioTela = false;
+    }
+  }
+
+  excluir() {
+    if (this.tela) {
+      this.btnClickEvent.emit();
+      this.tela.excluir();
+    }
+  }
+
+  pesquisar() {
+    if (this.tela) {
+      this.btnClickEvent.emit();
+      this.tela.pesquisar();
     }
   }
 
@@ -51,65 +101,5 @@ export class FertilAgroBotoesComponent implements OnInit {
 
   emEdicao(): boolean {
     return this.tela && this.tela.incluindoAlterarando;
-  }
-
-  incluir() {
-    if (this.tela) {
-      this.tela.incluir();
-      this.desabilitarBtnIncluir = true;
-      this.desabilitarBtnAlterar = true;
-      this.desabilitarBtnCancelar = false;
-      this.desabilitarBtnSalvar = false;
-      this.desabilitarBtnExcluir = true;
-      this.desabilitarBtnPesquisar = true;
-    }
-  }
-
-  alterar() {
-    if (this.tela) {
-      this.tela.alterar();
-      this.desabilitarBtnIncluir = true;
-      this.desabilitarBtnAlterar = true;
-      this.desabilitarBtnCancelar = false;
-      this.desabilitarBtnSalvar = false;
-      this.desabilitarBtnExcluir = true;
-      this.desabilitarBtnPesquisar = true;
-    }
-  }
-
-  cancelar() {
-    if (this.tela) {
-      this.tela.cancelar();
-      this.desabilitarBtnIncluir = false;
-      this.desabilitarBtnAlterar = true;
-      this.desabilitarBtnCancelar = true;
-      this.desabilitarBtnSalvar = true;
-      this.desabilitarBtnExcluir = true;
-      this.desabilitarBtnPesquisar = false;
-    }
-  }
-
-  salvar() {
-    if (this.tela) {
-      this.tela.salvar();
-      this.desabilitarBtnIncluir = false;
-      this.desabilitarBtnAlterar = false;
-      this.desabilitarBtnCancelar = true;
-      this.desabilitarBtnSalvar = true;
-      this.desabilitarBtnExcluir = true;
-      this.desabilitarBtnPesquisar = false;
-    }
-  }
-
-  excluir() {
-    if (this.tela) {
-      this.tela.excluir();
-    }
-  }
-
-  pesquisar() {
-    if (this.tela) {
-      this.tela.pesquisar();
-    }
   }
 }

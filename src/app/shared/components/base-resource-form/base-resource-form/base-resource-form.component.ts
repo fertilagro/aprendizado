@@ -2,6 +2,7 @@ import { Injector, OnInit, Directive } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { BaseResourceModel } from '../../models/base-resource.model';
 import { BaseResourceService } from '../../services/base-resource.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Directive()
 export abstract class BaseResourceFormComponent<T extends BaseResourceModel> implements OnInit {
@@ -10,6 +11,8 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
   protected formBuilder: FormBuilder;
   incluindoAlterarando = false;
   disabilitarCampos = true;
+  protected router: Router;
+  public routerActive: ActivatedRoute;
 
   constructor (
     protected injector: Injector,
@@ -18,10 +21,13 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     protected jsonDataToResourceFn: (jsonData) => T,
   ) {
     this.formBuilder = this.injector.get(FormBuilder);
+    this.router = this.injector.get(Router);
+    this.routerActive = this.injector.get(ActivatedRoute);
   }
 
   ngOnInit() {
      this.buildResourceForm();
+     this.disabilitarCampos = true;
   }
 
   protected abstract buildResourceForm(data?: any): void;
@@ -46,24 +52,38 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
   incluir() {
     this.disabilitarCampos = false;
     this.incluindoAlterarando = true;
+    if (this.resourceform) {
+      this.resourceform.reset();
+    }
+    this.resource = {} as T;
   }
 
   cancelar() {
-    this.disabilitarCampos = true;
-    this.incluindoAlterarando = false;
+    this.resource = {} as T;
+    if (this.incluindoAlterarando && !this.temId()) {
+      this.resourceform.reset();
+      this.resourceform.disable();
+      this.disabilitarCampos = true;
+      this.incluindoAlterarando = false;
+    } else if (this.temId()) {
+      this.disabilitarCampos = true;
+      this.incluindoAlterarando = false;
+      this.resourceform.disable();
+    }
   }
 
   alterar() {
-    this.disabilitarCampos = false;
     this.incluindoAlterarando = true;
+    this.disabilitarCampos = true;
   }
 
   salvar() {
     this.disabilitarCampos = true;
+    this.incluindoAlterarando = false;
   }
 
   excluir() {
-    this.disabilitarCampos = true;
+    this.resourceform.reset();
   }
 
   pesquisar() {

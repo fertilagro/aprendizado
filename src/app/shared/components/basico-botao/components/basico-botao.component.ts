@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { BaseResourceFormComponent } from '../../base-resource-form/base-resource-form/base-resource-form.component';
 
 @Component({
   selector: 'app-basico-botao',
@@ -7,21 +8,21 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class BasicoBotaoComponent {
 
-  @Input() rotulo = "";
+  @Input() esconder: boolean = false;
 
-  @Input() icone = "";
+  @Input() desabilitar: boolean = false;
 
-  @Input() esconder = false;
+  @Input() icone: string;
 
-  @Input() desabilitar = false;
+  @Input() rotulo: string = "";
 
-  @Input() estilo = '';
+  @Input() roteador: string;
+
+  @Input() estilo: string = '';
 
   @Input('loading') isLoading: boolean;
 
   @Input() classe: string;
-
-  @Input() roteador: string;
 
   @Output() clique = new EventEmitter();
 

@@ -1,6 +1,6 @@
-import { Component, Input, Output, DoCheck, OnInit, AfterContentInit,
-  EventEmitter, forwardRef } from '@angular/core';
-import { ControlValueAccessor, FormControl, AbstractControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, OnInit, Input, forwardRef, Output, EventEmitter, ViewChild, ElementRef,
+  ContentChild, DoCheck, AfterContentInit, Optional, Host, SkipSelf } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormControlName, FormControl, Validators, ControlContainer, AbstractControl } from '@angular/forms';
 
 const INPUT_FIELD_VALUE_ACESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -18,9 +18,10 @@ export class FertilagroInputsComponent implements OnInit, ControlValueAccessor, 
   @Input() aparencia = "outline";
   @Input() titulo: string;
   @Input() desabilitar = false;
-  @Input() soLeitura = false;
+  @Input() somenteLeitura = false;
   @Input() focus: boolean;
   @Input() nullable = false;
+  @Input() formControlName: string;
 
 
   @Output() emFoco = new EventEmitter();
@@ -36,11 +37,17 @@ export class FertilagroInputsComponent implements OnInit, ControlValueAccessor, 
   onChangeCb: (_: any) => void = () => { };
   onTouchedCb: (_: any) => void = () => { };
 
-  ngOnInit(): void {}
+  ngOnInit() {
+    if (this.controlContainer && this.formControlName) {
+      this.control = this.controlContainer.control.get(this.formControlName)!; // Note o uso de "!"
+    }
+  }
 
   aoSairDoCampo(obj) {
     this.outFocus.emit(obj);
   }
+
+  @ViewChild('input', { static: true }) input: ElementRef;
 
   setValue(valor: any) {
     if (valor !== this.innerValue) {
@@ -99,5 +106,10 @@ export class FertilagroInputsComponent implements OnInit, ControlValueAccessor, 
   private onValueChange(valeu: any): any {
     this.valueChange.emit(this.setZero(valeu));
   }
+
+  constructor(
+    @Optional() @Host() @SkipSelf()
+    private controlContainer: ControlContainer
+  ) { }
 
 }

@@ -6,8 +6,8 @@ type="button"
 [ngClass]="{'a2o-botao': !classe, classe: classe}"
 [style]="estilo"
 (click)="aoClique()"
-[routerLink]="roteador"
-icon="icone">
+[routerLink]="roteador">
+<em [hidden]="isLoading" class="{{icone}}"></em>
 {{rotulo}}
 <ng-content></ng-content>
 </button>

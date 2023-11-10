@@ -3,7 +3,7 @@
   currencyMask
   [formControl]="controlador"
   [disableControl]="desabilitar"
-  [readonly]="soLeitura"
+  [readonly]="somenteLeitura"
   [appAutomaticoFocus]="focus"
   onfocus="this.select();"
   (blur)="aoSairDoCampo(controlador); onTouchedCb($event); inFocus=false; emFoco.emit(inFocus)"
