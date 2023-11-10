@@ -9,6 +9,7 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { AutomaticoFocusModule } from './directive/automatico-focus/automatico-focus.module';
 import { DisableControlModule } from './directive/disable-control/disable-control.module';
+import { DashboardModule } from '../dashboard/dashboard.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { DisableControlModule } from './directive/disable-control/disable-contro
     MatToolbarModule,
     MatInputModule,
     DisableControlModule,
-    AutomaticoFocusModule
+    AutomaticoFocusModule,
   ],
   exports: [
     CommonModule,

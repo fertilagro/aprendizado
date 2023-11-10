@@ -1,23 +1,24 @@
 <div class="d-flex justify-content-between flex-wrap" style="margin: 0.1rem -0.1rem 0.3rem;">
   <div class="d-flex flex-grow-1 flex-wrap">
     <div class="btn-cad">
+
       <app-basico-botao id="btn-incluir" rotulo="Incluir" icone="fas fa-plus text-success"
-      [desabilitar]="desabilitarBtnIncluir" [esconder]="!(mostrarIncluir && !emEdicao())" (clique)="incluir()"></app-basico-botao>
+      [desabilitar]="!(mostrarIncluir && !emEdicao())" [esconder]="false" (clique)="incluir()"></app-basico-botao>
 
       <app-basico-botao id="btn-alterar" rotulo="Alterar" icone="as fa-pencil-alt text-warning"
-      [desabilitar]="desabilitarBtnAlterar" [esconder]="!(mostrarAlterar && !emEdicao() && temId())" (clique)="alterar()"></app-basico-botao>
+      [desabilitar]="!(mostrarAlterar && !emEdicao() && temId())" [esconder]="false" (clique)="alterar()"></app-basico-botao>
 
       <app-basico-botao id="btn-cancelar" rotulo="Cancelar" icone="fas fa-ban text-danger"
-      [desabilitar]="desabilitarBtnCancelar" [esconder]="!(mostrarCancelar && emEdicao())" (clique)="cancelar()"></app-basico-botao>
+      [desabilitar]="!(mostrarCancelar && emEdicao())" [esconder]="false" (clique)="cancelar()"></app-basico-botao>
 
       <app-basico-botao id="btn-salvar" rotulo="Salvar" icone="fas fa-save text-primary"
-      [desabilitar]="desabilitarBtnSalvar" [esconder]="!(mostrarSalvar && emEdicao())" (clique)="salvar()"></app-basico-botao>
+      [desabilitar]="!(mostrarSalvar && emEdicao())" [esconder]="false" (clique)="salvar()"></app-basico-botao>
 
       <app-basico-botao id="btn-excluir" rotulo="Excluir" icone="fas fa-trash-alt text-danger"
-      [desabilitar]="desabilitarBtnExcluir" [esconder]="!(mostrarExcluir && !emEdicao() && temId())" (clique)="excluir()"></app-basico-botao>
+      [desabilitar]="!(mostrarExcluir && !emEdicao() && temId())" [esconder]="false" (clique)="excluir()"></app-basico-botao>
 
       <app-basico-botao id="btn-pesquisar" rotulo="Pesquisar" icone="fas fa-search text-secondary"
-      [desabilitar]="desabilitarBtnPesquisar" [esconder]="!(mostrarPesquisar && !emEdicao())" (clique)="pesquisar()"></app-basico-botao>
+      [desabilitar]="!(mostrarPesquisar && !emEdicao())"  [esconder]="false" (clique)="pesquisar()"></app-basico-botao>
     </div>
 
   </div>

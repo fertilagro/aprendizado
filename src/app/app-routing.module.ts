@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { PessoaComponent } from './fertilagro/ger/pessoa/components/pessoa/pessoa.component';
+import { FertilAgroComponent } from './fertilagro/fertilagro/fertilagro.component';
 
 const routes: Routes = [
   {
@@ -11,13 +12,13 @@ const routes: Routes = [
     redirectTo: "dashboard"
   },
   {
-    path:"login", component: PessoaComponent
+    path:"pessoa", component: PessoaComponent
   },
   {
     path:"", component: AppComponent
   },
   {
-    path:"dashboard", component: DashboardComponent
+    path:"dashboard", component: AppComponent
   }
 ];
 

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from '../../shared.module';
 import { FertilAgroBotoesComponent } from './components/fertilagro-botoes.component';
 import { BasicoBotaoModule } from '../basico-botao/basico-botao.module';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { BasicoBotaoModule } from '../basico-botao/basico-botao.module';
   imports: [
     CommonModule,
     SharedModule,
-    BasicoBotaoModule
+    BasicoBotaoModule,
+    MatIconModule
     ],
   exports: [
     FertilAgroBotoesComponent

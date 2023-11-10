@@ -1,9 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { NavbarModule } from '../components/navbar/navbar.module';
 import { SharedModule } from '../shared/shared.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { SidebarModule } from '../components/sidebar/sidebar.module';
+import { SidebarModule } from './sidebar/sidebar.module';
 
 @NgModule({
   declarations: [
@@ -11,7 +10,8 @@ import { SidebarModule } from '../components/sidebar/sidebar.module';
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    SidebarModule
   ],
   exports: [
     DashboardComponent

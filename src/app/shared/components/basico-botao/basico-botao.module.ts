@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { MatRippleModule } from '@angular/material/core';
 import { SharedModule } from '../../shared.module';
 import { BasicoBotaoComponent } from './components/basico-botao.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { BasicoBotaoComponent } from './components/basico-botao.component';
   imports: [
     CommonModule,
     SharedModule,
-    MatRippleModule
+    MatRippleModule,
+    MatIconModule
   ],
   exports: [
     BasicoBotaoComponent

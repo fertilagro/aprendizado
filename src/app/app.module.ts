@@ -11,8 +11,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FertilAgroModule } from './fertilagro/fertilagro.module';
 import { FertilAgroBotoesModule } from './shared/components/fertilagro-botoes/fertilagro-botoes.module';
-import { FertilAgroInputsModule } from './shared/components/fertilagro-inputs/fertilagro-inputs.module';
 import { SharedModule } from './shared/shared.module';
+import { MatIconModule } from '@angular/material/icon';
 
   @NgModule({
     declarations: [
@@ -29,13 +29,15 @@ import { SharedModule } from './shared/shared.module';
       MatCardModule,
       FertilAgroBotoesModule,
       SharedModule,
+      MatIconModule,
 
       AppRoutingModule,
       FertilAgroModule
     ],
     exports: [
       ButtonModule,
-      SharedModule
+      SharedModule,
+      MatIconModule
     ],
     providers: [],
     bootstrap: [AppComponent]
