@@ -29,37 +29,23 @@
    min-height: 1px;
    padding-right: 2px;
    padding-left: 2px;
-
-  // background-color: aqua;
 }
 
 .card_fertilagro {
-  width: 100%;
+  max-width: 70%;
   height: 100%;
-  margin: 0;
+  margin: 1em auto;
   padding: 0;
 }
 
 .card-content_fertilagro {
-  margin: 0;
   font-size: 13.5px;
-
-  width: 70%;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 20%;
-  border: 1px solid rgb(210, 210, 210);
 }
 
 .card_header_fertilagro {
   background: #415F83;
   padding: 10px 10px;
   color: white;
-
-  width: 70%;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 20%;
   border-radius: 5px;
 }
 
@@ -67,10 +53,7 @@
   padding: 3px 2px;
   background: #415F83;
   border-radius: 2px;
-
-  width: 70%;
-  max-width: 1000px;
-  margin: 0 auto;
+  margin-top: 10px;
 }
 
 

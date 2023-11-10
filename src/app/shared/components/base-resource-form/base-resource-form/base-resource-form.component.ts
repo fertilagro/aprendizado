@@ -90,4 +90,8 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     this.disabilitarCampos = true;
   }
 
+  buscarPorId() {
+
+  }
+
 }
