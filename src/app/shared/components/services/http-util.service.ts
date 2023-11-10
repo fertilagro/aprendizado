@@ -24,4 +24,5 @@ export class HttpUtilService {
   executarRequisicao(fn: () => Observable<any>) {
     return fn();
   }
+
 }
