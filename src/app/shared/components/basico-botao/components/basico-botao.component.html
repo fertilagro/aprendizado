@@ -7,9 +7,8 @@ type="button"
 [style]="estilo"
 (click)="aoClique()"
 [routerLink]="roteador">
-<em  class="{{icone}}"></em>
 <ng-content select=".icone"></ng-content>
-{{rotulo}}
+<mat-icon>{{icone}}</mat-icon>{{rotulo}}
 <ng-content></ng-content>
 </button>
 
