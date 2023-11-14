@@ -20,6 +20,10 @@ export abstract class BaseResourceService<T extends BaseResourceModel> {
     this.httpServ = injector.get(HttpUtilService);
   }
 
+  buscarDados() {
+    this.http.get(this.baseUrl + this.apiPath);
+  }
+
   chamarServicoPost(servico: string, parametro: any, responseType?: any): Observable<any> {
     const url = `${this.apiPath}/${servico}`;
     return this.httpServ.executarRequisicao(() => {
