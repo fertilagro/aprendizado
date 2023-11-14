@@ -1,6 +1,5 @@
 import { Injectable, Injector } from '@angular/core';
-
-import { BaseResourceService } from 'src/app/shared/components/services/base-resource.service';
+import { BaseResourceService } from '../../../../../../shared/components/services/base-resource.service';
 import { PessoaModel } from '../model/pessoa.model';
 
 @Injectable({

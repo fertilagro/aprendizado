@@ -9,24 +9,32 @@
     <form [formGroup]="resourceform">
         <div class="row">
           <div class="col-2">
-              <app-fertilagro-inputs titulo="Código" formControlName="id" [desabilitar]="disabilitarCampos">
+              <app-fertilagro-inputs titulo="Código" formControlName="id" [desabilitar]="true">
               </app-fertilagro-inputs>
           </div>
         </div>
 
         <div class="row">
-          <div class="col-12">
+          <div class="col-9">
               <app-fertilagro-inputs titulo="Razão Social" formControlName="razaoSocial" [desabilitar]="disabilitarCampos">
+              </app-fertilagro-inputs>
+          </div>
+          <div class="col-3">
+              <app-fertilagro-inputs titulo="Cnpj/Cpf" formControlName="cnpj" [desabilitar]="disabilitarCampos">
               </app-fertilagro-inputs>
           </div>
         </div>
 
         <div class="row">
           <div class="col-3">
+            <app-fertilagro-inputs titulo="Telefone" formControlName="telefone" [desabilitar]="disabilitarCampos">
+            </app-fertilagro-inputs>
+          </div>
+          <div class="col-3">
             <app-fertilagro-inputs titulo="Núm End" formControlName="numEnd" [desabilitar]="disabilitarCampos">
             </app-fertilagro-inputs>
           </div>
-          <div class="col-9">
+          <div class="col-6">
             <app-fertilagro-inputs titulo="Endereço" formControlName="endereco" [desabilitar]="disabilitarCampos">
             </app-fertilagro-inputs>
           </div>
@@ -35,6 +43,10 @@
         <div class="row">
           <div class="col-5">
             <app-fertilagro-inputs titulo="Cidade" formControlName="cidade" [desabilitar]="disabilitarCampos">
+            </app-fertilagro-inputs>
+          </div>
+          <div class="col-3">
+            <app-fertilagro-inputs titulo="Estado" formControlName="estado" [desabilitar]="disabilitarCampos">
             </app-fertilagro-inputs>
           </div>
         </div>

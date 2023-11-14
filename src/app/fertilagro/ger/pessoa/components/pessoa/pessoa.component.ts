@@ -23,6 +23,9 @@ export class PessoaComponent extends BaseResourceFormComponent<PessoaModel> impl
     this.resourceform = this.formBuilder.group({
       id: [null],
       razaoSocial: [null],
+      cnpj: [null],
+      telefone: [null],
+      estado: [null],
       numEnd: [null],
       endereco: [null],
       cidade: [null]
