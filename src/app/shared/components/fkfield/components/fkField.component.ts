@@ -9,7 +9,6 @@ import { debounceTime, distinctUntilChanged, map, startWith } from 'rxjs/operato
 import { HttpUtilService } from '../../services/http-util.service';
 import { Utils } from '../../Util/utils-components';
 import { Fkfield } from './fkfield.model';
-import { DisableControlModule } from 'src/app/shared/directive/disable-control/disable-control.module';
 
 const FKFIELD_FIELD_VALUE_ACESSOR: any = {
   provide: NG_VALUE_ACCESSOR,

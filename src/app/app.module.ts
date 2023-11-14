@@ -14,6 +14,7 @@ import { FertilAgroBotoesModule } from './shared/components/fertilagro-botoes/fe
 import { SharedModule } from './shared/shared.module';
 import { MatIconModule } from '@angular/material/icon';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { DisableControlModule } from './shared/directive/disable-control/disable-control.module';
 
   @NgModule({
     declarations: [
@@ -32,6 +33,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
       SharedModule,
       MatIconModule,
       MatAutocompleteModule,
+      DisableControlModule,
 
       AppRoutingModule,
       FertilAgroModule

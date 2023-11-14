@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { DisableControlModule } from '../../directive/disable-control/disable-control.module';
 import { SharedModule } from '../../shared.module';
 import { FkfieldComponent } from './components/fkField.component';
 
@@ -17,7 +18,8 @@ import { FkfieldComponent } from './components/fkField.component';
     MatInputModule,
     ReactiveFormsModule,
     MatIconModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    DisableControlModule
     ],
   exports: [
     FkfieldComponent
