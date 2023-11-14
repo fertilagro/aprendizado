@@ -13,6 +13,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
   disabilitarCampos = true;
   protected router: Router;
   public routerActive: ActivatedRoute;
+  disableCampos: boolean;
 
   constructor (
     protected injector: Injector,

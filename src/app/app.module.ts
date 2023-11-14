@@ -13,6 +13,7 @@ import { FertilAgroModule } from './fertilagro/fertilagro.module';
 import { FertilAgroBotoesModule } from './shared/components/fertilagro-botoes/fertilagro-botoes.module';
 import { SharedModule } from './shared/shared.module';
 import { MatIconModule } from '@angular/material/icon';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
   @NgModule({
     declarations: [
@@ -30,6 +31,7 @@ import { MatIconModule } from '@angular/material/icon';
       FertilAgroBotoesModule,
       SharedModule,
       MatIconModule,
+      MatAutocompleteModule,
 
       AppRoutingModule,
       FertilAgroModule

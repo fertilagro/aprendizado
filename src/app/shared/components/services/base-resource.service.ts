@@ -21,7 +21,7 @@ export abstract class BaseResourceService<T extends BaseResourceModel> {
   }
 
   buscarDados() {
-    this.http.get(this.baseUrl + this.apiPath);
+    this.http.get(this.baseUrl + this.apiPath,);
   }
 
   chamarServicoPost(servico: string, parametro: any, responseType?: any): Observable<any> {
