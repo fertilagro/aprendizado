@@ -57,6 +57,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
       this.resourceform.reset();
     }
     this.resource = {} as T;
+    this.resourceform.get("status").setValue("ATIVO")
   }
 
   cancelar() {

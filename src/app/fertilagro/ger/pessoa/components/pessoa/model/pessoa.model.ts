@@ -1,15 +1,15 @@
-import { CidadeModel } from "../../../../cidade/components/cidade/model/cidade.model";
 
 export class PessoaModel {
   constructor(
     public id?: string,
     public razaoSocial?: string,
-    public cnpj?: string,
+    public cnpjCpf?: string,
     public telefone?: string,
     public estado?: string,
-    public numEnd?: string,
+    public email?: string,
     public endereco?: string,
-    public cidade?: CidadeModel
+    public cidade?: any,
+    public status?: string
 
   ) { }
 

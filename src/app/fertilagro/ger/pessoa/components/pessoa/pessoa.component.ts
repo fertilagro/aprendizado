@@ -23,12 +23,13 @@ export class PessoaComponent extends BaseResourceFormComponent<PessoaModel> impl
     this.resourceform = this.formBuilder.group({
       id: [null],
       razaoSocial: [null],
-      cnpj: [null],
+      cnpjCpf: [null],
       telefone: [null],
-      estado: [null],
-      numEnd: [null],
+      email: [null],
       endereco: [null],
-      cidade: [null]
+      cidade: [null],
+      estado: [null],
+      status: [null]
     });
   }
 

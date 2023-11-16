@@ -18,7 +18,7 @@ export abstract class BaseResourceService<T extends BaseResourceModel> {
   ) {
     this.http = injector.get(HttpClient);
     this.httpServ = injector.get(HttpUtilService);
-    this.baseUrl = 'http://localhost:8080/';
+    this.baseUrl = 'http://localhost:8081/';
   }
 
   salvar(record: T) {
