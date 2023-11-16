@@ -82,7 +82,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     this.disabilitarCampos = true;
     this.incluindoAlterarando = false;
     if (this.resource) {
-      const resource: T = this.jsonDataToResourceFn(this.buildFormSalvar(this.resourceform.getRawValue()));
+      const resource: T = this.jsonDataToResourceFn(this.validaFormAoSalvar(this.resourceform.getRawValue()));
       this.resourceService.salvar(resource).subscribe(data => {
         console.log();
       });
@@ -101,7 +101,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
 
   }
 
-  protected buildFormSalvar(data: any) {
+  protected validaFormAoSalvar(data: any) {
     for (const formData of Object.keys(data)) {
       if ((data[formData] === '' || data[formData] === undefined || data[formData] === 'Invalid date') && data[formData] !== false) {
         data[formData] = null;
