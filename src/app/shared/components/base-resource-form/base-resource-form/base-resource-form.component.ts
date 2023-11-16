@@ -81,6 +81,12 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
   salvar() {
     this.disabilitarCampos = true;
     this.incluindoAlterarando = false;
+    if (this.resource) {
+      const resource: T = this.jsonDataToResourceFn(this.buildFormSalvar(this.resourceform.getRawValue()));
+      this.resourceService.salvar(resource).subscribe(data => {
+        console.log();
+      });
+    }
   }
 
   excluir() {
@@ -93,6 +99,30 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
 
   buscarPorId() {
 
+  }
+
+  protected buildFormSalvar(data: any) {
+    for (const formData of Object.keys(data)) {
+      if ((data[formData] === '' || data[formData] === undefined || data[formData] === 'Invalid date') && data[formData] !== false) {
+        data[formData] = null;
+      }
+    }
+    for (const keys of Object.keys(data)) {
+      if (data[keys] instanceof Object) {
+        const object = data[keys];
+        let allNull = true;
+        for (const field of Object.keys(object)) {
+          if (object[field] != null && object[field] !== 0) {
+            allNull = false;
+          }
+        }
+        if (allNull) {
+          data[keys] = null;
+        }
+      }
+    }
+
+    return data;
   }
 
 }

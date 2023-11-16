@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class HttpUtilService {
 
-  baseUrl: 'http://localhost:8080/fertilagro/';
+  baseUrl: 'http://localhost:8080/';
 
   constructor(
     private http: HttpClient,

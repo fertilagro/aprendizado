@@ -3,13 +3,13 @@ import { Injector,  } from '@angular/core';
 import { BaseResourceModel } from '../models/base-resource.model';
 import { HttpUtilService } from './http-util.service';
 import { Observable, throwError } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import { map, catchError, first } from 'rxjs/operators';
 
 export abstract class BaseResourceService<T extends BaseResourceModel> {
 
   protected http: HttpClient;
   private httpServ: HttpUtilService;
-  baseUrl: 'http://localhost:8080/fertilagro/';
+  private baseUrl: string = "";
 
   constructor(
     protected apiPath: string,
@@ -18,10 +18,12 @@ export abstract class BaseResourceService<T extends BaseResourceModel> {
   ) {
     this.http = injector.get(HttpClient);
     this.httpServ = injector.get(HttpUtilService);
+    this.baseUrl = 'http://localhost:8080/';
   }
 
-  buscarDados() {
-    this.http.get(this.baseUrl + this.apiPath,);
+  salvar(record: T) {
+    const url = this.baseUrl + this.apiPath;
+    return this.http.post(url, record).pipe(first());
   }
 
   chamarServicoPost(servico: string, parametro: any, responseType?: any): Observable<any> {
