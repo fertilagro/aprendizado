@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, forwardRef, Output, EventEmitter, ViewChild, ElementRef,
   ContentChild, DoCheck, AfterContentInit, Optional, Host, SkipSelf } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormControlName, FormControl, Validators, ControlContainer, AbstractControl } from '@angular/forms';
+import { CnpjCpfMask } from '../../../directive/cnpjcpf/cnpjcpf.directive';
 
 const INPUT_FIELD_VALUE_ACESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -22,6 +23,7 @@ export class FertilagroInputsComponent implements OnInit, ControlValueAccessor, 
   @Input() focus: boolean;
   @Input() nullable = false;
   @Input() formControlName: string;
+  @Input() CnpjCpfMask: string;
 
 
   @Output() emFoco = new EventEmitter();

@@ -1,16 +1,18 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { AutomaticoFocusModule } from './directive/automatico-focus/automatico-focus.module';
 import { DisableControlModule } from './directive/disable-control/disable-control.module';
-import { DashboardModule } from '../dashboard/dashboard.module';
-import { MessageService } from 'primeng/api';
+import { CnpjcpfModule } from './directive/cnpjcpf/cnpjcpf.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,10 @@ import { MessageService } from 'primeng/api';
     MatInputModule,
     DisableControlModule,
     AutomaticoFocusModule,
+    MatCardModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    CnpjcpfModule
   ],
   exports: [
     CommonModule,
@@ -37,7 +43,11 @@ import { MessageService } from 'primeng/api';
     MatToolbarModule,
     MatInputModule,
     DisableControlModule,
-    AutomaticoFocusModule
+    AutomaticoFocusModule,
+    MatCardModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    CnpjcpfModule
   ],
   providers: [
     MessageService
