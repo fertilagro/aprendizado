@@ -22,7 +22,7 @@ export abstract class BaseResourceService<T extends BaseResourceModel> {
   }
 
   salvar(record: T) {
-    const url = this.baseUrl + this.apiPath;
+    const url = this.baseUrl + this.apiPath + '/salvar';
     return this.http.post(url, record).pipe(first());
   }
 
