@@ -10,6 +10,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { AutomaticoFocusModule } from './directive/automatico-focus/automatico-focus.module';
 import { DisableControlModule } from './directive/disable-control/disable-control.module';
 import { DashboardModule } from '../dashboard/dashboard.module';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,9 @@ import { DashboardModule } from '../dashboard/dashboard.module';
     MatInputModule,
     DisableControlModule,
     AutomaticoFocusModule
+  ],
+  providers: [
+    MessageService
   ]
 })
 export class SharedModule { }

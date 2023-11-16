@@ -10,6 +10,7 @@ import { FertilAgroInputsModule } from 'src/app/shared/components/fertilagro-inp
 import { FkFieldModule } from 'src/app/shared/components/fkfield/fkfield.module';
 import { PessoaComponent } from './components/pessoa/pessoa.component';
 import { PessoaRoutingModule } from './pessoa-routing.module';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,9 @@ import { PessoaRoutingModule } from './pessoa-routing.module';
   ],
   exports: [
     PessoaComponent
+  ],
+  providers: [
+    MessageService
   ]
 })
 export class PessoaModule { }

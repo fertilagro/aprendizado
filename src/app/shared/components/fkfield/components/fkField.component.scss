@@ -1,21 +1,9 @@
-::ng-deep {
-  .fkfield-option{
-    &.mat-option {
-      &.mat-active {
-        @extend %correcao-prime-mat-option;
-      }
 
-      &:hover {
-        @extend %correcao-prime-mat-option;
-      }
-    }
-  }
+
+.btn-fkfield {
+  top: -0.3em;
 }
 
-%correcao-prime-mat-option {
-  white-space: normal;
-  line-height: 20px;
-  padding: 3px 16px;
-  height: auto;
-  min-height: 48px;
+.fkfield {
+  width: 100%;
 }
