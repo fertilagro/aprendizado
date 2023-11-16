@@ -1,5 +1,5 @@
 import { Injector, OnInit, Directive } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl  } from '@angular/forms';
 import { BaseResourceModel } from '../../models/base-resource.model';
 import { BaseResourceService } from '../../services/base-resource.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -57,7 +57,9 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
       this.resourceform.reset();
     }
     this.resource = {} as T;
-    this.resourceform.get("status").setValue("ATIVO")
+    if (this.resourceform.get('status') instanceof FormControl) {
+      this.resourceform.get("status").setValue("ATIVO")
+    }
   }
 
   cancelar() {
@@ -82,8 +84,9 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
   salvar() {
     this.disabilitarCampos = true;
     this.incluindoAlterarando = false;
-    if (this.resource) {
+    if (this.resourceform.getRawValue()) {
       const resource: T = this.jsonDataToResourceFn(this.validaFormAoSalvar(this.resourceform.getRawValue()));
+      console.log(resource);
       this.resourceService.salvar(resource).subscribe(data => {
         console.log();
       });
@@ -91,6 +94,9 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
   }
 
   excluir() {
+    if (this.resourceform.get('status') instanceof FormControl) {
+      this.resourceform.get("status").setValue("EXCLUIDO")
+    }
     this.resourceform.reset();
   }
 
@@ -122,7 +128,6 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
         }
       }
     }
-
     return data;
   }
 
