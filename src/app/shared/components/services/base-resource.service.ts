@@ -26,16 +26,16 @@ export abstract class BaseResourceService<T extends BaseResourceModel> {
     return this.http.post(url, record).pipe(first());
   }
 
-  chamarServicoPost(servico: string, parametro: any, responseType?: any): Observable<any> {
-    const url = `${this.apiPath}/${servico}`;
-    return this.httpServ.executarRequisicao(() => {
-      return this.http.post(this.baseUrl + url, parametro, responseType)
-        .pipe(
-          map(retorno => retorno),
-          catchError(this.handleError)
-        );
-    });
-  }
+  // chamarServicoPost(servico: string, parametro: any, responseType?: any): Observable<any> {
+  //   const url = `${this.apiPath}/${servico}`;
+  //   return this.httpServ.executarRequisicao(() => {
+  //     return this.http.post(this.baseUrl + url, parametro, responseType)
+  //       .pipe(
+  //         map(retorno => retorno),
+  //         catchError(this.handleError)
+  //       );
+  //   });
+  // }
 
   buscarPorId(resource: T, servico?): Observable<T> {
     const url = `${this.apiPath}/${servico ? servico : 'buscarPorId'}`;

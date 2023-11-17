@@ -63,15 +63,13 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
   }
 
   cancelar() {
+    this.disabilitarCampos = true;
+    this.incluindoAlterarando = false;
     this.resource = {} as T;
     if (this.incluindoAlterarando && !this.temId()) {
       this.resourceform.reset();
       this.resourceform.disable();
-      this.disabilitarCampos = true;
-      this.incluindoAlterarando = false;
     } else if (this.temId()) {
-      this.disabilitarCampos = true;
-      this.incluindoAlterarando = false;
       this.resourceform.disable();
     }
   }
@@ -88,7 +86,9 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
       const resource: T = this.jsonDataToResourceFn(this.validaFormAoSalvar(this.resourceform.getRawValue()));
       console.log(resource);
       this.resourceService.salvar(resource).subscribe(data => {
-        console.log();
+        if (data) {
+          this.resourceService.buscarPorId(resource);
+        }
       });
     }
   }
