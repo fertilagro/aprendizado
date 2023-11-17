@@ -6,6 +6,23 @@
   <mat-card-content class="card-content_fertilagro">
     <app-fertilagro-botoes [tela]="this"> </app-fertilagro-botoes>
 
+    <form [formGroup]="resourceform">
+        <div class="row">
+          <div class="col-2">
+            <app-fertilagro-inputs titulo="Codigo" formControlName="id" [desabilitar]="disabilitarCampos">
+            </app-fertilagro-inputs>
+          </div>
+          <div class="col-4">
+            <app-fertilagro-inputs titulo="Nome" formControlName="nome" [desabilitar]="disabilitarCampos">
+            </app-fertilagro-inputs>
+          </div>
+          <div class="col-2">
+            <app-fertilagro-inputs titulo="Codigo Ibge" formControlName="CodigoIbge" [desabilitar]="disabilitarCampos">
+            </app-fertilagro-inputs>
+          </div>
+        </div>
+    </form>
+
   </mat-card-content>
   <mat-card-footer class="card_footer_fertilagro">
   </mat-card-footer>
