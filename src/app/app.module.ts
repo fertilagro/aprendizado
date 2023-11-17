@@ -15,6 +15,7 @@ import { SharedModule } from './shared/shared.module';
 import { MatIconModule } from '@angular/material/icon';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { DisableControlModule } from './shared/directive/disable-control/disable-control.module';
+import { TabMenuModule } from 'primeng/tabmenu';
 
   @NgModule({
     declarations: [
@@ -34,6 +35,8 @@ import { DisableControlModule } from './shared/directive/disable-control/disable
       MatIconModule,
       MatAutocompleteModule,
       DisableControlModule,
+      TabMenuModule,
+
 
       AppRoutingModule,
       FertilAgroModule

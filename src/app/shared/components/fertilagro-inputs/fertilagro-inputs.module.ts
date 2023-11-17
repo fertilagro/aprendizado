@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { SharedModule } from '../../shared.module';
 import { FertilagroInputsComponent } from './components/fertilagro-inputs.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { FertilagroInputsComponent } from './components/fertilagro-inputs.compon
     CommonModule,
     SharedModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatFormFieldModule
     ],
   exports: [
     FertilagroInputsComponent

@@ -47,6 +47,7 @@ export class FertilagroInputsComponent implements OnInit, ControlValueAccessor, 
 
   aoSairDoCampo(obj) {
     this.outFocus.emit(obj);
+    obj.value = obj.value?.toUpperCase()
   }
 
   @ViewChild('input', { static: true }) input: ElementRef;
@@ -109,7 +110,7 @@ export class FertilagroInputsComponent implements OnInit, ControlValueAccessor, 
     this.valueChange.emit(this.setZero(valeu));
   }
 
-  constructor(
+  constructor (
     @Optional() @Host() @SkipSelf()
     private controlContainer: ControlContainer
   ) { }
