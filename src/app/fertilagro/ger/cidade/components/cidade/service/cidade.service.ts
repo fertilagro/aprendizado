@@ -8,7 +8,7 @@ import { CidadeModel } from '../model/cidade.model';
 export class CidadeService extends BaseResourceService<CidadeModel> {
 
   constructor(protected Injector: Injector) {
-    super('cidade', Injector, CidadeModel.fromJson);
+    super('cidades', Injector, CidadeModel.fromJson);
   }
 
 }
