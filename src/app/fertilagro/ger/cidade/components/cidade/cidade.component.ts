@@ -1,10 +1,34 @@
-import { Component } from '@angular/core';
+import { Component, Injector, OnInit } from '@angular/core';
+import { BaseResourceFormComponent } from 'src/app/shared/components/base-resource-form/base-resource-form/base-resource-form.component';
+import { HttpUtilService } from 'src/app/shared/components/services/http-util.service';
+import { CidadeModel } from './model/cidade.model';
+import { CidadeService } from './service/cidade.service';
 
 @Component({
   selector: 'app-cidade',
   templateUrl: './cidade.component.html',
   styleUrls: ['./cidade.component.scss']
 })
-export class CidadeComponent { //extends BaseResourceFormComponent {
+export class CidadeComponent extends BaseResourceFormComponent<CidadeModel> implements OnInit {
+
+  constructor(
+    protected Injector: Injector,
+    protected cidadeService: CidadeService,
+    private httpServ: HttpUtilService,
+  ) {
+    super(Injector, new CidadeModel(), cidadeService, CidadeModel.fromJson);
+  }
+
+  buildResourceForm() {
+    this.resourceform = this.formBuilder.group({
+      id: [null],
+      nome: [null],
+      codigoIbge: [null]
+    });
+  }
+
+  override ngOnInit(): void {
+    super.ngOnInit();
+  }
 
 }
