@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
 })
 export class PessoaComponent extends BaseResourceFormComponent<PessoaModel> implements OnInit {
 
-  modelo$: Observable<any>;
+  status$: Observable<any>;
 
   constructor(
     protected Injector: Injector,
@@ -38,6 +38,11 @@ export class PessoaComponent extends BaseResourceFormComponent<PessoaModel> impl
 
   override ngOnInit(): void {
     super.ngOnInit();
+    this.enums();
+  }
+
+  enums() {
+    this.status$ = this.httpServ.enumeradorService('StatusEnum');
   }
 
 }
