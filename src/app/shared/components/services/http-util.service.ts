@@ -1,14 +1,13 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, map } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpUtilService {
-
-  baseUrl: 'http://localhost:9992/';
 
   constructor(
     private http: HttpClient,
@@ -17,7 +16,7 @@ export class HttpUtilService {
 
   httpPost(path, dados?, options?): Observable<any> {
     return this.executarRequisicao(() => {
-      return this.http.post(this.baseUrl + path, dados, options);
+      return this.http.post(environment.baseUrl + path, dados, options);
     });
   }
 
@@ -25,10 +24,12 @@ export class HttpUtilService {
     return fn();
   }
 
-  enumeradorService(requisicao: string, linhaEmBranco = false, ordenado = true, selectItem = false): Observable<any> {
-    return this.http.get(this.baseUrl + "/"+requisicao).pipe(
-      map((lista: any[]) => 
-      lista.map(item => selectItem ? item = { label: item } : item))
+  enumeradorService(requisicao: string): Observable<any> {
+    const url = environment.baseUrl + `enums?descricao=${requisicao}`;
+    return this.http.get(url).pipe(
+      map((lista: any[]) =>
+       //lista.map(item => item))
+       lista.map(item => item = item))
     );
   }
 
