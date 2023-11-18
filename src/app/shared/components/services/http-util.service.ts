@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +23,13 @@ export class HttpUtilService {
 
   executarRequisicao(fn: () => Observable<any>) {
     return fn();
+  }
+
+  enumeradorService(requisicao: string, linhaEmBranco = false, ordenado = true, selectItem = false): Observable<any> {
+    return this.http.get(this.baseUrl + "/"+requisicao).pipe(
+      map((lista: any[]) => 
+      lista.map(item => selectItem ? item = { label: item } : item))
+    );
   }
 
 }

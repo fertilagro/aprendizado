@@ -3,6 +3,7 @@ import { BaseResourceFormComponent } from 'src/app/shared/components/base-resour
 import { HttpUtilService } from 'src/app/shared/components/services/http-util.service';
 import { PessoaModel } from './model/pessoa.model';
 import { PessoaService } from './service/pessoa.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-pessoa',
@@ -10,6 +11,8 @@ import { PessoaService } from './service/pessoa.service';
   styleUrls: ['./pessoa.component.scss']
 })
 export class PessoaComponent extends BaseResourceFormComponent<PessoaModel> implements OnInit {
+
+  modelo$: Observable<any>;
 
   constructor(
     protected Injector: Injector,
