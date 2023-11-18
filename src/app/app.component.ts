@@ -1,7 +1,6 @@
-import { Component, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
-
+import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -34,5 +33,9 @@ export class AppComponent {
       this.router.navigate(['/cidade']);
     else
       this.router.navigate(['/dashboard']);
+  }
+
+  abrirLink(rota: string) {
+    this.router.navigate([rota]);
   }
 }

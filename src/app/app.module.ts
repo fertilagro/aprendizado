@@ -16,6 +16,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { DisableControlModule } from './shared/directive/disable-control/disable-control.module';
 import { TabMenuModule } from 'primeng/tabmenu';
+import {MatButtonModule} from '@angular/material/button';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
 
   @NgModule({
     declarations: [
@@ -36,7 +39,9 @@ import { TabMenuModule } from 'primeng/tabmenu';
       MatAutocompleteModule,
       DisableControlModule,
       TabMenuModule,
-
+      MatButtonModule,
+      MatToolbarModule,
+      MatMenuModule,
 
       AppRoutingModule,
       FertilAgroModule
