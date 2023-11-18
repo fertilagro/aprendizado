@@ -13,11 +13,17 @@
 
     <mat-menu #menu="matMenu">
       <button mat-menu-item (click)="abrirLink('/dashboard')">Home</button>
-      <button mat-menu-item [matMenuTriggerFor]="submenuPessoa">Cadastro geral</button>
-      <!-- Submenu para Pessoa -->
-      <mat-menu #submenuPessoa="matMenu">
+      <button mat-menu-item [matMenuTriggerFor]="submenuGeral">Cadastro geral</button>
+      <button mat-menu-item [matMenuTriggerFor]="submenuVenda">Venda</button>
+      <!-- Submenu para Geral -->
+      <mat-menu #submenuGeral="matMenu">
         <button mat-menu-item (click)="abrirLink('/pessoa')">Pessoa</button>
         <button mat-menu-item (click)="abrirLink('/cidade')"> Cidade</button>
+        <!-- Adicione mais itens de submenu conforme necessário -->
+      </mat-menu>
+
+      <!-- Submenu para Venda -->
+      <mat-menu #submenuVenda="matMenu">
         <!-- Adicione mais itens de submenu conforme necessário -->
       </mat-menu>
     </mat-menu>
