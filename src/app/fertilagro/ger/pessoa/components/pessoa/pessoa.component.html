@@ -41,20 +41,23 @@
         </div>
 
         <div class="row">
-          <div class="col-5">
+          <div class="col-6">
             <app-fertilagro-inputs titulo="Cidade" formControlName="cidade" [desabilitar]="disabilitarCampos">
             </app-fertilagro-inputs>
           </div>
 
-          <div class="col-md-3">
-            <mat-form-field appearance="outline">
-              <mat-label>Estado</mat-label>
-              <mat-select formControlName="estado" [disableControl]="disabilitarCampos">
-                <mat-option *ngFor="let i of status$ | async" [value]="i">
-                  {{i}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
+
+          <div class="col-md-6">
+
+              <mat-form-field appearance="outline">
+                <mat-label>Estado</mat-label>
+                <mat-select formControlName="estado" [disableControl]="disabilitarCampos">
+                  <mat-option *ngFor="let i of status$ | async" [value]="i">
+                    {{i}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+           
           </div>
 
         </div>

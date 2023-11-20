@@ -27,9 +27,7 @@ export class HttpUtilService {
   enumeradorService(requisicao: string): Observable<any> {
     const url = environment.baseUrl + `enums?descricao=${requisicao}`;
     return this.http.get(url).pipe(
-      map((lista: any[]) =>
-       //lista.map(item => item))
-       lista.map(item => item = item))
+      map((lista: any[]) => lista.map(item => item = item))
     );
   }
 
