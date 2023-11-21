@@ -7,6 +7,9 @@ import { FertilAgroInputsModule } from 'src/app/shared/components/fertilagro-inp
 import { SharedModule } from 'src/app/shared/shared.module';
 import { PessoaComponent } from './components/pessoa/pessoa.component';
 import { PessoaRoutingModule } from './pessoa-routing.module';
+import { FormsModule } from '@angular/forms';
+import { FertilAgroFkFieldModule } from 'src/app/shared/components/fertilagro-Fkfield/fertilagro-Fkfield.module';
+
 
 @NgModule({
   declarations: [
@@ -18,7 +21,9 @@ import { PessoaRoutingModule } from './pessoa-routing.module';
     BasicoBotaoModule,
     FertilAgroBotoesModule,
     FertilAgroInputsModule,
-    SharedModule
+    SharedModule,
+    FormsModule,
+    FertilAgroFkFieldModule
   ],
   exports: [
     PessoaComponent

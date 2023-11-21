@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { GerRoutingModule } from './ger-routing.module';
-import { PessoaModule } from './pessoa/pessoa.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { CidadeModule } from './cidade/cidade.module';
+import { GerRoutingModule } from './ger-routing.module';
+import { PessoaModule } from './pessoa/pessoa.module';
 
 @NgModule({
   declarations: [],
@@ -10,7 +10,8 @@ import { CidadeModule } from './cidade/cidade.module';
     GerRoutingModule,
     PessoaModule,
     SharedModule,
-    CidadeModule
+    CidadeModule,
+
   ],
   exports: [
     PessoaModule

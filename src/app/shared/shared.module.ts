@@ -27,13 +27,13 @@ import { MatSelectModule } from '@angular/material/select';
     RouterModule,
     MatToolbarModule,
     MatInputModule,
-    DisableControlModule,
     AutomaticoFocusModule,
     MatCardModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     CnpjcpfModule,
-    MatSelectModule
+    MatSelectModule,
+    DisableControlModule
   ],
   exports: [
     CommonModule,
@@ -44,13 +44,13 @@ import { MatSelectModule } from '@angular/material/select';
     RouterModule,
     MatToolbarModule,
     MatInputModule,
-    DisableControlModule,
     AutomaticoFocusModule,
     MatCardModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     CnpjcpfModule,
-    MatSelectModule
+    MatSelectModule,
+    DisableControlModule
   ],
   providers: [
     MessageService

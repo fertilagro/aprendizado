@@ -1,5 +1,8 @@
-// Importacao Bootstrap
+// // Importacao Bootstrap
 @import '~bootstrap/dist/css/bootstrap.min.css';
+
+// Importação do Theme do material Angular
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 * {
   font-family: "Roboto", sans-serif;

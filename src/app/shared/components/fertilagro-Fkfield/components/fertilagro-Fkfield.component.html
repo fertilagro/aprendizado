@@ -1,0 +1,19 @@
+<div class="container-fkfield">
+  <mat-form-field appearance="outline">
+    <mat-label>{{titulo}}</mat-label>
+
+    <input matInput #input
+      currencyMask
+      [formControl]="controlador"
+      [disableControl]="desabilitar"
+      [readonly]="somenteLeitura"
+      [appAutomaticoFocus]="focus"
+      onfocus="this.select();"
+      (blur)="aoSairDoCampo(controlador); onTouchedCb($event); inFocus=false; emFoco.emit(inFocus)"
+      (focus)="inFocus = true; emFoco.emit(inFocus)">
+
+      <button type="button" class="btn btn-primary">Primary</button>
+
+  </mat-form-field>
+</div>
+
