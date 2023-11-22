@@ -24,6 +24,7 @@ const INPUT_FIELD_VALUE_ACESSOR: any = {
 @Component({
   selector: 'app-fertilagro-FkField',
   templateUrl: './fertilagro-FkField.component.html',
+  styleUrls: ['./fertilagro-FkField.component.scss'],
   providers: [INPUT_FIELD_VALUE_ACESSOR]
 })
 export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor, DoCheck, AfterContentInit {
@@ -61,8 +62,6 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
     this.outFocus.emit(obj);
     obj.value = obj.value?.toUpperCase()
   }
-
-  @ViewChild('input', { static: true }) input: ElementRef;
 
   setValue(valor: any) {
     if (valor !== this.innerValue) {
