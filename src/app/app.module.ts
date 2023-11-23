@@ -45,7 +45,6 @@ import { SharedModule } from './shared/shared.module';
       MatMenuModule,
 
       AppRoutingModule,
-      FertilAgroModule
     ],
     exports: [
       ButtonModule,
@@ -55,4 +54,6 @@ import { SharedModule } from './shared/shared.module';
     providers: [],
     bootstrap: [AppComponent]
   })
-  export class AppModule {};
+
+  export class AppModule {
+  };

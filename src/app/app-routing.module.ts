@@ -6,22 +6,26 @@ import { CidadeComponent } from './fertilagro/ger/cidade/components/cidade/cidad
 
 const routes: Routes = [
   {
-    path:"",
-    pathMatch: "full",
-    redirectTo: "dashboard"
+    path: "fertilagro",
+    loadChildren: () => import('./fertilagro/fertilagro.module').then(m => m.FertilAgroModule)
   },
   {
-    path:"pessoa", component: PessoaComponent
+    path:'',
+    redirectTo: "login",
+    pathMatch: "full"
   },
-  {
-    path:"cidade", component: CidadeComponent
-  },
-  {
-    path:"", component: AppComponent
-  },
-  {
-    path:"dashboard", component: AppComponent
-  }
+  // {
+  //   path:"pessoa", component: PessoaComponent
+  // },
+  // {
+  //   path:"cidade", component: CidadeComponent
+  // },
+  // {
+  //   path:"", component: AppComponent
+  // },
+  // {
+  //   path:"dashboard", component: AppComponent
+  // }
 ];
 
 @NgModule({
