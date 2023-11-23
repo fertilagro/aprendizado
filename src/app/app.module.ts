@@ -7,7 +7,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -15,7 +14,6 @@ import { ButtonModule } from 'primeng/button';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FertilAgroModule } from './fertilagro/fertilagro.module';
 import { FertilAgroBotoesModule } from './shared/components/fertilagro-botoes/fertilagro-botoes.module';
 import { DisableControlModule } from './shared/directive/disable-control/disable-control.module';
 import { SharedModule } from './shared/shared.module';
@@ -36,7 +34,6 @@ import { SharedModule } from './shared/shared.module';
       MatCardModule,
       FertilAgroBotoesModule,
       SharedModule,
-      MatIconModule,
       MatAutocompleteModule,
       DisableControlModule,
       TabMenuModule,
@@ -48,8 +45,7 @@ import { SharedModule } from './shared/shared.module';
     ],
     exports: [
       ButtonModule,
-      SharedModule,
-      MatIconModule
+      SharedModule
     ],
     providers: [],
     bootstrap: [AppComponent]

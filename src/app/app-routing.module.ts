@@ -14,12 +14,12 @@ const routes: Routes = [
     redirectTo: "login",
     pathMatch: "full"
   },
-  // {
-  //   path:"pessoa", component: PessoaComponent
-  // },
-  // {
-  //   path:"cidade", component: CidadeComponent
-  // },
+  {
+    path:"pessoa", component: PessoaComponent
+  },
+  {
+    path:"cidade", component: CidadeComponent
+  },
   // {
   //   path:"", component: AppComponent
   // },

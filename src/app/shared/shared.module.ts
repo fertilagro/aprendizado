@@ -5,15 +5,17 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { AutomaticoFocusModule } from './directive/automatico-focus/automatico-focus.module';
-import { DisableControlModule } from './directive/disable-control/disable-control.module';
 import { CnpjcpfModule } from './directive/cnpjcpf/cnpjcpf.module';
-import { MatSelectModule } from '@angular/material/select';
+import { DisableControlModule } from './directive/disable-control/disable-control.module';
+
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatFormFieldModule,
     CnpjcpfModule,
     MatSelectModule,
-    DisableControlModule
+    DisableControlModule,
+    MatIconModule
   ],
   exports: [
     CommonModule,
@@ -50,7 +53,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatFormFieldModule,
     CnpjcpfModule,
     MatSelectModule,
-    DisableControlModule
+    DisableControlModule,
+    MatIconModule
   ],
   providers: [
     MessageService
