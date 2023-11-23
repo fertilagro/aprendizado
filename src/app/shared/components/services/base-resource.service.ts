@@ -39,13 +39,13 @@ export abstract class BaseResourceService<T extends BaseResourceModel> {
 
   buscarPorId(resource: T, servico?): Observable<T> {
     const url = `${this.apiPath}/${servico ? servico : 'buscarPorId'}`;
-    return this.httpServ.executarRequisicao(() => {
+
       return this.http.post(this.baseUrl + url, resource)
         .pipe(
           map(this.jsonDataToResource.bind(this)),
           catchError(this.handleError)
         );
-    });
+
   }
 
   protected handleError(error: any): Observable<any> {

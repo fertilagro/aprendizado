@@ -9,11 +9,11 @@ const routes: Routes = [
     path: "fertilagro",
     loadChildren: () => import('./fertilagro/fertilagro.module').then(m => m.FertilAgroModule)
   },
-  {
-    path:'',
-    redirectTo: "login",
-    pathMatch: "full"
-  },
+  // {
+  //   path:'',
+  //   redirectTo: "login",
+  //   pathMatch: "full"
+  // },
   {
     path:"pessoa", component: PessoaComponent
   },

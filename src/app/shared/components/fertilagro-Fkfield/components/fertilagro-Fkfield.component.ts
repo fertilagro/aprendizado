@@ -1,8 +1,6 @@
 import {
-  AfterContentInit,
   Component,
   DoCheck,
-  ElementRef,
   EventEmitter,
   Host,
   Input,
@@ -10,10 +8,10 @@ import {
   Optional,
   Output,
   SkipSelf,
-  ViewChild,
   forwardRef
 } from '@angular/core';
 import { AbstractControl, ControlContainer, ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { HttpUtilService } from '../../services/http-util.service';
 
 const INPUT_FIELD_VALUE_ACESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -27,8 +25,9 @@ const INPUT_FIELD_VALUE_ACESSOR: any = {
   styleUrls: ['./fertilagro-FkField.component.scss'],
   providers: [INPUT_FIELD_VALUE_ACESSOR]
 })
-export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor, DoCheck, AfterContentInit {
+export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor, DoCheck {
 
+  @Input() tipoOrigem: String;
   @Input() aparencia = "outline";
   @Input() titulo: string;
   @Input() desabilitar = false;
@@ -37,6 +36,7 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
   @Input() nullable = false;
   @Input() formControlName: string;
   @Input() CnpjCpfMask: string;
+  @Input() onFocus = new EventEmitter();
 
 
   @Output() emFoco = new EventEmitter();
@@ -54,7 +54,8 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
 
   constructor (
     @Optional() @Host() @SkipSelf()
-    private controlContainer: ControlContainer
+    private controlContainer: ControlContainer,
+    private HttpUtil: HttpUtilService
   ) { }
 
   ngOnInit() {
@@ -63,8 +64,15 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
     }
   }
 
-  aoSairDoCampo(obj) {
+  aoSairDoCampo(event, obj) {
     this.outFocus.emit(obj);
+    if ((obj !== null) && obj?.value !== undefined) {
+      this.consultar(obj.value);
+    }
+  }
+
+  writeValue(valor: any): void {
+    this.setValue(valor);
   }
 
   setValue(valor: any) {
@@ -78,10 +86,6 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
     } else {
       this.onChangeCb(this.setZero(valor));
     }
-  }
-
-  writeValue(valor: any): void {
-    this.setValue(valor);
   }
 
   registerOnChange(fn: any): void {
@@ -110,19 +114,12 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
     }
   }
 
-  ngAfterContentInit() {
-    this.controlador.valueChanges.subscribe(valor => {
-      if (valor !== this.innerValue) {
-        this.innerValue = valor;
-        this.onChangeCb(this.setZero(valor));
-        this.aoAlterarValor.emit(this.setZero(valor));
-        this.onValueChange(valor);
-      }
-    });
-  }
+  consultar(data: any) {
+    if (data !== null) {
+      this.HttpUtil.httpPost(this.tipoOrigem + "/buscarPorFkField", data).subscribe(
 
-  private onValueChange(valeu: any): any {
-    this.valueChange.emit(this.setZero(valeu));
+      )
+    }
   }
 
 }

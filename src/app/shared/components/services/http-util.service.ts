@@ -15,13 +15,7 @@ export class HttpUtilService {
   ) { }
 
   httpPost(path, dados?, options?): Observable<any> {
-    return this.executarRequisicao(() => {
       return this.http.post(environment.baseUrl + path, dados, options);
-    });
-  }
-
-  executarRequisicao(fn: () => Observable<any>) {
-    return fn();
   }
 
   enumeradorService(requisicao: string): Observable<any> {
@@ -29,6 +23,10 @@ export class HttpUtilService {
     return this.http.get(url).pipe(
       map((lista: any[]) => lista.map(item => item = item))
     );
+  }
+
+  fazerRequisicao(fn: () => Observable<any>) {
+      return fn();
   }
 
 }

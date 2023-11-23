@@ -1,10 +1,13 @@
-<mat-label>{{titulo}}</mat-label>
-<mat-form-field appearance="outline">
 
-  <input matInput [formControl]="controlador" [disableControl]="desabilitar" [readonly]="somenteLeitura"
-    [appAutomaticoFocus]="focus" onfocus="this.select();"
-    (blur)="aoSairDoCampo(controlador); onTouchedCb($event); inFocus=false; emFoco.emit(inFocus)"
-    (focus)="inFocus = true; emFoco.emit(inFocus)">
+<mat-form-field appearance="outline">
+  <mat-label>{{titulo}}</mat-label>
+
+    <input matInput
+    [formControl]="controlador"
+    [disableControl]="desabilitar"
+    [appAutomaticoFocus]="focus"
+    (blur)="aoSairDoCampo($event, controlador); onTouchedCb($event);"
+    onfocus="this.select();">
 
   <button type="button" class="btn btn-primary">Primary</button>
 
