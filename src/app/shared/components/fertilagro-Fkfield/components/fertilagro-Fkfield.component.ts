@@ -52,6 +52,11 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
   onChangeCb: (_: any) => void = () => { };
   onTouchedCb: (_: any) => void = () => { };
 
+  constructor (
+    @Optional() @Host() @SkipSelf()
+    private controlContainer: ControlContainer
+  ) { }
+
   ngOnInit() {
     if (this.controlContainer && this.formControlName) {
       this.control = this.controlContainer.control.get(this.formControlName)!; // Note o uso de "!"
@@ -60,7 +65,6 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
 
   aoSairDoCampo(obj) {
     this.outFocus.emit(obj);
-    obj.value = obj.value?.toUpperCase()
   }
 
   setValue(valor: any) {
@@ -120,10 +124,5 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
   private onValueChange(valeu: any): any {
     this.valueChange.emit(this.setZero(valeu));
   }
-
-  constructor (
-    @Optional() @Host() @SkipSelf()
-    private controlContainer: ControlContainer
-  ) { }
 
 }
