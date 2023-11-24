@@ -49,6 +49,7 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
   public inFocus = false;
   private innerValue: any;
   private control: AbstractControl;
+  private valorInterno: any;
 
   onChangeCb: (_: any) => void = () => { };
   onTouchedCb: (_: any) => void = () => { };
@@ -117,7 +118,22 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
 
   consultar(data: any) {
     if (data !== null) {
-      this.HttpUtil.chamarServicoPost(this.tipoOrigem + "/buscarPorFkField", data);
+      this.HttpUtil.chamarServicoPost(this.tipoOrigem + "/buscarPorFkField", data)
+      .subscribe(retorno => {
+        if (retorno != null) {
+         this.value = retorno;
+        }
+      });
+    }
+  }
+
+  get value() {
+    return this.valorInterno;
+  }
+
+  set value(v: any) {
+    if ((!v || typeof (v) === 'object') && v !== this.valorInterno) {
+      this.setValue(v);
     }
   }
 

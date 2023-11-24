@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, map, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { environment } from './../../../../environments/environment';
-import { catchError, first } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -27,14 +27,14 @@ export class HttpUtilService {
   }
 
   chamarServicoPost(servico: string, parametro: any, responseType?: any): Observable<any> {
-    
-    return this.fazerRequisicao(() => {
-      return this.http.post(environment.baseUrl + `/${servico}`, parametro, responseType)
-        .pipe(
-          map(retorno => retorno),
-          catchError(this.handleError)
-        );
-    });
+
+  //  return this.fazerRequisicao(() => {
+      return this.http.post(environment.baseUrl + servico, parametro, responseType)
+      .pipe(
+        map(retorno => retorno),
+        catchError(this.handleError)
+      );
+   // });
   }
 
   protected handleError(error: any): Observable<any> {
