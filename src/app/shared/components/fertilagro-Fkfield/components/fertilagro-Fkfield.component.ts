@@ -12,6 +12,7 @@ import {
 } from '@angular/core';
 import { AbstractControl, ControlContainer, ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { HttpUtilService } from '../../services/http-util.service';
+import { BaseResourceService } from '../../services/base-resource.service';
 
 const INPUT_FIELD_VALUE_ACESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -116,9 +117,7 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
 
   consultar(data: any) {
     if (data !== null) {
-      this.HttpUtil.httpPost(this.tipoOrigem + "/buscarPorFkField", data).subscribe(
-
-      )
+      this.HttpUtil.chamarServicoPost(this.tipoOrigem + "/buscarPorFkField", data);
     }
   }
 

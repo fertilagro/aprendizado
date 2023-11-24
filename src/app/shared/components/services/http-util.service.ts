@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, map } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { Observable, map, throwError } from 'rxjs';
+import { environment } from './../../../../environments/environment';
+import { catchError, first } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -14,10 +15,6 @@ export class HttpUtilService {
     protected router: Router
   ) { }
 
-  httpPost(path, dados?, options?): Observable<any> {
-      return this.http.post(environment.baseUrl + path, dados, options);
-  }
-
   enumeradorService(requisicao: string): Observable<any> {
     const url = environment.baseUrl + `enums?descricao=${requisicao}`;
     return this.http.get(url).pipe(
@@ -27,6 +24,22 @@ export class HttpUtilService {
 
   fazerRequisicao(fn: () => Observable<any>) {
       return fn();
+  }
+
+  chamarServicoPost(servico: string, parametro: any, responseType?: any): Observable<any> {
+    
+    return this.fazerRequisicao(() => {
+      return this.http.post(environment.baseUrl + `/${servico}`, parametro, responseType)
+        .pipe(
+          map(retorno => retorno),
+          catchError(this.handleError)
+        );
+    });
+  }
+
+  protected handleError(error: any): Observable<any> {
+    console.log('Erro na requisição =>', error);
+    return throwError(error);
   }
 
 }

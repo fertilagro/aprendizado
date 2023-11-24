@@ -1,9 +1,9 @@
-import { HttpClient   } from '@angular/common/http';
-import { Injector,  } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Injector, } from '@angular/core';
+import { Observable, throwError } from 'rxjs';
+import { catchError, first, map } from 'rxjs/operators';
 import { BaseResourceModel } from '../models/base-resource.model';
 import { HttpUtilService } from './http-util.service';
-import { Observable, throwError } from 'rxjs';
-import { map, catchError, first } from 'rxjs/operators';
 
 export abstract class BaseResourceService<T extends BaseResourceModel> {
 
@@ -26,27 +26,16 @@ export abstract class BaseResourceService<T extends BaseResourceModel> {
     return this.http.post(url, record).pipe(first());
   }
 
-  // chamarServicoPost(servico: string, parametro: any, responseType?: any): Observable<any> {
-  //   const url = `${this.apiPath}/${servico}`;
-  //   return this.httpServ.executarRequisicao(() => {
-  //     return this.http.post(this.baseUrl + url, parametro, responseType)
+  // buscarPorId(resource: T, servico?): Observable<T> {
+  //   const url = `${this.apiPath}/${servico ? servico : 'buscarPorId'}`;
+
+  //     return this.http.post(this.baseUrl + url, resource)
   //       .pipe(
-  //         map(retorno => retorno),
+  //         map(this.jsonDataToResource.bind(this)),
   //         catchError(this.handleError)
   //       );
-  //   });
+
   // }
-
-  buscarPorId(resource: T, servico?): Observable<T> {
-    const url = `${this.apiPath}/${servico ? servico : 'buscarPorId'}`;
-
-      return this.http.post(this.baseUrl + url, resource)
-        .pipe(
-          map(this.jsonDataToResource.bind(this)),
-          catchError(this.handleError)
-        );
-
-  }
 
   protected handleError(error: any): Observable<any> {
     console.log('Erro na requisição =>', error);
@@ -56,5 +45,7 @@ export abstract class BaseResourceService<T extends BaseResourceModel> {
   protected jsonDataToResource(jsonData: any): T {
     return this.jsonDataToResourceFn(jsonData);
   }
+
+
 
 }
