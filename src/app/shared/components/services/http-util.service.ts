@@ -26,6 +26,12 @@ export class HttpUtilService {
       return fn();
   }
 
+  httpPost(path, dados?, options?): Observable<any> {
+    return this.fazerRequisicao(() => {
+      return this.http.post(environment.baseUrl + path, dados, options);
+    });
+  }
+
   chamarServicoPost(servico: string, parametro: any, responseType?: any): Observable<any> {
 
   //  return this.fazerRequisicao(() => {

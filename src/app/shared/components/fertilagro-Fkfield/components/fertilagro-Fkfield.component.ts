@@ -12,7 +12,7 @@ import {
 } from '@angular/core';
 import { AbstractControl, ControlContainer, ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { HttpUtilService } from '../../services/http-util.service';
-import { BaseResourceService } from '../../services/base-resource.service';
+import { Fkfield } from './fkfield.model';
 
 const INPUT_FIELD_VALUE_ACESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -28,7 +28,7 @@ const INPUT_FIELD_VALUE_ACESSOR: any = {
 })
 export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor, DoCheck {
 
-  @Input() tipoOrigem: String;
+  @Input() tipo: String;
   @Input() aparencia = "outline";
   @Input() titulo: string;
   @Input() desabilitar = false;
@@ -38,7 +38,9 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
   @Input() formControlName: string;
   @Input() CnpjCpfMask: string;
   @Input() onFocus = new EventEmitter();
-
+  @Input() chaveLiteral = false;
+  @Input() pai: FertilAgroFkFieldComponent;
+  @Input() filtroPai = true;
 
   @Output() emFoco = new EventEmitter();
   @Output() outFocus = new EventEmitter();
@@ -50,6 +52,9 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
   private innerValue: any;
   private control: AbstractControl;
   private valorInterno: any;
+  selecionados: any[];
+  labelSelecionados: string;
+  private ultimoValorPai: any;
 
   onChangeCb: (_: any) => void = () => { };
   onTouchedCb: (_: any) => void = () => { };
@@ -66,6 +71,16 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
     }
   }
 
+  get value() {
+    return this.valorInterno;
+  }
+
+  set value(v: any) {
+    if ((!v || typeof (v) === 'object') && v !== this.valorInterno) {
+      this.setValue(v);
+    }
+  }
+
   aoSairDoCampo(event, obj) {
     this.outFocus.emit(obj);
     if ((obj !== null) && obj?.value !== undefined) {
@@ -73,21 +88,61 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
     }
   }
 
-  writeValue(valor: any): void {
+  writeValue2(valor: any): void {
     this.setValue(valor);
   }
 
-  setValue(valor: any) {
-    if (valor !== this.innerValue) {
-      this.innerValue = valor;
-      this.controlador.patchValue(valor === 0 ? null : valor);
-      setTimeout(() => {
-        this.onChangeCb(this.setZero(valor));
-      }, 0);
-      this.aoAlterarValor.emit(valor);
+  writeValue(value: any): void {
+    // console.log(value);
+    if (((this.chaveLiteral && typeof value !== 'object' && value && value.length > 0)
+      || (!isNaN(Number(value)) && Number(value) !== 0)) && this.controlador.value !== value) {
+      this.value = undefined;
+      this.buscarPorChave(this.chaveLiteral ? value : Number(value));
+    } else if (value && typeof value === 'object') {
+      this.value = new Fkfield(value);
     } else {
-      this.onChangeCb(this.setZero(valor));
+      // this.limpar();
+      this.value = value;
     }
+  }
+
+  setValue(v: any) {
+    this.limparLabelSelecionados(v);
+    this.valorInterno = v;
+    this.controlador.patchValue(v);
+    v && v.value ? this.onChangeCb(v.value) : this.onChangeCb(v);
+  }
+
+  private limparLabelSelecionados(valor: any) {
+    if ((!valor || !(valor instanceof Array)) &&
+      this.labelSelecionados !== null) {
+
+    }
+  }
+
+    /** Caso o valor do campo sejá um número o componente realiza a busca por chave */
+    buscarPorChave(id: any) {
+      this.value = undefined;
+      if (this.pai && this.pai.value && this.filtroPai === true) {
+        this.ultimoValorPai = this.pai.value.value.id;
+      }
+      this.HttpUtil.httpPost(this.tipo + '/buscarPorChaveFkfield',
+        { id, pai: this.ultimoValorPai }).toPromise().
+        then(retorno => {
+          this.value = retorno;
+        }).catch(error => {
+          if (error.error == null) {
+            console.log(error);
+          } else {
+            if (error.status === 400) {
+              this.limpar();
+            }
+          }
+        });
+    }
+
+  limpar() {
+
   }
 
   registerOnChange(fn: any): void {
@@ -118,23 +173,16 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
 
   consultar(data: any) {
     if (data !== null) {
-      this.HttpUtil.chamarServicoPost(this.tipoOrigem + "/buscarPorFkField", data)
+      this.HttpUtil.chamarServicoPost(this.tipo + "/buscarPorFkField", data)
       .subscribe(retorno => {
         if (retorno != null) {
+
          this.value = retorno;
         }
       });
     }
   }
 
-  get value() {
-    return this.valorInterno;
-  }
 
-  set value(v: any) {
-    if ((!v || typeof (v) === 'object') && v !== this.valorInterno) {
-      this.setValue(v);
-    }
-  }
 
 }
