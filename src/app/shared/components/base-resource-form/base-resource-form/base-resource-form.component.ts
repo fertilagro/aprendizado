@@ -87,7 +87,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
       console.log(resource);
       this.resourceService.salvar(resource).subscribe(data => {
         if (data) {
-         // this.resourceService.buscarPorId(resource);
+          console.log(data);
         }
       });
     }
