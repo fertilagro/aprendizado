@@ -11,14 +11,26 @@ import {
   forwardRef
 } from '@angular/core';
 import { AbstractControl, ControlContainer, ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Observable } from 'rxjs';
 import { HttpUtilService } from '../../services/http-util.service';
 import { Fkfield } from './fkfield.model';
+import { map } from 'rxjs/operators';
 
 const INPUT_FIELD_VALUE_ACESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => FertilAgroFkFieldComponent),
   multi: true
 };
+
+export enum TipoDescricao {
+  PADRAO,
+  PERSONALIZADO
+}
+
+interface AutoCompleteCompleteEvent {
+  originalEvent: Event;
+  query: string;
+}
 
 @Component({
   selector: 'app-fertilagro-FkField',
@@ -41,11 +53,15 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
   @Input() chaveLiteral = false;
   @Input() pai: FertilAgroFkFieldComponent;
   @Input() filtroPai = true;
+  @Input() tipoDescricao = TipoDescricao.PADRAO;
+  @Input() fertilAgrofiltro = false;
+  @Input() reconsultarSelecionado: boolean = false;
 
   @Output() emFoco = new EventEmitter();
   @Output() outFocus = new EventEmitter();
   @Output() aoAlterarValor = new EventEmitter<any>();
   @Output() valueChange = new EventEmitter();
+  @Output() aoSairComTab = new EventEmitter();
 
   public controlador = new FormControl();
   public inFocus = false;
@@ -55,6 +71,11 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
   selecionados: any[];
   labelSelecionados: string;
   private ultimoValorPai: any;
+  filteredOptions: Observable<Fkfield[]>;
+
+  selectedDadosFkfield: any;
+  filteredDadosFkfields: any[] | undefined;
+  dadosFkfields: any[] = [];
 
   onChangeCb: (_: any) => void = () => { };
   onTouchedCb: (_: any) => void = () => { };
@@ -82,7 +103,7 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
   }
 
   aoSairDoCampo(event, obj) {
-    this.outFocus.emit(obj);
+    this.aoSairComTab.emit(true);
     if ((obj !== null) && obj?.value !== undefined) {
       this.consultar(obj.value);
     }
@@ -177,12 +198,61 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
       .subscribe(retorno => {
         if (retorno != null) {
 
-         this.value = retorno;
+          retorno.content.map(fkfield => {
+           // this.dadosFkfields = fkfield?.labelFkfield;
+            this.dadosFkfields.push(fkfield?.nome);
+          })
+
+        // this.dadosFkfields = retorno.content;
+
+
         }
+
       });
     }
   }
 
+    /** Responsável por tratar os dados exibidos no campo */
+    displayFn(fkfield?: Fkfield): string | undefined {
+      const eDescricaoPernalizado = this.tipoDescricao === TipoDescricao.PERSONALIZADO;
+      const eFiltroValoresSelecionados = this.fertilAgrofiltro && this.selecionados?.length > 1;
+      let label = eDescricaoPernalizado ? fkfield?.labelPersonalizado : fkfield?.label;
+      return this.retornaVazio(eFiltroValoresSelecionados ? this.labelSelecionados : label);
+    }
 
+    private retornaVazio(valor: any): any {
+      return valor ?? '';
+    }
+
+  /** Evento disparado ao selecionar o registro */
+  selecionando(event) {
+    // console.log(event);
+    if (this.reconsultarSelecionado && event.option.value && event.option.value.value && event.option.value.value.id) {
+      let id = event.option.value.value.id.id ? event.option.value.value.id.id : event.option.value.value.id;
+      this.buscarPorChave(id);
+    } else {
+      this.value = event.option.value;
+    }
+  }
+
+    getDescricao({ label, labelPersonalizado }: Fkfield) {
+    const personalizado = this.tipoDescricao === TipoDescricao.PERSONALIZADO;
+    const descricao = personalizado ? labelPersonalizado : label;
+    return this.retornaVazio(descricao);
+  }
+
+  filterDadosFkfield(event: AutoCompleteCompleteEvent) {
+    let filtros: any[] = [];
+    let query = event.query;
+
+    for (let i = 0; i < (this.dadosFkfields as any[]).length; i++) {
+        let dados = (this.dadosFkfields as any[])[i];
+        if (dados.toLowerCase().indexOf(query.toLowerCase()) == 0) {
+          filtros.push(dados);
+        }
+    }
+
+    this.filteredDadosFkfields = filtros;
+}
 
 }

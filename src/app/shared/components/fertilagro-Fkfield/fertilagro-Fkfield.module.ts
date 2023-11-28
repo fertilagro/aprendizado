@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { AutoCompleteModule } from 'primeng/autocomplete';
 import { SharedModule } from '../../shared.module';
 import { FertilAgroFkFieldComponent } from './components/fertilagro-Fkfield.component';
 
@@ -17,7 +18,8 @@ import { FertilAgroFkFieldComponent } from './components/fertilagro-Fkfield.comp
     MatInputModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatCardModule
+    MatCardModule,
+    AutoCompleteModule
     ],
   exports: [
     FertilAgroFkFieldComponent
