@@ -14,7 +14,6 @@ import { AbstractControl, ControlContainer, ControlValueAccessor, FormControl, N
 import { Observable } from 'rxjs';
 import { HttpUtilService } from '../../services/http-util.service';
 import { Fkfield } from './fkfield.model';
-import { map } from 'rxjs/operators';
 
 const INPUT_FIELD_VALUE_ACESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -198,7 +197,7 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
       .subscribe(retorno => {
         if (retorno != null) {
           this.idRegistro = retorno.content[0].id;
-          this.controlador.patchValue(retorno.content[0].nome);
+          this.controlador.patchValue(retorno.content[0].id + " - " +retorno.content[0].nome);
         }
       });
     }
