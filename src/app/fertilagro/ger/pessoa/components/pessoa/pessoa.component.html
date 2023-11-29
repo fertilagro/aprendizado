@@ -42,12 +42,11 @@
 
         <div class="row">
           <div class="col-6">
-            <app-fertilagro-inputs titulo="Cidade" formControlName="cidade" [desabilitar]="disabilitarCampos">
-            </app-fertilagro-inputs>
+            <app-fertilagro-FkField titulo="cidade" tipo="cidades" (alterar)="atribuiValorId($event)"></app-fertilagro-FkField>
           </div>
+        </div>
 
-
-          <!-- <div class="col-6">
+                  <!-- <div class="col-6">
 
               <mat-form-field appearance="outline">
                 <mat-label>Estado</mat-label>
@@ -60,16 +59,6 @@
 
           </div> -->
 
-          <div class="col-6">
-
-            <app-fertilagro-FkField titulo="cidade" tipo="cidades"></app-fertilagro-FkField>
-             <!-- <app-fkfield rotulo="Cidade" [disableControl]="disabilitarCampos" >
-
-            </app-fkfield> -->
-
-          </div>
-
-        </div>
     </form>
 
   </mat-card-content>

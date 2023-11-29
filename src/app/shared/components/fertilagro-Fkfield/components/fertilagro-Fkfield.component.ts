@@ -58,12 +58,16 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
   @Output() emFoco = new EventEmitter();
   @Output() outFocus = new EventEmitter();
   @Output() aoAlterarValor = new EventEmitter<any>();
-  @Output() valueChange = new EventEmitter();
+
+  /** Envia o valor do input */
+  @Output() atribuirValorFkFieldCidade = new EventEmitter();
+
   @Output() aoSairComTab = new EventEmitter();
+
+
 
   public controlador = new FormControl();
   public inFocus = false;
-  private innerValue: any;
   private control: AbstractControl;
   private valorInterno: any;
   selecionados: any[];
@@ -107,10 +111,6 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
     }
   }
 
-  writeValue2(valor: any): void {
-    this.setValue(valor);
-  }
-
   writeValue(value: any): void {
     // console.log(value);
     if (((this.chaveLiteral && typeof value !== 'object' && value && value.length > 0)
@@ -139,26 +139,26 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
     }
   }
 
-    /** Caso o valor do campo sejá um número o componente realiza a busca por chave */
-    buscarPorChave(id: any) {
-      this.value = undefined;
-      if (this.pai && this.pai.value && this.filtroPai === true) {
-        this.ultimoValorPai = this.pai.value.value.id;
-      }
-      this.HttpUtil.httpPost(this.tipo + '/buscarPorChaveFkfield',
-        { id, pai: this.ultimoValorPai }).toPromise().
-        then(retorno => {
-          this.value = retorno;
-        }).catch(error => {
-          if (error.error == null) {
-            console.log(error);
-          } else {
-            if (error.status === 400) {
-              this.limpar();
-            }
-          }
-        });
+  /** Caso o valor do campo sejá um número o componente realiza a busca por chave */
+  buscarPorChave(id: any) {
+    this.value = undefined;
+    if (this.pai && this.pai.value && this.filtroPai === true) {
+      this.ultimoValorPai = this.pai.value.value.id;
     }
+    this.HttpUtil.httpPost(this.tipo + '/buscarPorChaveFkfield',
+      { id, pai: this.ultimoValorPai }).toPromise().
+      then(retorno => {
+        this.value = retorno;
+      }).catch(error => {
+        if (error.error == null) {
+          console.log(error);
+        } else {
+          if (error.status === 400) {
+            this.limpar();
+          }
+        }
+      });
+  }
 
   limpar() {
 
@@ -196,7 +196,7 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
       this.HttpUtil.chamarServicoPost(this.tipo + "/buscarPorFkField", data)
       .subscribe(retorno => {
         if (retorno != null) {
-          this.idRegistro = retorno.content[0].id;
+          this.atribuirValorFkFieldCidade.emit(retorno.content[0].id);
           this.controlador.patchValue(retorno.content[0].id + " - " +retorno.content[0].nome);
         }
       });

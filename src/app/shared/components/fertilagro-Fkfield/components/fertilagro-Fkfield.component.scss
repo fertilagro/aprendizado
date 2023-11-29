@@ -12,59 +12,56 @@
 //   display: flex;
 // }
 
-$height: 20px;
-$font-size: 13px;
-::ng-deep {
-    .mat-form-field {
-      align-items: center;
-      height: $height !important;
-      font-size: $font-size;
-      align-items: center;
-    }
-}
-
-.ui-autocomplete-list-item {
-  color: black; /* Ou a cor desejada para o texto */
-  background-color: white; /* Ou a cor desejada para o fundo */
-}
-
-
-// $height: 30px;
+// $height: 20px;
 // $font-size: 13px;
 // ::ng-deep {
-
 //     .mat-form-field {
+//       align-items: center;
 //       height: $height !important;
-//     }
-//     .mat-mdc-text-field-wrapper.mdc-text-field {
-//         height: $height !important;
-//     }
-//     mat-label {
-//         font-size: $font-size;
-//     }
-//     .mat-mdc-text-field-wrapper
-//         .mat-mdc-form-field-flex
-//         .mat-mdc-floating-label {
-//         top: 13px;
-//     }
-//     .mat-mdc-text-field-wrapper.mdc-text-field--outlined
-//         .mat-mdc-form-field-infix {
-//         padding-top: 0;
-//         padding-bottom: 0;
-//         height: $height;
-//     }
-//     .mat-mdc-form-field-flex {
-//         height: $height;
-//     }
-//     .wrapper .table-title .filter .search-placeholder-icon {
-//         font-size: 18px;
-//         padding-top: 8px;
-//     }
-//     .mdc-floating-label--float-above {
-//         font-size: $font-size !important;
-//     }
-//     .mat-datepicker-input {
-//         padding-top: 3px !important;
-//         font-size: $font-size !important;
+//       font-size: $font-size;
+//       align-items: center;
 //     }
 // }
+
+
+
+
+$height: 30px;
+$font-size: 13px;
+::ng-deep {
+
+    .mat-form-field {
+      height: $height !important;
+    }
+    .mat-mdc-text-field-wrapper.mdc-text-field {
+        height: $height !important;
+    }
+    mat-label {
+        font-size: $font-size;
+    }
+    .mat-mdc-text-field-wrapper
+        .mat-mdc-form-field-flex
+        .mat-mdc-floating-label {
+        top: 13px;
+    }
+    .mat-mdc-text-field-wrapper.mdc-text-field--outlined
+        .mat-mdc-form-field-infix {
+        padding-top: 0;
+        padding-bottom: 0;
+        height: $height;
+    }
+    .mat-mdc-form-field-flex {
+        height: $height;
+    }
+    .wrapper .table-title .filter .search-placeholder-icon {
+        font-size: 18px;
+        padding-top: 8px;
+    }
+    .mdc-floating-label--float-above {
+        font-size: $font-size !important;
+    }
+    .mat-datepicker-input {
+        padding-top: 3px !important;
+        font-size: $font-size !important;
+    }
+}

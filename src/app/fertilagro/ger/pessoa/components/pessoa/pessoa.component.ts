@@ -1,4 +1,4 @@
-import { Component, Injector, OnInit } from '@angular/core';
+import { Component, Injector, OnInit, EventEmitter } from '@angular/core';
 import { BaseResourceFormComponent } from 'src/app/shared/components/base-resource-form/base-resource-form/base-resource-form.component';
 import { HttpUtilService } from 'src/app/shared/components/services/http-util.service';
 import { PessoaModel } from './model/pessoa.model';
@@ -43,6 +43,10 @@ export class PessoaComponent extends BaseResourceFormComponent<PessoaModel> impl
 
   enums() {
     this.status$ = this.httpServ.enumeradorService('StatusEnum');
+  }
+
+  atribuiValorId(event) {
+    this.resourceform.get("cidade").setValue(event);
   }
 
 }
