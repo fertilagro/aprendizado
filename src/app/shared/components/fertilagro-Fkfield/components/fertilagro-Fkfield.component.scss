@@ -23,6 +23,12 @@ $font-size: 13px;
     }
 }
 
+.ui-autocomplete-list-item {
+  color: black; /* Ou a cor desejada para o texto */
+  background-color: white; /* Ou a cor desejada para o fundo */
+}
+
+
 // $height: 30px;
 // $font-size: 13px;
 // ::ng-deep {

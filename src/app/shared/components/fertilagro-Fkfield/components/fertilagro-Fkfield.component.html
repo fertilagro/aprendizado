@@ -9,12 +9,6 @@
     (blur)="aoSairDoCampo($event, controlador); onTouchedCb($event);"
     onfocus="this.select();">
 
-    <div class="card flex justify-content-center">
-      <p-autoComplete [(ngModel)]="selectedDadosFkfield" [suggestions]="filteredDadosFkfields" (completeMethod)="filterDadosFkfield($event)" field="name"></p-autoComplete>
-    </div>
-
-
 </mat-form-field>
-<button type="button" class="btn btn-primary">Primary</button>
 
 

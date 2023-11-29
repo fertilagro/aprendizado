@@ -4,6 +4,10 @@
 // Importação do Theme do material Angular
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
+@import 'primeng/resources/primeng.min.css';
+@import 'primeng/resources/themes/saga-blue/theme.css';
+
+
 * {
   font-family: "Roboto", sans-serif;
   font-weight: 600;

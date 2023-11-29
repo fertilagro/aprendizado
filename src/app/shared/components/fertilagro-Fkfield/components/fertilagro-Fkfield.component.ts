@@ -27,9 +27,8 @@ export enum TipoDescricao {
   PERSONALIZADO
 }
 
-interface AutoCompleteCompleteEvent {
-  originalEvent: Event;
-  query: string;
+interface DadosFkFieldCompleto {
+  labelFkField: string;
 }
 
 @Component({
@@ -75,7 +74,7 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
 
   selectedDadosFkfield: any;
   filteredDadosFkfields: any[] | undefined;
-  dadosFkfields: any[] = [];
+  idRegistro: number;
 
   onChangeCb: (_: any) => void = () => { };
   onTouchedCb: (_: any) => void = () => { };
@@ -194,20 +193,13 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
 
   consultar(data: any) {
     if (data !== null) {
+      this.limpar();
       this.HttpUtil.chamarServicoPost(this.tipo + "/buscarPorFkField", data)
       .subscribe(retorno => {
         if (retorno != null) {
-
-          retorno.content.map(fkfield => {
-           // this.dadosFkfields = fkfield?.labelFkfield;
-            this.dadosFkfields.push(fkfield?.nome);
-          })
-
-        // this.dadosFkfields = retorno.content;
-
-
+          this.idRegistro = retorno.content[0].id;
+          this.controlador.patchValue(retorno.content[0].nome);
         }
-
       });
     }
   }
@@ -240,19 +232,5 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
     const descricao = personalizado ? labelPersonalizado : label;
     return this.retornaVazio(descricao);
   }
-
-  filterDadosFkfield(event: AutoCompleteCompleteEvent) {
-    let filtros: any[] = [];
-    let query = event.query;
-
-    for (let i = 0; i < (this.dadosFkfields as any[]).length; i++) {
-        let dados = (this.dadosFkfields as any[])[i];
-        if (dados.toLowerCase().indexOf(query.toLowerCase()) == 0) {
-          filtros.push(dados);
-        }
-    }
-
-    this.filteredDadosFkfields = filtros;
-}
 
 }
