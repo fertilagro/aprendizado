@@ -34,17 +34,18 @@
             <app-fertilagro-inputs titulo="E-mail" formControlName="email" [desabilitar]="disabilitarCampos">
             </app-fertilagro-inputs>
           </div>
-          <div class="col-6">
+          <div class="col-2">
             <app-fertilagro-inputs titulo="Endereço" formControlName="endereco" [desabilitar]="disabilitarCampos">
             </app-fertilagro-inputs>
           </div>
-        </div>
 
-        <div class="row">
-          <div class="col-6">
-            <app-fertilagro-FkField titulo="cidade" tipo="cidades" (alterar)="atribuiValorId($event)"></app-fertilagro-FkField>
+          <div class="col-4">
+            <app-fertilagro-FkField titulo="cidade" tipo="cidades" (alterar)="atribuiValorId($event)">
+            </app-fertilagro-FkField>
           </div>
         </div>
+
+
 
                   <!-- <div class="col-6">
 
