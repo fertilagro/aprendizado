@@ -1,3 +1,4 @@
+import { CidadeModel } from "src/app/fertilagro/ger/cidade/components/cidade/model/cidade.model";
 
 export class PessoaModel {
   constructor(
@@ -5,10 +6,9 @@ export class PessoaModel {
     public razaoSocial?: string,
     public cnpjCpf?: string,
     public telefone?: string,
-    public estado?: string,
     public email?: string,
     public endereco?: string,
-    public cidade?: any,
+    public cidade?: CidadeModel,
     public status?: string
 
   ) { }

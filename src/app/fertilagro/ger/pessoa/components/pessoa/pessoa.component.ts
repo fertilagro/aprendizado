@@ -1,9 +1,10 @@
-import { Component, Injector, OnInit, EventEmitter } from '@angular/core';
+import { Component, Injector, OnInit } from '@angular/core';
+import { Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
 import { BaseResourceFormComponent } from 'src/app/shared/components/base-resource-form/base-resource-form/base-resource-form.component';
 import { HttpUtilService } from 'src/app/shared/components/services/http-util.service';
 import { PessoaModel } from './model/pessoa.model';
 import { PessoaService } from './service/pessoa.service';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-pessoa',
@@ -25,13 +26,12 @@ export class PessoaComponent extends BaseResourceFormComponent<PessoaModel> impl
   buildResourceForm() {
     this.resourceform = this.formBuilder.group({
       id: [null],
-      razaoSocial: [null],
-      cnpjCpf: [null],
-      telefone: [null],
-      email: [null],
-      endereco: [null],
-      cidade: [null],
-      estado: [null],
+      razaoSocial: [null, Validators.required],
+      cnpjCpf: [null, Validators.required, Validators.minLength(11)],
+      telefone: [null, Validators.required],
+      email: [null, Validators.required],
+      endereco: [null, Validators.required],
+      cidade: [null, Validators.required],
       status: [null]
     });
   }
@@ -45,8 +45,13 @@ export class PessoaComponent extends BaseResourceFormComponent<PessoaModel> impl
     this.status$ = this.httpServ.enumeradorService('StatusEnum');
   }
 
-  atribuiValorId(event) {
-    this.resourceform.get("cidade").setValue(event);
+  override salvar(): void {
+
+
+
+
+     this.resourceform.get("cidade").setValue(this.devolveIdFkfield(this.resourceform.getRawValue().cidade));
+     super.salvar()
   }
 
 }

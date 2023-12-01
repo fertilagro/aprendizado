@@ -1,6 +1,7 @@
 import { Directive, Injector, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { BaseResourceModel } from '../../models/base-resource.model';
 import { BaseResourceService } from '../../services/base-resource.service';
 
@@ -14,6 +15,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
   protected router: Router;
   public routerActive: ActivatedRoute;
   disableCampos: boolean;
+  protected mensagem: MessageService;
 
   constructor (
     protected injector: Injector,
@@ -80,16 +82,20 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
   }
 
   salvar() {
-    this.disabilitarCampos = true;
-    this.incluindoAlterarando = false;
-    if (this.resourceform.getRawValue()) {
-      const resource: T = this.jsonDataToResourceFn(this.validaFormAoSalvar(this.resourceform.getRawValue()));
-      console.log(resource);
-      this.resourceService.salvar(resource).subscribe(data => {
-        if (data) {
-          console.log(data);
-        }
-      });
+    if (this.resourceform.valid) {
+      this.disabilitarCampos = true;
+      this.incluindoAlterarando = false;
+      if (this.resourceform.getRawValue()) {
+        const resource: T = this.jsonDataToResourceFn(this.validaFormAoSalvar(this.resourceform.getRawValue()));
+        console.log(resource);
+        this.resourceService.salvar(resource).subscribe(data => {
+          if (data) {
+            console.log(data);
+          }
+        });
+      }
+    } else {
+      this.checkValidationsForm(this.resourceform);
     }
   }
 
@@ -130,5 +136,38 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     }
     return data;
   }
+
+  devolveIdFkfield(string: string): number {
+    let id = undefined;
+    if (string !== null) {
+      const split = string.split(" ");
+      if (split.length < 2) {
+        id = undefined;
+      }
+      id = Number(split[0]);
+    }
+      return id;
+  }
+
+  public checkValidationsForm(formGroup: FormGroup) {
+    let mensagens: any[] = [];
+    Object.keys(formGroup.controls).map(campo => {
+      // console.log(campo);
+      const controle = formGroup.get(campo);
+      controle.markAsTouched();
+      if (controle instanceof FormGroup) {
+        this.checkValidationsForm(controle);
+      }
+
+      if (controle.errors != null) {
+        if (controle.errors['mensagem'] === true) {
+          mensagens.push({ severity: 'error', summary: 'Error!', detail: controle.errors['mensagem'] ? controle.errors['mensagem'] : `O campo ${campo} é obrigatório ` });
+        }
+      }
+
+      this.mensagem.addAll(mensagens);
+    });
+  }
+
 
 }

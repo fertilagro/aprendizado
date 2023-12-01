@@ -40,9 +40,10 @@
           </div>
 
           <div class="col-4">
-            <app-fertilagro-FkField titulo="cidade" tipo="cidades" (alterar)="atribuiValorId($event)">
+            <app-fertilagro-FkField titulo="cidade" tipo="cidades" formControlName="cidade" [desabilitar]="disabilitarCampos">
             </app-fertilagro-FkField>
           </div>
+
         </div>
 
 
