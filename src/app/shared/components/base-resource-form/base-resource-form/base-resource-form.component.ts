@@ -1,7 +1,8 @@
 import { Directive, Injector, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
+import { take } from 'rxjs';
 import { BaseResourceModel } from '../../models/base-resource.model';
 import { BaseResourceService } from '../../services/base-resource.service';
 
@@ -16,6 +17,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
   public routerActive: ActivatedRoute;
   disableCampos: boolean;
   protected mensagem: MessageService;
+  bloqueioTela = false;
 
   constructor (
     protected injector: Injector,
@@ -81,22 +83,33 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     this.disabilitarCampos = true;
   }
 
-  salvar() {
-    if (this.resourceform.valid) {
+  public async salvar(): Promise<any> {
+    return new Promise(async (resolve, reject) => {
       this.disabilitarCampos = true;
       this.incluindoAlterarando = false;
-      if (this.resourceform.getRawValue()) {
-        const resource: T = this.jsonDataToResourceFn(this.validaFormAoSalvar(this.resourceform.getRawValue()));
-        console.log(resource);
-        this.resourceService.salvar(resource).subscribe(data => {
-          if (data) {
-            console.log(data);
-          }
-        });
+      const resource: T = this.jsonDataToResourceFn(this.validaFormAoSalvar(this.resourceform.getRawValue()));
+      console.log(resource);
+      if (this.resourceform.valid) {
+        this.resourceService
+          .salvar(resource)
+          .pipe(take(1))
+          .subscribe(response => {
+            this.incluindoAlterarando = false;
+            this.buildForm(response);
+            this.bloqueioTela = false;
+            resolve(response);
+          }, error => {
+            this.disableCampos = false;
+            this.bloqueioTela = false;
+            reject(error);
+          })
+      } else {
+        this.disableCampos = false;
+        this.bloqueioTela = false;
+        this.checkValidationsForm(this.resourceform);
+        reject('Erro de validações');
       }
-    } else {
-      this.checkValidationsForm(this.resourceform);
-    }
+    });
   }
 
   excluir() {
@@ -112,6 +125,41 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
 
   buscarPorId() {
 
+  }
+
+  protected buildForm(data: any, formGroup?: FormGroup, recursivo = false) {
+    const json = {};
+    if (!formGroup) {
+      formGroup = this.resourceform;
+    }
+    formGroup.reset();
+    for (const formData of Object.keys(formGroup.getRawValue())) {
+      if (data) {
+        for (const elementData of Object.keys(data)) {
+          if (elementData === formData) {
+            if (data[elementData] != null && data[elementData] !== undefined && data[elementData] !== 'Invalid date') {
+              if (recursivo && formGroup.get(formData) instanceof FormGroup) {
+                this.buildForm(data[elementData], formGroup.get(formData) as FormGroup, recursivo);
+              } else {
+                json[formData] = data[elementData];
+              }
+            } else {
+              if (formGroup.get(formData) instanceof FormArray) {
+                /**
+                 * se houver adição de novos tipos de objeto ao formGroup adicionar
+                 * mais else if com as respectivas instancias e inicializações
+                 */
+                json[formData] = [];
+              } else {
+                json[formData] = '';
+              }
+            }
+            break;
+          }
+        }
+      }
+    }
+    formGroup.patchValue(json);
   }
 
   protected validaFormAoSalvar(data: any) {

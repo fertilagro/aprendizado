@@ -8,17 +8,25 @@
 
     <form [formGroup]="resourceform">
         <div class="row">
-          <div class="col-2">
-            <app-fertilagro-inputs titulo="Codigo" formControlName="id" [desabilitar]="disabilitarCampos">
+          <div class="col-1">
+            <app-fertilagro-inputs titulo="Codigo" formControlName="id" [desabilitar]="true">
             </app-fertilagro-inputs>
           </div>
-          <div class="col-4">
+        </div>
+        <div class="row">
+          <div class="col-8">
             <app-fertilagro-inputs titulo="Nome" formControlName="nome" [desabilitar]="disabilitarCampos">
             </app-fertilagro-inputs>
           </div>
-          <div class="col-2">
-            <app-fertilagro-inputs titulo="Codigo Ibge" formControlName="codigoIbge" [desabilitar]="disabilitarCampos">
-            </app-fertilagro-inputs>
+          <div class="col-4">
+            <mat-form-field appearance="outline">
+              <mat-label>Estado</mat-label>
+              <mat-select formControlName="estado" [disableControl]="disabilitarCampos">
+                <mat-option *ngFor="let i of estado$ | async" [value]="i">
+                  {{i}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
           </div>
         </div>
     </form>

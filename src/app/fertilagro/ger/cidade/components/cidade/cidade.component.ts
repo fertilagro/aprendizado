@@ -3,6 +3,7 @@ import { BaseResourceFormComponent } from 'src/app/shared/components/base-resour
 import { HttpUtilService } from 'src/app/shared/components/services/http-util.service';
 import { CidadeModel } from './model/cidade.model';
 import { CidadeService } from './service/cidade.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-cidade',
@@ -10,6 +11,8 @@ import { CidadeService } from './service/cidade.service';
   styleUrls: ['./cidade.component.scss']
 })
 export class CidadeComponent extends BaseResourceFormComponent<CidadeModel> implements OnInit {
+
+  estado$: Observable<any>;
 
   constructor(
     protected Injector: Injector,
@@ -23,12 +26,18 @@ export class CidadeComponent extends BaseResourceFormComponent<CidadeModel> impl
     this.resourceform = this.formBuilder.group({
       id: [null],
       nome: [null],
+      estado: [null],
       codigoIbge: [null]
     });
   }
 
   override ngOnInit(): void {
     super.ngOnInit();
+    this.enums();
+  }
+
+  enums() {
+    this.estado$ = this.httpServ.enumeradorService('EstadoEnum');
   }
 
 }

@@ -45,11 +45,7 @@ export class PessoaComponent extends BaseResourceFormComponent<PessoaModel> impl
     this.status$ = this.httpServ.enumeradorService('StatusEnum');
   }
 
-  override salvar(): void {
-
-
-
-
+  override async salvar() {
      this.resourceform.get("cidade").setValue(this.devolveIdFkfield(this.resourceform.getRawValue().cidade));
      super.salvar()
   }

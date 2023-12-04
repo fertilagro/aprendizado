@@ -8,7 +8,7 @@
 
     <form [formGroup]="resourceform">
         <div class="row">
-          <div class="col-2">
+          <div class="col-1">
               <app-fertilagro-inputs titulo="Código" formControlName="id" [desabilitar]="true">
               </app-fertilagro-inputs>
           </div>
@@ -26,14 +26,17 @@
         </div>
 
         <div class="row">
+
           <div class="col-2">
             <app-fertilagro-inputs titulo="Telefone" formControlName="telefone" [desabilitar]="disabilitarCampos">
             </app-fertilagro-inputs>
           </div>
+
           <div class="col-4">
             <app-fertilagro-inputs titulo="E-mail" formControlName="email" [desabilitar]="disabilitarCampos">
             </app-fertilagro-inputs>
           </div>
+
           <div class="col-2">
             <app-fertilagro-inputs titulo="Endereço" formControlName="endereco" [desabilitar]="disabilitarCampos">
             </app-fertilagro-inputs>
@@ -45,22 +48,6 @@
           </div>
 
         </div>
-
-
-
-                  <!-- <div class="col-6">
-
-              <mat-form-field appearance="outline">
-                <mat-label>Estado</mat-label>
-                <mat-select formControlName="estado" [disableControl]="disabilitarCampos">
-                  <mat-option *ngFor="let i of status$ | async" [value]="i">
-                    {{i}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-
-          </div> -->
-
     </form>
 
   </mat-card-content>
