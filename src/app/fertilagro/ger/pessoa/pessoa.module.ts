@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MessageService } from 'primeng/api';
+import { MessageModule } from 'primeng/message';
 import { BasicoBotaoModule } from 'src/app/shared/components/basico-botao/basico-botao.module';
 import { FertilAgroFkFieldModule } from 'src/app/shared/components/fertilagro-Fkfield/fertilagro-Fkfield.module';
 import { FertilAgroBotoesModule } from 'src/app/shared/components/fertilagro-botoes/fertilagro-botoes.module';
@@ -25,13 +26,8 @@ import { PessoaRoutingModule } from './pessoa-routing.module';
     SharedModule,
     FormsModule,
     FertilAgroFkFieldModule,
-    CidadeModule
-
-
-
-   // PessoaModule,
-  //  SharedModule,
-
+    CidadeModule,
+    MessageModule
   ],
   exports: [
     PessoaComponent

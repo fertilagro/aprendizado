@@ -12,6 +12,7 @@ import {
 } from '@angular/core';
 import { AbstractControl, ControlContainer, ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { HttpUtilService } from '../../services/http-util.service';
+import { MessageService } from 'primeng/api';
 
 const INPUT_FIELD_VALUE_ACESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -46,7 +47,8 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
   constructor (
     @Optional() @Host() @SkipSelf()
     private controlContainer: ControlContainer,
-    private HttpUtil: HttpUtilService
+    private HttpUtil: HttpUtilService,
+    private messageService: MessageService
   ) { }
 
   ngOnInit() {
@@ -105,8 +107,10 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
       this.limpar();
       this.HttpUtil.chamarServicoPost(this.tipo + "/buscarPorFkField", data)
       .subscribe(retorno => {
-        if (retorno != null) {
+        if (retorno.content[0] != undefined) {
           this.value = retorno.content[0].id + " - " +retorno.content[0].nome;
+        } else {
+          this.messageService.add({ severity: 'info', summary: 'Informação', detail: 'Cadastro não localizado' });
         }
       });
     }

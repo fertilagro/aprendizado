@@ -5,6 +5,7 @@ import { BaseResourceFormComponent } from 'src/app/shared/components/base-resour
 import { HttpUtilService } from 'src/app/shared/components/services/http-util.service';
 import { PessoaModel } from './model/pessoa.model';
 import { PessoaService } from './service/pessoa.service';
+import { Message, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-pessoa',
@@ -19,6 +20,7 @@ export class PessoaComponent extends BaseResourceFormComponent<PessoaModel> impl
     protected Injector: Injector,
     protected pessoaService: PessoaService,
     private httpServ: HttpUtilService,
+    private messageService: MessageService
   ) {
     super(Injector, new PessoaModel(), pessoaService, PessoaModel.fromJson);
   }
@@ -48,6 +50,10 @@ export class PessoaComponent extends BaseResourceFormComponent<PessoaModel> impl
   override async salvar() {
      this.resourceform.get("cidade").setValue(this.devolveIdFkfield(this.resourceform.getRawValue().cidade));
      super.salvar()
+  }
+
+  showSuccessMessage() {
+    this.messageService.add({ severity: 'success', summary: 'Sucesso', detail: 'Ação concluída com sucesso' });
   }
 
 }

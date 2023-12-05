@@ -1,3 +1,4 @@
+<p-message></p-message>
 <mat-card class="card_fertilagro">
   <mat-card-header class="card_header_fertilagro d-flex justify-content-between">
     <mat-card-title>Cadastro de Pessoas</mat-card-title>
@@ -8,9 +9,10 @@
 
     <form [formGroup]="resourceform">
         <div class="row">
-          <div class="col-1">
+          <div class="col-4">
               <app-fertilagro-inputs titulo="Código" formControlName="id" [desabilitar]="true">
               </app-fertilagro-inputs>
+              <button (click)="showSuccessMessage()">Exibir Sucesso</button>
           </div>
         </div>
 
@@ -46,6 +48,8 @@
             <app-fertilagro-FkField titulo="cidade" tipo="cidades" formControlName="cidade" [desabilitar]="disabilitarCampos">
             </app-fertilagro-FkField>
           </div>
+
+
 
         </div>
     </form>

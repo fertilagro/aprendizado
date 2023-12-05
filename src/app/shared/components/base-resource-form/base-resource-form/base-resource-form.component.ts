@@ -89,7 +89,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
       this.incluindoAlterarando = false;
       const resource: T = this.jsonDataToResourceFn(this.validaFormAoSalvar(this.resourceform.getRawValue()));
       console.log(resource);
-      if (this.resourceform.valid) {
+    //  if (this.resourceform.valid) {
         this.resourceService
           .salvar(resource)
           .pipe(take(1))
@@ -103,12 +103,12 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
             this.bloqueioTela = false;
             reject(error);
           })
-      } else {
+     /* } else {
         this.disableCampos = false;
         this.bloqueioTela = false;
         this.checkValidationsForm(this.resourceform);
         reject('Erro de validações');
-      }
+      }*/
     });
   }
 
