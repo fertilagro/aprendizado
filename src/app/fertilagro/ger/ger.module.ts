@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { GerRoutingModule } from './ger-routing.module';
+import { ComponentsComponent } from './amostra/components/components.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ComponentsComponent
+  ],
   imports: [
     GerRoutingModule
   ],
