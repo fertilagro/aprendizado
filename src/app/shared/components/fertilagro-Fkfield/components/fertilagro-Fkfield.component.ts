@@ -3,6 +3,7 @@ import {
   DoCheck,
   EventEmitter,
   Host,
+  Injector,
   Input,
   OnInit,
   Optional,
@@ -11,8 +12,8 @@ import {
   forwardRef
 } from '@angular/core';
 import { AbstractControl, ControlContainer, ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { HttpUtilService } from '../../services/http-util.service';
-import { MessageService } from 'primeng/api';
 
 const INPUT_FIELD_VALUE_ACESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -41,15 +42,23 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
   public controlador = new FormControl();
   private control: AbstractControl;
 
+  private snackBar: MatSnackBar;
+
+  posicaoHorizontalAlerta: MatSnackBarHorizontalPosition = 'right';
+  posicaoVerticalAlerta: MatSnackBarVerticalPosition = 'top';
+  duracaoSegundosAlerta = 3;
+
   onChangeCb: (_: any) => void = () => { };
   onTouchedCb: (_: any) => void = () => { };
 
   constructor (
     @Optional() @Host() @SkipSelf()
+    protected injector: Injector,
     private controlContainer: ControlContainer,
     private HttpUtil: HttpUtilService,
-    private messageService: MessageService
-  ) { }
+  ) {
+    this.snackBar = this.injector.get(MatSnackBar);
+   }
 
   ngOnInit() {
     if (this.controlContainer && this.formControlName) {
@@ -110,7 +119,10 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
         if (retorno.content[0] != undefined) {
           this.value = retorno.content[0].id + " - " +retorno.content[0].nome;
         } else {
-          this.messageService.add({ severity: 'info', summary: 'Informação', detail: 'Cadastro não localizado' });
+          this.snackBar.open('Cadastro não localizado', 'ATENÇÃO', {
+            horizontalPosition: this.posicaoHorizontalAlerta,
+            verticalPosition: this.posicaoVerticalAlerta, duration: this.duracaoSegundosAlerta * 1000
+          });
         }
       });
     }

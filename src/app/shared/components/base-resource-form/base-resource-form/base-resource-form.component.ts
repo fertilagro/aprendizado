@@ -1,5 +1,6 @@
 import { Directive, Injector, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { take } from 'rxjs';
@@ -18,6 +19,9 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
   disableCampos: boolean;
   protected mensagem: MessageService;
   bloqueioTela = false;
+  private _snackBar: MatSnackBar
+
+
 
   constructor (
     protected injector: Injector,
@@ -28,6 +32,8 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     this.formBuilder = this.injector.get(FormBuilder);
     this.router = this.injector.get(Router);
     this.routerActive = this.injector.get(ActivatedRoute);
+    this._snackBar = this.injector.get(MatSnackBar);
+    this.mensagem = this.injector.get(MessageService);
   }
 
   ngOnInit() {

@@ -17,6 +17,7 @@ import { AppComponent } from './app.component';
 import { FertilAgroBotoesModule } from './shared/components/fertilagro-botoes/fertilagro-botoes.module';
 import { DisableControlModule } from './shared/directive/disable-control/disable-control.module';
 import { SharedModule } from './shared/shared.module';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
   @NgModule({
@@ -45,7 +46,8 @@ import { SharedModule } from './shared/shared.module';
     ],
     exports: [
       ButtonModule,
-      SharedModule
+      SharedModule,
+      MatSnackBarModule
     ],
     providers: [],
     bootstrap: [AppComponent]
