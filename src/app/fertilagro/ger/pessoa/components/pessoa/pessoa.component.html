@@ -1,4 +1,6 @@
 
+<p-message></p-message>
+
 <mat-card class="card_fertilagro">
   <mat-card-header class="card_header_fertilagro d-flex justify-content-between">
     <mat-card-title>Cadastro de Pessoas</mat-card-title>
@@ -13,6 +15,7 @@
               <app-fertilagro-inputs titulo="Código" formControlName="id" [desabilitar]="true">
               </app-fertilagro-inputs>
           </div>
+          <button (click)="showMessage()">Mostrar Mensagem</button>
         </div>
 
         <div class="row">
