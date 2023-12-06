@@ -28,8 +28,8 @@ export class PessoaComponent extends BaseResourceFormComponent<PessoaModel> impl
       id: [null],
       razaoSocial: [null, Validators.required],
       cnpjCpf: [null, Validators.required, Validators.minLength(11)],
-      telefone: [null, Validators.required],
-      email: [null, Validators.required],
+      telefone: [null, Validators.required, Validators.minLength(0)],
+      email: [null, Validators.email],
       endereco: [null, Validators.required],
       cidade: [null, Validators.required],
       status: [null]

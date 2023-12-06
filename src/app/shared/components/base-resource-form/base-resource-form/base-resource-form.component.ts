@@ -95,7 +95,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
       this.incluindoAlterarando = false;
       const resource: T = this.jsonDataToResourceFn(this.validaFormAoSalvar(this.resourceform.getRawValue()));
       console.log(resource);
-    //  if (this.resourceform.valid) {
+      if (this.resourceform.valid) {
         this.resourceService
           .salvar(resource)
           .pipe(take(1))
@@ -109,12 +109,12 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
             this.bloqueioTela = false;
             reject(error);
           })
-     /* } else {
+      } else {
         this.disableCampos = false;
         this.bloqueioTela = false;
         this.checkValidationsForm(this.resourceform);
         reject('Erro de validações');
-      }*/
+      }
     });
   }
 
@@ -151,10 +151,6 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
               }
             } else {
               if (formGroup.get(formData) instanceof FormArray) {
-                /**
-                 * se houver adição de novos tipos de objeto ao formGroup adicionar
-                 * mais else if com as respectivas instancias e inicializações
-                 */
                 json[formData] = [];
               } else {
                 json[formData] = '';
@@ -193,7 +189,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
 
   devolveIdFkfield(string: string): number {
     let id = undefined;
-    if (string !== null) {
+    if (string !== undefined && string !== null) {
       const split = string.split(" ");
       if (split.length < 2) {
         id = undefined;
@@ -203,24 +199,24 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
       return id;
   }
 
-  public checkValidationsForm(formGroup: FormGroup) {
+  public checkValidationsForm(formGroup: FormGroup , recursivo = false) {
+    if (!recursivo) {
+      this.mensagem.clear();
+    }
     let mensagens: any[] = [];
-    Object.keys(formGroup.controls).map(campo => {
-      // console.log(campo);
+    Object.keys(formGroup.controls).forEach(campo => {
+       console.log(campo);
       const controle = formGroup.get(campo);
       controle.markAsTouched();
       if (controle instanceof FormGroup) {
-        this.checkValidationsForm(controle);
+        this.checkValidationsForm(controle, true);
       }
 
       if (controle.errors != null) {
-        if (controle.errors['mensagem'] === true) {
-          mensagens.push({ severity: 'error', summary: 'Error!', detail: controle.errors['mensagem'] ? controle.errors['mensagem'] : `O campo ${campo} é obrigatório ` });
-        }
+          mensagens.push({ severity: 'error', summary: 'Error!', detail: `O campo ${campo} é obrigatório ` });
       }
-
-      this.mensagem.addAll(mensagens);
     });
+    this.mensagem.addAll(mensagens);
   }
 
 
