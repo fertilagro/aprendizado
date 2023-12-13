@@ -47,7 +47,6 @@ export class FertilagroInputsComponent implements OnInit, ControlValueAccessor, 
 
   aoSairDoCampo(obj) {
     this.outFocus.emit(obj);
-    obj.value = obj.value?.toUpperCase()
   }
 
   @ViewChild('input', { static: true }) input: ElementRef;
