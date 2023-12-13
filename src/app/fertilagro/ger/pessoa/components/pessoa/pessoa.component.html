@@ -10,12 +10,12 @@
     <app-fertilagro-botoes [tela]="this"> </app-fertilagro-botoes>
 
     <form [formGroup]="resourceform">
+
         <div class="row">
           <div class="col-4">
               <app-fertilagro-inputs titulo="Código" formControlName="id" [desabilitar]="true">
               </app-fertilagro-inputs>
           </div>
-          <button (click)="showMessage()">Mostrar Mensagem</button>
         </div>
 
         <div class="row">
