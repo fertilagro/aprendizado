@@ -1,12 +1,14 @@
-<mat-form-field appearance="outline" >
-    <mat-label>{{titulo}}</mat-label>
-
-      <input matInput
-      [formControl]="controlador"
-      [disableControl]="desabilitar"
-      [appAutomaticoFocus]="focus"
-      (blur)="aoSairDoCampo($event, controlador); onTouchedCb($event);"
-      onfocus="this.select();">
-
-</mat-form-field>
+<div class="fkfield">
+  <mat-form-field appearance="outline" >
+      <mat-label>{{titulo}}</mat-label>
+  
+        <input matInput
+        [formControl]="controlador"
+        [disableControl]="desabilitar"
+        [appAutomaticoFocus]="focus"
+        (blur)="aoSairDoCampo($event, controlador); onTouchedCb($event);"
+        onfocus="this.select();">
+  
+  </mat-form-field>
+</div>
 
