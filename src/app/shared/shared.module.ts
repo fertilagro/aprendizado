@@ -16,6 +16,9 @@ import { CnpjcpfModule } from './directive/cnpjcpf/cnpjcpf.module';
 import { DisableControlModule } from './directive/disable-control/disable-control.module';
 
 import { MatIconModule } from '@angular/material/icon';
+import { TableModule } from 'primeng/table';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,10 @@ import { MatIconModule } from '@angular/material/icon';
     CnpjcpfModule,
     MatSelectModule,
     DisableControlModule,
-    MatIconModule
+    MatIconModule,
+    TableModule,
+    MatTabsModule,
+    MatTableModule
   ],
   exports: [
     CommonModule,
@@ -54,7 +60,10 @@ import { MatIconModule } from '@angular/material/icon';
     CnpjcpfModule,
     MatSelectModule,
     DisableControlModule,
-    MatIconModule
+    MatIconModule,
+    TableModule,
+    MatTabsModule,
+    MatTableModule
   ],
   providers: [
     MessageService
