@@ -34,7 +34,7 @@ export class PedidoComponent extends BaseResourceFormComponent<PedidoModel> impl
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = ELEMENT_DATA;
-  
+
   constructor(
     protected Injector: Injector,
     protected pedidoService: PedidoService,
@@ -50,7 +50,10 @@ export class PedidoComponent extends BaseResourceFormComponent<PedidoModel> impl
 
   buildResourceForm() {
     this.resourceform = this.formBuilder.group({
-      id: [null],
+      id: this.formBuilder.group({
+        id: [null]
+      }),
+      data: [null]
     });
   }
 
