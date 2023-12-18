@@ -4,6 +4,8 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, first, map } from 'rxjs/operators';
 import { BaseResourceModel } from '../models/base-resource.model';
 import { HttpUtilService } from './http-util.service';
+import { environment } from 'src/environments/environment';
+import { Utils } from '../Util/utils-components';
 
 export abstract class BaseResourceService<T extends BaseResourceModel> {
 
@@ -18,24 +20,14 @@ export abstract class BaseResourceService<T extends BaseResourceModel> {
   ) {
     this.http = injector.get(HttpClient);
     this.httpServ = injector.get(HttpUtilService);
-    this.baseUrl = 'http://localhost:9992/';
+    this.baseUrl =  environment.baseUrl;
+
   }
 
   salvar(record: T) {
-    const url = this.baseUrl + this.apiPath + '/salvar';
-    return this.http.post(url, record).pipe(first());
+    const url = this.apiPath + '/salvar';
+    return this.httpServ.chamarServicoPost(url, record).pipe(first());
   }
-
-  // buscarPorId(resource: T, servico?): Observable<T> {
-  //   const url = `${this.apiPath}/${servico ? servico : 'buscarPorId'}`;
-
-  //     return this.http.post(this.baseUrl + url, resource)
-  //       .pipe(
-  //         map(this.jsonDataToResource.bind(this)),
-  //         catchError(this.handleError)
-  //       );
-
-  // }
 
   protected handleError(error: any): Observable<any> {
     console.log('Erro na requisição =>', error);
