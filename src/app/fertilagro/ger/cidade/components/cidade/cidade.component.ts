@@ -24,10 +24,12 @@ export class CidadeComponent extends BaseResourceFormComponent<CidadeModel> impl
 
   buildResourceForm() {
     this.resourceform = this.formBuilder.group({
-      id: [null],
+      id: this.formBuilder.group({
+        empresa: [null],
+        id: [null]
+      }),
       nome: [null],
-      estado: [null],
-      codigoIbge: [null]
+      estado: [null]
     });
   }
 
