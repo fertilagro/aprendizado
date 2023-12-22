@@ -41,23 +41,16 @@
             </app-fertilagro-inputs>
           </div>
 
-          <div class="col-2">
+          <div class="col-6">
             <app-fertilagro-inputs titulo="Endereço" formControlName="endereco" [desabilitar]="disabilitarCampos">
             </app-fertilagro-inputs>
           </div>
 
           <div class="col-4">
-            <app-fertilagro-FkField titulo="cidade" tipo="cidades" formControlName="cidade" [desabilitar]="disabilitarCampos">
-            </app-fertilagro-FkField>
+              <label>Cidade</label>
+                <p-autoComplete class="inputs" formControlName="cidade" [style]="{'width': '100%','display': 'flex','height':'35px'}"
+                [suggestions]="cidadesFiltradas" (completeMethod)="filtrarCidades($event)" field="nome" dataKey="id"></p-autoComplete>
           </div>
-
-          <div class="card flex justify-content-center">
-        
-                <p-autoComplete formControlName="selectedCountry" [suggestions]="filteredCidades" (completeMethod)="filteredCidades($event)" field="name"></p-autoComplete>
-           
-          </div>
-
-
 
         </div>
     </form>
