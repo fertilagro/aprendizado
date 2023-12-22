@@ -51,6 +51,12 @@
             </app-fertilagro-FkField>
           </div>
 
+          <div class="card flex justify-content-center">
+        
+                <p-autoComplete formControlName="selectedCountry" [suggestions]="filteredCidades" (completeMethod)="filteredCidades($event)" field="name"></p-autoComplete>
+           
+          </div>
+
 
 
         </div>

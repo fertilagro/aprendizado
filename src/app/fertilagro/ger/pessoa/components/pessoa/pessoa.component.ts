@@ -14,6 +14,9 @@ import { MessageService } from 'primeng/api';
   styleUrls: ['./pessoa.component.scss']
 })
 export class PessoaComponent extends BaseResourceFormComponent<PessoaModel> implements OnInit {
+  
+  cidades: any[] | undefined;
+  filteredCidades: any[];
 
   status$: Observable<any>;
 
