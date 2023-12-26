@@ -32,7 +32,10 @@ export class PessoaComponent extends BaseResourceFormComponent<PessoaModel> impl
 
   buildResourceForm() {
     this.resourceform = this.formBuilder.group({
-      id: [null],
+      id: this.formBuilder.group({
+        empresa: [null],
+        id: [null]
+      }),
       razaoSocial: [null],
       cnpjCpf: [null],
       telefone: [null],
