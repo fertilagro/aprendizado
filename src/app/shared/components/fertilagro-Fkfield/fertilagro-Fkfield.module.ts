@@ -8,6 +8,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { SharedModule } from '../../shared.module';
 import { FertilAgroFkFieldComponent } from './components/fertilagro-Fkfield.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatFormFieldModule,
     MatCardModule,
     DropdownModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatAutocompleteModule
     ],
   exports: [
     FertilAgroFkFieldComponent

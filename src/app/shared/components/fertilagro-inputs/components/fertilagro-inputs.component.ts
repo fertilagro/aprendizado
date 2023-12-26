@@ -21,7 +21,6 @@ export class FertilagroInputsComponent implements OnInit, ControlValueAccessor, 
   @Input() desabilitar = false;
   @Input() somenteLeitura = false;
   @Input() focus: boolean;
-  @Input() nullable = false;
   @Input() formControlName: string;
   @Input() CnpjCpfMask: string;
 
@@ -77,7 +76,7 @@ export class FertilagroInputsComponent implements OnInit, ControlValueAccessor, 
   }
 
   private setZero(valor: number): number {
-    return (valor === null || valor === undefined) ? this.nullable ? null : 0 : valor;
+    return (valor === null || valor === undefined) ? null : valor;
   }
 
   ngDoCheck(): void {

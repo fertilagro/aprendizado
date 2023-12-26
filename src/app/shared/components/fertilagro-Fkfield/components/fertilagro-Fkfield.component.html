@@ -1,14 +1,22 @@
-<div class="fkfield">
+<div class="fkfield" matAutocompleteOrigin #origin="matAutocompleteOrigin">
+
   <mat-form-field appearance="outline" >
       <mat-label>{{titulo}}</mat-label>
-  
+
         <input matInput
         [formControl]="controlador"
         [disableControl]="desabilitar"
         [appAutomaticoFocus]="focus"
         (blur)="aoSairDoCampo($event, controlador); onTouchedCb($event);"
-        onfocus="this.select();">
-  
+        onfocus="this.select();"
+        [matAutocomplete]="auto"
+        [matAutocompleteConnectedTo]="origin">
+
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of opcoesFiltradas | async" [value]="option">
+          {{ option }}
+        </mat-option>
+      </mat-autocomplete>
+
   </mat-form-field>
 </div>
-

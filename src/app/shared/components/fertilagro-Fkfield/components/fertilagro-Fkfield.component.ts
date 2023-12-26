@@ -13,7 +13,9 @@ import {
 } from '@angular/core';
 import { AbstractControl, ControlContainer, ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import { Observable, debounceTime, distinctUntilChanged, map, startWith } from 'rxjs';
 import { HttpUtilService } from '../../services/http-util.service';
+import { Fkfield } from './fkfield.model';
 
 const INPUT_FIELD_VALUE_ACESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -48,6 +50,8 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
   posicaoVerticalAlerta: MatSnackBarVerticalPosition = 'top';
   duracaoSegundosAlerta = 3;
 
+  opcoesFiltradas: Observable<Fkfield[]>;
+
   onChangeCb: (_: any) => void = () => { };
   onTouchedCb: (_: any) => void = () => { };
 
@@ -61,6 +65,14 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
    }
 
   ngOnInit() {
+
+    this.controlador.valueChanges.pipe(
+      startWith(''),
+      debounceTime(300),
+      distinctUntilChanged(),
+      map(value => typeof value === 'string' ? this.consultar(value) : this.opcoesFiltradas)
+    ).subscribe(res => this.opcoesFiltradas = res);
+
     if (this.controlContainer && this.formControlName) {
       this.control = this.controlContainer.control.get(this.formControlName)!;
     }
@@ -87,6 +99,7 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
   }
 
   limpar() {
+    this.opcoesFiltradas = undefined;
   }
 
   registerOnChange(fn: any): void {
@@ -111,20 +124,22 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
     }
   }
 
-  consultar(data: any) {
-    if (data !== null) {
-      this.limpar();
-      this.HttpUtil.chamarServicoPost(this.tipo + "/buscarPorFkField", data)
-      .subscribe(retorno => {
-        if (retorno.content[0] != undefined) {
-          this.value = retorno.content[0].id + " - " +retorno.content[0].nome;
-        } else {
-          this.snackBar.open('Cadastro não localizado', 'ATENÇÃO', {
-            horizontalPosition: this.posicaoHorizontalAlerta,
-            verticalPosition: this.posicaoVerticalAlerta, duration: this.duracaoSegundosAlerta * 1000
-          });
-        }
-      });
+  consultar(value: string) {
+    if (value === '') {
+      return this.value = undefined;
+    } else {
+      return this.HttpUtil.httpPost(this.tipo + "/buscarPorFkField", value)
+      .pipe(
+        map(resposta => {
+          if (!resposta || resposta.length === 0) {
+            this.snackBar.open('Cadastro não localizado', 'ATENÇÃO', {
+              horizontalPosition: this.posicaoHorizontalAlerta,
+              verticalPosition: this.posicaoVerticalAlerta, duration: this.duracaoSegundosAlerta * 1000
+            });
+          }
+          return resposta;
+        })
+      );
     }
   }
 

@@ -1,6 +1,6 @@
 import { Directive, Injector, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { take } from 'rxjs';
@@ -11,16 +11,20 @@ import { BaseResourceService } from '../../services/base-resource.service';
 export abstract class BaseResourceFormComponent<T extends BaseResourceModel> implements OnInit {
 
   resourceform: FormGroup;
-  protected formBuilder: FormBuilder;
   incluindoAlterarando = false;
   disabilitarCampos = true;
-  protected router: Router;
-  public routerActive: ActivatedRoute;
-  disableCampos: boolean;
-  protected mensagem: MessageService;
   bloqueioTela = false;
-  private _snackBar: MatSnackBar
+  disableCampos: boolean;
 
+  protected formBuilder: FormBuilder;
+  protected router: Router;
+  protected mensagem: MessageService;
+  private snackBar: MatSnackBar
+  public routerActive: ActivatedRoute;
+
+  posicaoHorizontalAlerta: MatSnackBarHorizontalPosition = 'right';
+  posicaoVerticalAlerta: MatSnackBarVerticalPosition = 'top';
+  duracaoSegundosAlerta = 3;
 
 
   constructor (
@@ -32,7 +36,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     this.formBuilder = this.injector.get(FormBuilder);
     this.router = this.injector.get(Router);
     this.routerActive = this.injector.get(ActivatedRoute);
-    this._snackBar = this.injector.get(MatSnackBar);
+    this.snackBar = this.injector.get(MatSnackBar);
     this.mensagem = this.injector.get(MessageService);
   }
 
@@ -112,6 +116,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
       } else {
         this.disableCampos = false;
         this.bloqueioTela = false;
+        this.incluindoAlterarando = true;
         this.checkValidationsForm(this.resourceform);
         reject('Erro de validações');
       }
@@ -130,7 +135,6 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
   }
 
   buscarPorId() {
-
   }
 
   protected buildForm(data: any, formGroup?: FormGroup, recursivo = false) {
@@ -199,25 +203,21 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
       return id;
   }
 
-  public checkValidationsForm(formGroup: FormGroup , recursivo = false) {
-    if (!recursivo) {
-      this.mensagem.clear();
-    }
-    let mensagens: any[] = [];
+  public checkValidationsForm(formGroup: FormGroup) {
     Object.keys(formGroup.controls).forEach(campo => {
        console.log(campo);
       const controle = formGroup.get(campo);
       controle.markAsTouched();
       if (controle instanceof FormGroup) {
-        this.checkValidationsForm(controle, true);
+        this.checkValidationsForm(controle);
       }
-
       if (controle.errors != null) {
-          mensagens.push({ severity: 'error', summary: 'Error!', detail: `O campo ${campo} é obrigatório ` });
+          this.snackBar.open(`O campo ${campo} é obrigatório `, 'ATENÇÃO', {
+            horizontalPosition: this.posicaoHorizontalAlerta,
+            verticalPosition: this.posicaoVerticalAlerta, duration: this.duracaoSegundosAlerta * 1000
+          });
       }
     });
-    this.mensagem.addAll(mensagens);
   }
-
 
 }
