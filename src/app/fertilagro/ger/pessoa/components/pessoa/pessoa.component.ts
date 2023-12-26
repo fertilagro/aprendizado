@@ -47,12 +47,12 @@ export class PessoaComponent extends BaseResourceFormComponent<PessoaModel> impl
     super.ngOnInit();
     this.enums();
   this.cidades = [
-    { "ID": 1, "nome": "goiania" },
-    { "ID": 2, "nome": "santos" },
-    { "ID": 3, "nome": "rio de janeiro" },
-    { "ID": 4, "nome": "goiatuba" },
-    { "ID": 5, "nome": "goias velho" },
-    { "ID": 6, "nome": "goianesia" },
+    { "id": 1, "nome": "goiania" },
+    { "id": 2, "nome": "santos" },
+    { "id": 3, "nome": "rio de janeiro" },
+    { "id": 4, "nome": "goiatuba" },
+    { "id": 5, "nome": "goias velho" },
+    { "id": 6, "nome": "goianesia" },
   ]
   }
 

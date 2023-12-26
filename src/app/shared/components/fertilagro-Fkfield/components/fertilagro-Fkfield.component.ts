@@ -14,6 +14,9 @@ import {
 import { AbstractControl, ControlContainer, ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { HttpUtilService } from '../../services/http-util.service';
+import { AutoCompleteCompleteEvent } from 'primeng/autocomplete';
+import { Observable, debounceTime, distinctUntilChanged, map, startWith } from 'rxjs';
+import { Fkfield } from './fkfield.model';
 
 const INPUT_FIELD_VALUE_ACESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -48,6 +51,8 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
   posicaoVerticalAlerta: MatSnackBarVerticalPosition = 'top';
   duracaoSegundosAlerta = 3;
 
+  opcoesFiltradas: Observable<Fkfield[]>;
+
   onChangeCb: (_: any) => void = () => { };
   onTouchedCb: (_: any) => void = () => { };
 
@@ -61,6 +66,14 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
    }
 
   ngOnInit() {
+
+    this.controlador.valueChanges.pipe(
+      startWith(''),
+      debounceTime(300),
+      distinctUntilChanged(),
+      map(value => typeof value === 'string' ? this.consultar(value) : this.opcoesFiltradas)
+    ).subscribe(res => this.opcoesFiltradas = res);
+
     if (this.controlContainer && this.formControlName) {
       this.control = this.controlContainer.control.get(this.formControlName)!;
     }
@@ -87,6 +100,7 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
   }
 
   limpar() {
+    this.opcoesFiltradas = undefined;
   }
 
   registerOnChange(fn: any): void {
@@ -111,10 +125,12 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
     }
   }
 
-  consultar(data: any) {
-    if (data !== null) {
+  consultar(value: any) {
+    if (value === '') {
+      return this.value = undefined;
+    } else {
       this.limpar();
-      this.HttpUtil.chamarServicoPost(this.tipo + "/buscarPorFkField", data)
+      return this.HttpUtil.chamarServicoPost(this.tipo + "/buscarPorFkField", value)
       .subscribe(retorno => {
         if (retorno.content[0] != undefined) {
           this.value = retorno.content[0].id + " - " +retorno.content[0].nome;
