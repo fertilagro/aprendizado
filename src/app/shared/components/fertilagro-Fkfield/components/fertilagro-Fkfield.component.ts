@@ -13,9 +13,8 @@ import {
 } from '@angular/core';
 import { AbstractControl, ControlContainer, ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
-import { HttpUtilService } from '../../services/http-util.service';
-import { AutoCompleteCompleteEvent } from 'primeng/autocomplete';
 import { Observable, debounceTime, distinctUntilChanged, map, startWith } from 'rxjs';
+import { HttpUtilService } from '../../services/http-util.service';
 import { Fkfield } from './fkfield.model';
 
 const INPUT_FIELD_VALUE_ACESSOR: any = {
@@ -125,22 +124,22 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
     }
   }
 
-  consultar(value: any) {
+  consultar(value: string) {
     if (value === '') {
       return this.value = undefined;
     } else {
-      this.limpar();
-      return this.HttpUtil.chamarServicoPost(this.tipo + "/buscarPorFkField", value)
-      .subscribe(retorno => {
-        if (retorno.content[0] != undefined) {
-          this.value = retorno.content[0].id + " - " +retorno.content[0].nome;
-        } else {
-          this.snackBar.open('Cadastro não localizado', 'ATENÇÃO', {
-            horizontalPosition: this.posicaoHorizontalAlerta,
-            verticalPosition: this.posicaoVerticalAlerta, duration: this.duracaoSegundosAlerta * 1000
-          });
-        }
-      });
+      return this.HttpUtil.httpPost(this.tipo + "/buscarPorFkField", value)
+      .pipe(
+        map(resposta => {
+          if (!resposta || resposta.length === 0) {
+            this.snackBar.open('Cadastro não localizado', 'ATENÇÃO', {
+              horizontalPosition: this.posicaoHorizontalAlerta,
+              verticalPosition: this.posicaoVerticalAlerta, duration: this.duracaoSegundosAlerta * 1000
+            });
+          }
+          return resposta;
+        })
+      );
     }
   }
 
