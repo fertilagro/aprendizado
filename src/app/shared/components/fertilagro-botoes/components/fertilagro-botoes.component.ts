@@ -11,13 +11,13 @@ export class FertilAgroBotoesComponent implements OnInit {
   @Input() tela: BaseResourceFormComponent<any>;
 
   @Input() mostrarIncluir = true;
-  
+
   @Input() mostrarAlterar = true;
-  
+
   @Input() mostrarSalvar = true;
-  
+
   @Input() mostrarExcluir = true;
- 
+
   @Input() mostrarCancelar = true;
 
   @Input() mostrarPesquisar = true;
@@ -73,11 +73,12 @@ export class FertilAgroBotoesComponent implements OnInit {
   }
 
   salvar() {
-    if (this.tela) {
+    if (this.tela && !this.bloqueioTela) {
       this.btnClickEvent.emit();
       this.bloqueioTela = true;
-      this.tela.salvar();
-      this.bloqueioTela = false;
+      this.tela.salvar().finally(() => {
+        this.bloqueioTela = false;
+      });
     }
   }
 

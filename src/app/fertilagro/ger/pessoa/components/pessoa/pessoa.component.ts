@@ -33,12 +33,12 @@ export class PessoaComponent extends BaseResourceFormComponent<PessoaModel> impl
   buildResourceForm() {
     this.resourceform = this.formBuilder.group({
       id: [null],
-      razaoSocial: [null],
-      cnpjCpf: [null],
+      razaoSocial: [null, Validators.required],
+      cnpjCpf: [null, Validators.required],
       telefone: [null],
       email: [null],
       endereco: [null],
-      cidade: [null],
+      cidade: [null, Validators.required],
       status: [null],
     });
   }
@@ -84,6 +84,11 @@ export class PessoaComponent extends BaseResourceFormComponent<PessoaModel> impl
       }
     }
     this.cidadesFiltradas = filtro;
+  }
+
+  validaCamposObrigatorios() {
+
+
   }
 
 }
