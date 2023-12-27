@@ -196,18 +196,6 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     return data;
   }
 
-  devolveIdFkfield(string: string): number {
-    let id = undefined;
-    if (string !== undefined && string !== null) {
-      const split = string.split(" ");
-      if (split.length < 2) {
-        id = undefined;
-      }
-      id = Number(split[0]);
-    }
-      return id;
-  }
-
   public checkValidationsForm(formGroup: FormGroup) {
     Object.keys(formGroup.controls).forEach(campo => {
        console.log(campo);

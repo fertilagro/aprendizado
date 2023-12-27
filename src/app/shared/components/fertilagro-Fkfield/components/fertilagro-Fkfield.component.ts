@@ -193,12 +193,12 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
   /** Evento disparado ao selecionar o registro */
   selecionando(event) {
     // console.log(event);
-    if (event.option.value && event.option.value.value && event.option.value.value.id) {
-      let id = event.option.value.value.id.id ? event.option.value.value.id.id : event.option.value.value.id;
-      this.buscarPorChave(id);
-    } else {
+   // if (event.option.value && event.option.value.value && event.option.value.value.id) {
+   //   let id = event.option.value.value.id.id ? event.option.value.value.id.id : event.option.value.value.id;
+   //   this.buscarPorChave(id);
+   // } else {
       this.value = event.option.value;
-    }
+    //}
   }
 
   /** Responsável por tratar os dados exibidos no campo */

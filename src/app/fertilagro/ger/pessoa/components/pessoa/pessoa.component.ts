@@ -16,9 +16,6 @@ import { AutoCompleteCompleteEvent } from 'primeng/autocomplete';
 })
 export class PessoaComponent extends BaseResourceFormComponent<PessoaModel> implements OnInit {
 
-  cidades: any[] | undefined;
-  cidadesFiltradas: any[] | undefined;
-
   status$: Observable<any>;
 
   constructor(
@@ -49,49 +46,10 @@ export class PessoaComponent extends BaseResourceFormComponent<PessoaModel> impl
   override ngOnInit(): void {
     super.ngOnInit();
     this.enums();
-  this.cidades = [
-    { "id": 1, "nome": "goiania" },
-    { "id": 2, "nome": "santos" },
-    { "id": 3, "nome": "rio de janeiro" },
-    { "id": 4, "nome": "goiatuba" },
-    { "id": 5, "nome": "goias velho" },
-    { "id": 6, "nome": "goianesia" },
-  ]
   }
 
   enums() {
     this.status$ = this.httpServ.enumeradorService('StatusEnum');
-  }
-
-  override async salvar() {
-    // this.resourceform.get("cidade").setValue(this.devolveIdFkfield(this.resourceform.getRawValue().cidade));
-     super.salvar()
-  }
-
-  showMessage() {
-    this.messageService.add({
-      severity: 'success', // 'success', 'info', 'warn', 'error'
-      summary: 'Mensagem de Sucesso',
-      detail: 'Operação realizada com sucesso!'
-    });
-  }
-
-  filtrarCidades(event: AutoCompleteCompleteEvent) {
-    let filtro: any[] = [];
-    let query = event.query;
-
-    for (let i = 0; i < (this.cidades as any[]).length; i++) {
-      let cidade = (this.cidades as any[])[i];
-      if (cidade.nome.toLowerCase().indexOf(query.toLowerCase()) == 0) {
-        filtro.push(cidade);
-      }
-    }
-    this.cidadesFiltradas = filtro;
-  }
-
-  validaCamposObrigatorios() {
-
-
   }
 
 }
