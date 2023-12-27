@@ -7,28 +7,32 @@
     <app-fertilagro-botoes [tela]="this"> </app-fertilagro-botoes>
 
     <form [formGroup]="resourceform">
-        <div class="row">
-          <div class="col-6">
-            <app-fertilagro-inputs titulo="Codigo" formControlName="id" [desabilitar]="true">
-            </app-fertilagro-inputs>
-          </div>
+
+      <div class="row">
+        <div class="col-2">
+          <mat-form-field formGroupName="id" appearance="outline">
+            <mat-label>Código</mat-label>
+            <input matInput [disableControl]="true" formControlName="id">
+          </mat-form-field>
         </div>
-        <div class="row">
-          <div class="col-8">
-            <app-fertilagro-inputs titulo="Nome" formControlName="nome" [desabilitar]="disabilitarCampos">
-            </app-fertilagro-inputs>
-          </div>
-          <div class="col-4">
-            <mat-form-field appearance="outline">
-              <mat-label>Estado</mat-label>
-              <mat-select formControlName="estado" [disableControl]="disabilitarCampos">
-                <mat-option *ngFor="let i of estado$ | async" [value]="i">
-                  {{i}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
+      </div>
+
+      <div class="row">
+        <div class="col-8">
+          <app-fertilagro-inputs titulo="Nome" formControlName="nome" [desabilitar]="disabilitarCampos">
+          </app-fertilagro-inputs>
         </div>
+        <div class="col-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Estado</mat-label>
+            <mat-select formControlName="estado" [disableControl]="disabilitarCampos">
+              <mat-option *ngFor="let i of estado$ | async" [value]="i">
+                {{i}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
     </form>
 
   </mat-card-content>

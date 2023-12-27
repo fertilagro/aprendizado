@@ -11,48 +11,50 @@
 
     <form [formGroup]="resourceform">
 
-        <div class="row">
-          <div class="col-4">
-              <app-fertilagro-inputs titulo="Código" formControlName="id" [desabilitar]="true">
-              </app-fertilagro-inputs>
-          </div>
+      <div class="row">
+        <div class="col-2">
+          <mat-form-field formGroupName="id" appearance="outline">
+            <mat-label>Código</mat-label>
+            <input matInput [disableControl]="true" formControlName="id">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-9">
+          <app-fertilagro-inputs titulo="Razão Social" formControlName="razaoSocial" [desabilitar]="disabilitarCampos">
+          </app-fertilagro-inputs>
+        </div>
+        <div class="col-3">
+          <app-fertilagro-inputs titulo="Cnpj/Cpf" formControlName="cnpjCpf" [desabilitar]="disabilitarCampos">
+          </app-fertilagro-inputs>
+        </div>
+      </div>
+
+      <div class="row">
+
+        <div class="col-2">
+          <app-fertilagro-inputs titulo="Telefone" formControlName="telefone" [desabilitar]="disabilitarCampos">
+          </app-fertilagro-inputs>
         </div>
 
-        <div class="row">
-          <div class="col-9">
-              <app-fertilagro-inputs titulo="Razão Social" formControlName="razaoSocial" [desabilitar]="disabilitarCampos">
-              </app-fertilagro-inputs>
-          </div>
-          <div class="col-3">
-              <app-fertilagro-inputs titulo="Cnpj/Cpf" formControlName="cnpjCpf" [desabilitar]="disabilitarCampos">
-              </app-fertilagro-inputs>
-          </div>
+        <div class="col-4">
+          <app-fertilagro-inputs titulo="E-mail" formControlName="email" [desabilitar]="disabilitarCampos">
+          </app-fertilagro-inputs>
         </div>
 
-        <div class="row">
+        <div class="col-6">
+          <app-fertilagro-inputs titulo="Endereço" formControlName="endereco" [desabilitar]="disabilitarCampos">
+          </app-fertilagro-inputs>
+        </div>
 
-          <div class="col-2">
-            <app-fertilagro-inputs titulo="Telefone" formControlName="telefone" [desabilitar]="disabilitarCampos">
-            </app-fertilagro-inputs>
-          </div>
-
-          <div class="col-4">
-            <app-fertilagro-inputs titulo="E-mail" formControlName="email" [desabilitar]="disabilitarCampos">
-            </app-fertilagro-inputs>
-          </div>
-
-          <div class="col-6">
-            <app-fertilagro-inputs titulo="Endereço" formControlName="endereco" [desabilitar]="disabilitarCampos">
-            </app-fertilagro-inputs>
-          </div>
-
-          <div class="col-4">
-            <label>Cidade 2</label>
-            <app-fertilagro-FkField titulo="teste" tipo="cidades"></app-fertilagro-FkField>
+        <div class="col-4">
+          <label>Cidade 2</label>
+          <app-fertilagro-FkField titulo="teste" tipo="cidades"></app-fertilagro-FkField>
         </div>
 
 
-        </div>
+      </div>
     </form>
 
   </mat-card-content>

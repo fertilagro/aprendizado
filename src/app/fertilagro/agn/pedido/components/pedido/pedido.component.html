@@ -10,17 +10,19 @@
     <form [formGroup]="resourceform">
 
       <div class="row">
-          <div class="col-4">
-              <app-fertilagro-inputs titulo="Código" formControlName="id" [desabilitar]="true">
-              </app-fertilagro-inputs>
-          </div>
+        <div class="col-2">
+          <mat-form-field formGroupName="id" appearance="outline">
+            <mat-label>Código</mat-label>
+            <input matInput [disableControl]="true" formControlName="id">
+          </mat-form-field>
+        </div>
       </div>
 
       <mat-tab-group dynamicHeight>
         <mat-tab label="Amostras">
 
           <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-            
+
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
