@@ -143,4 +143,13 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
     }
   }
 
+  getDescricao({ label }: Fkfield) {
+    const descricao = label;
+    return this.retornaVazio(descricao);
+  }
+
+  private retornaVazio(valor: any): any {
+    return valor ?? '';
+  }
+
 }
