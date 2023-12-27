@@ -106,6 +106,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
           .subscribe(response => {
             this.incluindoAlterarando = false;
             this.buildForm(response);
+            this.resource = response;
             this.bloqueioTela = false;
             resolve(response);
           }, error => {
@@ -137,7 +138,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
   buscarPorId() {
   }
 
-  protected buildForm(data: any, formGroup?: FormGroup, recursivo = false) {
+  protected buildForm(data: any, formGroup?: FormGroup) {
     const json = {};
     if (!formGroup) {
       formGroup = this.resourceform;
@@ -148,8 +149,8 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
         for (const elementData of Object.keys(data)) {
           if (elementData === formData) {
             if (data[elementData] != null && data[elementData] !== undefined && data[elementData] !== 'Invalid date') {
-              if (recursivo && formGroup.get(formData) instanceof FormGroup) {
-                this.buildForm(data[elementData], formGroup.get(formData) as FormGroup, recursivo);
+              if (formGroup.get(formData) instanceof FormGroup) {
+                this.buildForm(data[elementData], formGroup.get(formData) as FormGroup);
               } else {
                 json[formData] = data[elementData];
               }
