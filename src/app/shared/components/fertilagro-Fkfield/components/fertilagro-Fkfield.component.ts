@@ -40,6 +40,7 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
   @Input() onFocus = new EventEmitter();
 
   @Output() aoSairComTab = new EventEmitter();
+  @Output() aoSelecionar = new EventEmitter();
 
   public controlador = new FormControl();
   private control: AbstractControl;
@@ -51,6 +52,8 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
   duracaoSegundosAlerta = 3;
 
   opcoesFiltradas: Observable<Fkfield[]>;
+
+  private valorInterno: any;
 
   onChangeCb: (_: any) => void = () => { };
   onTouchedCb: (_: any) => void = () => { };
@@ -78,38 +81,6 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
     }
   }
 
-  set value(v: any) {
-      this.setValue(v);
-  }
-
-  aoSairDoCampo(event, obj) {
-    this.aoSairComTab.emit(true);
-    if ((obj !== null) && obj?.value !== undefined) {
-      this.consultar(obj.value);
-    }
-  }
-
-  writeValue(value: any): void {
-     console.log(value);
-  }
-
-  setValue(v: any) {
-    this.controlador.patchValue(v);
-    v && v.value ? this.onChangeCb(v.value) : this.onChangeCb(v);
-  }
-
-  limpar() {
-    this.opcoesFiltradas = undefined;
-  }
-
-  registerOnChange(fn: any): void {
-    this.onChangeCb = fn;
-  }
-
-  registerOnTouched(fn: any): void {
-    this.onTouchedCb = fn;
-  }
-
   ngDoCheck(): void {
     if (this.control) {
       if (this.controlador.validator !== this.control.validator) {
@@ -124,7 +95,57 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
     }
   }
 
+  get value() {
+    return this.valorInterno;
+  }
+
+  set value(v: any) {
+    if ((!v || typeof (v) === 'object') && v !== this.valorInterno) {
+      this.setValue(v);
+    }
+  }
+
+  aoSairDoCampo(event, obj) {
+    this.aoSairComTab.emit(true);
+    if ((obj !== null) && obj?.value !== undefined) {
+      this.consultar(obj.value);
+    }
+  }
+
+  writeValue(value: any): void {
+    console.log(value);
+    if (typeof value !== 'object' && value && value.length > 0) {
+      this.value = undefined;
+     // this.buscarPorChave(this.chaveLiteral ? value : Number(value));
+    } else if (value && typeof value === 'object') {
+      this.value = new Fkfield(value);
+    } else {
+      this.value = value;
+    }
+  }
+
+  setValue(v: any) {
+    this.controlador.patchValue(v);
+    v && v.value ? this.onChangeCb(v.value) : this.onChangeCb(v);
+    this.aoSelecionar.emit(v);
+  }
+
+  limpar() {
+    this.value = undefined;
+    this.opcoesFiltradas = undefined;
+    this.controlador.reset();
+  }
+
+  registerOnChange(fn: any): void {
+    this.onChangeCb = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this.onTouchedCb = fn;
+  }
+
   consultar(value: string) {
+    this.limpar();
     if (value === '') {
       return this.value = undefined;
     } else {
@@ -143,6 +164,23 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
     }
   }
 
+  /** Caso o valor do campo sejá um número o componente realiza a busca por chave */
+  buscarPorChave(id: any) {
+    this.value = undefined;
+    this.HttpUtil.httpPost(this.tipo + '/buscarPorChaveFkfield', id ).toPromise().
+      then(retorno => {
+        this.value = retorno;
+      }).catch(error => {
+        if (error.error == null) {
+          console.log(error);
+        } else {
+          if (error.status === 400) {
+            this.limpar();
+          }
+        }
+      });
+  }
+
   getDescricao({ label }: Fkfield) {
     const descricao = label;
     return this.retornaVazio(descricao);
@@ -150,6 +188,23 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
 
   private retornaVazio(valor: any): any {
     return valor ?? '';
+  }
+
+  /** Evento disparado ao selecionar o registro */
+  selecionando(event) {
+    // console.log(event);
+    if (event.option.value && event.option.value.value && event.option.value.value.id) {
+      let id = event.option.value.value.id.id ? event.option.value.value.id.id : event.option.value.value.id;
+      this.buscarPorChave(id);
+    } else {
+      this.value = event.option.value;
+    }
+  }
+
+  /** Responsável por tratar os dados exibidos no campo */
+  displayFn(fkfield?: Fkfield): string | undefined {
+    let label = fkfield?.label;
+    return this.retornaVazio(label);
   }
 
 }

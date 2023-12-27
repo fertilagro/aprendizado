@@ -1,25 +1,21 @@
+::ng-deep {
+  .fkfield-option{
+    &.mat-option {
+      &.mat-active {
+        @extend %correcao-prime-mat-option;
+      }
 
+      &:hover {
+        @extend %correcao-prime-mat-option;
+      }
+    }
+  }
+}
 
-
-
-// ::ng-deep .mat-form-field-appearance-outline .mat-form-field-flex {
-//   width: 450px;
-//   height: 45px;
-// }
-
-// ::ng-deep .mat-form-field-wrapper {
-//   padding: 6px 12px;
-// }
-
-// ::ng-deep .mat-mdc-form-field-subscript-wrapper .mat-mdc-form-field-bottom-align {
-//   padding: 0;
-// }
-
-
-
-.fkfield {
-  display: flex;
-  background: red;
-  align-items: center;
-  justify-content: center;
+%correcao-prime-mat-option {
+  white-space: normal;
+  line-height: 20px;
+  padding: 3px 16px;
+  height: auto;
+  min-height: 48px;
 }
