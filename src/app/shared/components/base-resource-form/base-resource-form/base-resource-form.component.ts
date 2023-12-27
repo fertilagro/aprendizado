@@ -138,7 +138,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
   buscarPorId() {
   }
 
-  protected buildForm(data: any, formGroup?: FormGroup) {
+  protected buildForm(data: any, formGroup?: FormGroup, recursivo = false) {
     const json = {};
     if (!formGroup) {
       formGroup = this.resourceform;
@@ -149,13 +149,17 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
         for (const elementData of Object.keys(data)) {
           if (elementData === formData) {
             if (data[elementData] != null && data[elementData] !== undefined && data[elementData] !== 'Invalid date') {
-              if (formGroup.get(formData) instanceof FormGroup) {
-                this.buildForm(data[elementData], formGroup.get(formData) as FormGroup);
+              if (recursivo && formGroup.get(formData) instanceof FormGroup) {
+                this.buildForm(data[elementData], formGroup.get(formData) as FormGroup, recursivo);
               } else {
                 json[formData] = data[elementData];
               }
             } else {
               if (formGroup.get(formData) instanceof FormArray) {
+                /**
+                 * se houver adição de novos tipos de objeto ao formGroup adicionar
+                 * mais else if com as respectivas instancias e inicializações
+                 */
                 json[formData] = [];
               } else {
                 json[formData] = '';
