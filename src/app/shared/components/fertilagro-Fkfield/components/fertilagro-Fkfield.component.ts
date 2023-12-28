@@ -149,7 +149,16 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
     if (value === '') {
       return this.value = undefined;
     } else {
-      return this.HttpUtil.httpPost(this.tipo + "/buscarPorFkField", value)
+      let tipo = this.tipo;
+      let servico = undefined;
+  
+      if (Number(value) !== 0) {
+        servico = "/buscarPorChave";
+      } else {
+        servico = "/buscarPorFkField";
+      }
+
+      return this.HttpUtil.httpPost(this.tipo + servico, {value,tipo})
       .pipe(
         map(resposta => {
           if (!resposta || resposta.length === 0) {
@@ -167,7 +176,8 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
   /** Caso o valor do campo sejá um número o componente realiza a busca por chave */
   buscarPorChave(id: any) {
     this.value = undefined;
-    this.HttpUtil.httpPost(this.tipo + '/buscarPorChaveFkfield', id ).toPromise().
+    let tipo = this.tipo;
+    this.HttpUtil.httpPost(this.tipo + '/buscarPorChave', {id,tipo} ).toPromise().
       then(retorno => {
         this.value = retorno;
       }).catch(error => {
