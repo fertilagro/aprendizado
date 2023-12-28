@@ -17,6 +17,7 @@ import { Observable, debounceTime, distinctUntilChanged, map, startWith } from '
 import { HttpUtilService } from '../../services/http-util.service';
 import { Fkfield } from './fkfield.model';
 
+
 const INPUT_FIELD_VALUE_ACESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => FertilAgroFkFieldComponent),
@@ -151,11 +152,11 @@ export class FertilAgroFkFieldComponent implements OnInit, ControlValueAccessor,
     } else {
       let tipo = this.tipo;
       let servico = undefined;
-  
-      if (Number(value) !== 0) {
-        servico = "/buscarPorChave";
-      } else {
+
+      if (isNaN(parseInt(value)) && (Number(value) !== 0)) {
         servico = "/buscarPorFkField";
+      } else {
+        servico = "/buscarPorChave";
       }
 
       return this.HttpUtil.httpPost(this.tipo + servico, {value,tipo})
