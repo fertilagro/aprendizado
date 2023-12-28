@@ -18,7 +18,8 @@ import { FertilAgroBotoesModule } from './shared/components/fertilagro-botoes/fe
 import { DisableControlModule } from './shared/directive/disable-control/disable-control.module';
 import { SharedModule } from './shared/shared.module';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
   @NgModule({
     declarations: [
@@ -41,6 +42,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
       MatButtonModule,
       MatToolbarModule,
       MatMenuModule,
+      MatDatepickerModule,
+      MatNativeDateModule,
 
       AppRoutingModule,
     ],

@@ -21,6 +21,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
   protected mensagem: MessageService;
   private snackBar: MatSnackBar
   public routerActive: ActivatedRoute;
+  focus = false;
 
   posicaoHorizontalAlerta: MatSnackBarHorizontalPosition = 'right';
   posicaoVerticalAlerta: MatSnackBarVerticalPosition = 'top';

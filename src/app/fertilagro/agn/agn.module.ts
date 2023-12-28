@@ -5,6 +5,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { FertilAgroInputsModule } from 'src/app/shared/components/fertilagro-inputs/fertilagro-inputs.module';
 import { FertilAgroFkFieldModule } from 'src/app/shared/components/fertilagro-Fkfield/fertilagro-Fkfield.module';
 import { FertilAgroBotoesModule } from 'src/app/shared/components/fertilagro-botoes/fertilagro-botoes.module';
+import { FertilAgroDataModule } from 'src/app/shared/components/fertilaagro-data/fertilagro-data.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { FertilAgroBotoesModule } from 'src/app/shared/components/fertilagro-bot
     SharedModule,
     FertilAgroInputsModule,
     FertilAgroFkFieldModule,
-    FertilAgroBotoesModule
+    FertilAgroBotoesModule,
+    FertilAgroDataModule
   ],
   exports: [
 

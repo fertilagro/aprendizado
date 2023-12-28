@@ -1,5 +1,4 @@
 import { Component, Injector, OnInit } from '@angular/core';
-import { MessageService } from 'primeng/api';
 import { BaseResourceFormComponent } from 'src/app/shared/components/base-resource-form/base-resource-form/base-resource-form.component';
 import { HttpUtilService } from 'src/app/shared/components/services/http-util.service';
 import { PedidoModel } from './model/pedido.model';
@@ -39,13 +38,12 @@ export class PedidoComponent extends BaseResourceFormComponent<PedidoModel> impl
     protected Injector: Injector,
     protected pedidoService: PedidoService,
     private httpServ: HttpUtilService,
-    private messageService: MessageService
   ) {
     super(Injector, new PedidoModel(), pedidoService, PedidoModel.fromJson);
   }
 
   override ngOnInit(): void {
-
+    super.ngOnInit();
   }
 
   buildResourceForm() {
