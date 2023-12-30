@@ -136,7 +136,24 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     this.disabilitarCampos = true;
   }
 
-  buscarPorId() {
+  public buscarId(id?: any, servico?): Promise<any> {
+    console.log("buscarId");
+    const idComp = JSON.parse(`{"id": ${JSON.stringify(this.resourceform.getRawValue().id)}}`);
+    const tela = this;
+
+    return this.resourceService.postId(idComp, servico).toPromise()
+    .then(resource => {
+
+      this.buildForm(resource);
+      this.resource = resource;
+
+      this.disableCampos = true;
+      this.incluindoAlterarando = false;
+
+      return Promise.resolve();
+      }
+    ).catch(error => {})
+
   }
 
   protected buildForm(data: any, formGroup?: FormGroup, recursivo = false) {

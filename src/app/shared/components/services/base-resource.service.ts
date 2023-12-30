@@ -21,12 +21,20 @@ export abstract class BaseResourceService<T extends BaseResourceModel> {
     this.http = injector.get(HttpClient);
     this.httpServ = injector.get(HttpUtilService);
     this.baseUrl =  environment.baseUrl;
-
   }
 
   salvar(record: T) {
     const url = this.apiPath + '/salvar';
     return this.httpServ.chamarServicoPost(url, record).pipe(first());
+  }
+
+  postId(resource, servico?): Observable<T> {
+    const url = `${this.apiPath}/${servico ? servico : 'buscarPorChave'}`;
+      return this.http.post(environment.baseUrl + url, resource)
+        .pipe(
+          map(this.jsonDataToResource.bind(this)),
+          catchError(this.handleError)
+        );
   }
 
   protected handleError(error: any): Observable<any> {
@@ -37,7 +45,5 @@ export abstract class BaseResourceService<T extends BaseResourceModel> {
   protected jsonDataToResource(jsonData: any): T {
     return this.jsonDataToResourceFn(jsonData);
   }
-
-
 
 }

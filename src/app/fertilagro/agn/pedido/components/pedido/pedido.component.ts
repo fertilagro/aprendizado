@@ -48,9 +48,11 @@ export class PedidoComponent extends BaseResourceFormComponent<PedidoModel> impl
   buildResourceForm() {
     this.resourceform = this.formBuilder.group({
       id: this.formBuilder.group({
+        empresa: [null],
         id: [null]
       }),
-      data: [null]
+      data: [null],
+      pessoa: [null]
     });
   }
 

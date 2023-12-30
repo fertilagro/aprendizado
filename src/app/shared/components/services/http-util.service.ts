@@ -33,14 +33,11 @@ export class HttpUtilService {
   }
 
   chamarServicoPost(servico: string, parametro: any, responseType?: any): Observable<any> {
-
-  //  return this.fazerRequisicao(() => {
       return this.http.post(environment.baseUrl + servico, parametro, responseType)
       .pipe(
         map(retorno => retorno),
         catchError(this.handleError)
       );
-   // });
   }
 
   protected handleError(error: any): Observable<any> {

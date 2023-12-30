@@ -1,8 +1,10 @@
+import { PessoaModel } from '../../../../../ger/pessoa/components/pessoa/model/pessoa.model';
 
 export class PedidoModel {
   constructor(
     public id?: string,
     public data?: Date,
+    public pessoa?: PessoaModel
   ) { }
 
   static fromJson(jsonData: any): PedidoModel {

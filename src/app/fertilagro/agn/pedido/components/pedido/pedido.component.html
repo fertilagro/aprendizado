@@ -13,7 +13,8 @@
         <div class="col-2">
           <mat-form-field formGroupName="id" appearance="outline">
             <mat-label>Código</mat-label>
-            <input matInput [disableControl]="true" formControlName="id">
+            <input matInput [disableControl]="false" formControlName="id" 
+            (blur)="buscarId()">
           </mat-form-field>
         </div>
       </div>
@@ -39,7 +40,7 @@
 
         <mat-tab label="Financeiro">
         </mat-tab>
-        
+
       </mat-tab-group>
 
 
