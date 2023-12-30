@@ -30,9 +30,8 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./pedido.component.scss']
 })
 export class PedidoComponent extends BaseResourceFormComponent<PedidoModel> implements OnInit {
-
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = ELEMENT_DATA;
+  
+  colunasAmostras: any[];
 
   constructor(
     protected Injector: Injector,

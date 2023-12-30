@@ -6,6 +6,7 @@ import { FertilAgroInputsModule } from 'src/app/shared/components/fertilagro-inp
 import { FertilAgroFkFieldModule } from 'src/app/shared/components/fertilagro-Fkfield/fertilagro-Fkfield.module';
 import { FertilAgroBotoesModule } from 'src/app/shared/components/fertilagro-botoes/fertilagro-botoes.module';
 import { FertilAgroDataModule } from 'src/app/shared/components/fertilaagro-data/fertilagro-data.module';
+import { TabelaFilhaModule } from 'src/app/shared/components/tabela-filha/tabela-filha.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { FertilAgroDataModule } from 'src/app/shared/components/fertilaagro-data
     FertilAgroInputsModule,
     FertilAgroFkFieldModule,
     FertilAgroBotoesModule,
-    FertilAgroDataModule
+    FertilAgroDataModule,
+    TabelaFilhaModule
   ],
   exports: [
 

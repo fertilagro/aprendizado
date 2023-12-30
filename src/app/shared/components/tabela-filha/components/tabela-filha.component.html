@@ -1,0 +1,20 @@
+<div class="card">
+  <p-table [columns]="colunas" [value]="dados" [tableStyle]="{ 'min-width': '50rem' }">
+      <ng-template pTemplate="header" let-columns>
+          <tr>
+              <th *ngFor="let col of columns">
+                  {{ col.titulo }}
+              </th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowData let-columns="columns">
+          <tr>
+              <td *ngFor="let col of columns">
+                  {{ rowData[col.campo] }}
+              </td>
+          </tr>
+      </ng-template>
+  </p-table>
+</div>
+
+  

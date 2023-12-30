@@ -7,6 +7,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { PedidoRoutingModule } from './pedido-routing.module';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { TabelaFilhaModule } from 'src/app/shared/components/tabela-filha/tabela-filha.module';
 
 @NgModule({
   declarations: [],

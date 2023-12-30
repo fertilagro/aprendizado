@@ -214,4 +214,8 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     });
   }
 
+  public getLista(atributo: string): any {
+    return this.resource ? this.resource[atributo] : undefined;
+  }
+
 }
