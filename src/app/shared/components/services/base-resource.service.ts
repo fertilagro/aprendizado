@@ -29,13 +29,20 @@ export abstract class BaseResourceService<T extends BaseResourceModel> {
   }
 
   postId(value, servico?): Observable<T> {
-    const url = `${this.apiPath}/${servico ? servico : 'buscarPorId'}`;
     const tipo = this.apiPath;
-      return this.http.post(environment.baseUrl + url, {tipo,value})
-        .pipe(
-          map(this.jsonDataToResource.bind(this)),
-          catchError(this.handleError)
-        );
+    let url = undefined;
+
+    if (tipo === "pedidos") {
+      url = `${this.apiPath}/${servico ? servico : 'buscarPorIdPedido'}`;
+    } else {
+      url = `${this.apiPath}/${servico ? servico : 'buscarPorId'}`;
+    }
+
+    return this.http.post(environment.baseUrl + url, { tipo, value })
+      .pipe(
+        map(this.jsonDataToResource.bind(this)),
+        catchError(this.handleError)
+      );
   }
 
   protected handleError(error: any): Observable<any> {

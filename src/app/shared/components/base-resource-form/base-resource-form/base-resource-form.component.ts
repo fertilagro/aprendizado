@@ -140,19 +140,14 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     console.log("buscarId");
     const tela = this;
     let empresa = 1;
-    let id = this.resourceform.getRawValue().id.id;
-    //let id = JSON.parse(`{"id": ${JSON.stringify(this.resourceform.getRawValue().id.id)}}`);
-    //(value as any).id.empresa = 1;
+    let id = parseInt(this.resourceform.getRawValue().id.id);
 
     return this.resourceService.postId({empresa,id} , servico).toPromise()
     .then(resource => {
-
       this.buildForm(resource);
       this.resource = resource;
-
       this.disableCampos = true;
       this.incluindoAlterarando = false;
-
       return Promise.resolve();
       }
     ).catch(error => {})

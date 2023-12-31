@@ -10,7 +10,6 @@ export class PessoaModel {
     public endereco?: string,
     public cidade?: CidadeModel,
     public status?: string
-
   ) { }
 
   static fromJson(jsonData: any): PessoaModel {

@@ -52,7 +52,8 @@ export class PedidoComponent extends BaseResourceFormComponent<PedidoModel> impl
         id: [null]
       }),
       data: [null],
-      pessoa: [null]
+      pessoa: [null],
+      status: [null]
     });
   }
 

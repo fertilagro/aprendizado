@@ -4,7 +4,8 @@ export class PedidoModel {
   constructor(
     public id?: string,
     public data?: Date,
-    public pessoa?: PessoaModel
+    public pessoa?: PessoaModel,
+    public status?: string
   ) { }
 
   static fromJson(jsonData: any): PedidoModel {
