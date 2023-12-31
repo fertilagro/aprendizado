@@ -28,9 +28,10 @@ export abstract class BaseResourceService<T extends BaseResourceModel> {
     return this.httpServ.chamarServicoPost(url, record).pipe(first());
   }
 
-  postId(resource, servico?): Observable<T> {
-    const url = `${this.apiPath}/${servico ? servico : 'buscarPorChave'}`;
-      return this.http.post(environment.baseUrl + url, resource)
+  postId(value, servico?): Observable<T> {
+    const url = `${this.apiPath}/${servico ? servico : 'buscarPorId'}`;
+    const tipo = this.apiPath;
+      return this.http.post(environment.baseUrl + url, {tipo,value})
         .pipe(
           map(this.jsonDataToResource.bind(this)),
           catchError(this.handleError)

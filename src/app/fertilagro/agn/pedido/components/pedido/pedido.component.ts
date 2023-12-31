@@ -56,5 +56,4 @@ export class PedidoComponent extends BaseResourceFormComponent<PedidoModel> impl
     });
   }
 
-
 }
