@@ -1,21 +1,11 @@
-::ng-deep {
-  .fkfield-option{
-    &.mat-option {
-      &.mat-active {
-        @extend %correcao-prime-mat-option;
-      }
-
-      &:hover {
-        @extend %correcao-prime-mat-option;
-      }
-    }
-  }
+.tamanho_width {
+  width: 100%;
 }
 
-%correcao-prime-mat-option {
-  white-space: normal;
-  line-height: 20px;
-  padding: 3px 16px;
-  height: auto;
-  min-height: 48px;
+
+.example-full-width {
+  width: 50%;
 }
+
+
+

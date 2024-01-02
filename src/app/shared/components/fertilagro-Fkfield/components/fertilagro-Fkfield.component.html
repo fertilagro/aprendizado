@@ -1,6 +1,6 @@
-<div matAutocompleteOrigin #origin="matAutocompleteOrigin">
+<!-- <div matAutocompleteOrigin #origin="matAutocompleteOrigin"> -->
 
-  <mat-form-field appearance="outline" >
+  <mat-form-field appearance="outline">
       <mat-label>{{titulo}}</mat-label>
 
         <input matInput #input
@@ -9,8 +9,8 @@
         [appAutomaticoFocus]="focus"
         (blur)="aoSairDoCampo($event, auto.isOpen); onTouchedCb($event);"
         onfocus="this.select();"
-        [matAutocomplete]="auto"
-        [matAutocompleteConnectedTo]="origin">
+        [matAutocomplete]="auto">
+        <!-- [matAutocompleteConnectedTo]="origin"> -->
 
       <mat-autocomplete #auto="matAutocomplete" autoActiveFirstOption
       [displayWith]="displayFn.bind(this)" (optionSelected)="selecionando($event)">
@@ -20,4 +20,4 @@
       </mat-autocomplete>
 
   </mat-form-field>
-</div>
+<!-- </div> -->

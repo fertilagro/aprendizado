@@ -1,0 +1,411 @@
+@import "../scss/variaveis";
+
+// correção no estilo do primeNG
+body {
+  .ui-table {
+    .ui-table-scrollable-view {
+      border-bottom: 1px solid #c8c8c8;
+
+      table {
+        .ui-table-thead {
+          > tr {
+            > th {
+              border: none;
+              padding: 0.25em 0.857em;
+              border-top: 1px solid #c8c8c8;
+              font-weight: 700;
+              color: #333333;
+              background: linear-gradient(to top, #dedede 20%, #f9f9f9 70%);
+              border-right: 1px solid #c8c8c8;
+              border-left: 1px solid #c8c8c8;
+              font-size: 13px;
+
+              &.ui-state-highlight {
+                background: linear-gradient(to top, #3d9bd8 20%, #34afff 70%);
+                color: white;
+              }
+            }
+          }
+        }
+
+        .ui-table-tbody {
+          > tr {
+            &:nth-child(even) {
+              background-color: #f3f3f3;
+
+              &.ui-state-highlight {
+                background-color: #8fccfb;
+                color: #000000;
+              }
+            }
+
+            &.ui-state-highlight {
+              background-color: #8fccfb;
+              color: #000000;
+            }
+
+            > td {
+              border: none;
+              background-color: inherit;
+              border-left: 1px solid #c8c8c8;
+              border-right: 1px solid #c8c8c8;
+              font-size: 13px;
+              padding: 0.25em 0.857em;
+              white-space: nowrap;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .mat-dialog-container {
+    padding: inherit;
+  }
+
+  p-togglebutton {
+    &.duplo {
+      padding-left: 0.255rem;
+      margin-top: -1px;
+      padding-bottom: 2px;
+
+      .p-button {
+        height: 100%;
+
+        .p-button-label {
+          padding: 0 !important;
+        }
+      }
+    }
+
+    &.togglebutton-filtro {
+      padding-left: 0.255rem;
+      margin-top: -1px;
+      padding-bottom: 2px;
+
+      &.togglebutton-filtro-excluir {
+        .p-togglebutton {
+          &.p-button {
+            &.p-togglebutton {
+              &.p-highlight {
+                background: #dc3545;
+                border-color: #dc3545;
+
+                &:hover {
+                  background: #af2c39;
+                  border-color: #af2c39;
+
+                  .p-button-icon-left {
+                    color: rgba(255, 255, 255, 0.6);
+                  }
+                }
+
+                .p-button-icon-left {
+                  color: rgba(255, 255, 255, 0.6);
+                }
+              }
+            }
+          }
+        }
+      }
+
+      &.togglebutton-filtro-nulo {
+        .p-togglebutton {
+          &.p-button {
+            &.p-togglebutton {
+              &.p-highlight {
+                background: #f5b064;
+                border-color: #f5b064;
+
+                &:hover {
+                  background: #f39b3c;
+                  border-color: #f39b3c;
+
+                  .p-button-icon-left {
+                    color: rgba(0, 0, 0, 0.6);
+                  }
+                }
+
+                .p-button-icon-left {
+                  color: rgba(0, 0, 0, 0.6);
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .p-button {
+        width: 30px;
+        height: 30px;
+        padding: 0 10px;
+        margin: 0.1em 0;
+        border: 1px solid rgba(0, 0, 0, 0.12);
+
+        .p-button-label {
+          padding: 0 !important;
+        }
+      }
+    }
+
+    .p-togglebutton {
+      &.p-button {
+        background-color: #dadada;
+        border: 1px solid #dadada;
+        color: #333333;
+        transition: background-color 0.2s, box-shadow 0.2s;
+
+        &.p-togglebutton {
+          padding: 0 10px;
+          width: 100%;
+          margin: 0.1em 0;
+          border: 1px solid rgba(0, 0, 0, 0.12);
+
+          &.p-highlight {
+            background: #415f83;
+            border-color: #415f83;
+            color: rgb(255 255 255 / 87%);
+
+            &:hover {
+              background: #385270;
+              border-color: #385270;
+              color: rgb(255 255 255 / 87%);
+
+              .p-button-icon-left {
+                color: rgba(255, 255, 255, 0.6);
+              }
+            }
+
+            .p-button-icon-left {
+              color: rgba(255, 255, 255, 0.6);
+            }
+
+            // .p-button-label {
+            //   padding: 0.19em 1em 0.15em 2em;
+            //   font-size: 13.5px;
+            // }
+          }
+
+          .p-button-label {
+            padding: 0.19em 1em 0.15em 2em;
+            font-size: 13.5px;
+          }
+        }
+      }
+    }
+  }
+
+  // &.p-button-icon-only {
+      //   &.p-button-text-icon-left {
+      //   }
+      // }
+
+  .p-toast {
+    width: 21rem;
+
+    .p-toast-message {
+      margin: 0px 0 0.6rem 0;
+      box-shadow: 0 3px 3px -2px rgb(0 0 0 / 20%), 0 3px 4px 0 rgb(0 0 0 / 14%), 0 1px 8px 0 rgb(0 0 0 / 12%);
+
+      .p-toast-message-content {
+        padding: 0.5rem 0.8rem;
+        align-items: center;
+
+        .p-toast-detail {
+          margin: 0;
+        }
+      }
+    }
+  }
+
+  /** Checkbox */
+  .p-checkbox {
+    .p-checkbox-box {
+      &.p-highlight {
+        border-color: #415f83;
+        background: #415f83;
+
+        .p-checkbox-icon {
+          &.pi-check::before {
+            top: 8px;
+            left: 2px;
+          }
+        }
+      }
+    }
+  }
+  /** Fim Checkbox */
+
+  .sub-rotina-layout {
+    .p-fileupload-choose {
+      height: 100%;
+      vertical-align: middle;
+    }
+    .pi {
+      font-size: 1em;
+      margin-top: -0.6em !important;
+    }
+    .pi-plus::before {
+      font-weight: 900;
+      font-family: "Font Awesome 5 Free";
+      content: "\f093";
+    }
+  }
+
+  p-selectbutton {
+    .p-selectbutton {
+      margin-top: 3px;
+
+      .p-button {
+        padding: 0.15rem 1rem;
+        font-size: $tamanho-fonte;
+
+        &:focus {
+          &.p-highlight {
+            background: $a2o-azul-700;
+            border-color: $a2o-azul-700;
+          }
+        }
+
+        &.p-highlight {
+          background: $a2o-azul;
+          border-color: $a2o-azul;
+
+          .p-button-icon {
+            color: white;
+          }
+
+          .p-button-label {
+            color: white;
+          }
+        }
+      }
+    }
+  }
+
+  /* Tabela de Arvore */
+  .p-treetable {
+    .p-treetable-scrollable-view {
+      border-bottom: 1px solid #c8c8c8;
+
+      table {
+        .p-treetable-thead {
+          tr {
+            th {
+              padding: 0.25em 0.857em;
+              font-weight: 700;
+              color: #333;
+              background: linear-gradient(0deg, #dedede 20%, #f9f9f9 70%);
+              border: 1px solid #c8c8c8;
+              border-bottom: none;
+              font-size: 13px;
+              white-space: nowrap;
+
+              &:not(.p-highlight):hover {
+                background: linear-gradient(0deg, #f9f9f9 20%, #dedede 70%);
+              }
+
+              &.p-highlight {
+                background: linear-gradient(to top, #415f83 20%, #5985bb 70%);
+                color: white;
+
+                .p-sortable-column-icon {
+                  color: white;
+                }
+
+                &:hover {
+                  background: linear-gradient(to top, #5985bb 20%, #415f83 70%);
+                  color: white;
+
+                  .p-sortable-column-icon {
+                    color: white;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .p-treetable-tbody {
+          tr {
+            &:nth-child(even) {
+              background-color: #f3f3f3;
+
+              &.p-highlight {
+                background: rgba(65, 95, 131, 0.18);
+                color: #2a3e56;
+              }
+            }
+
+            &.p-highlight {
+              background: rgba(65, 95, 131, 0.12);
+              color: #2a3e56;
+            }
+
+            td {
+              background-color: inherit;
+              border: 1px solid #c8c8c8;
+              border-top: none;
+              border-bottom: none;
+              font-size: 13px;
+              padding: 0.25em 0.857em;
+              white-space: nowrap;
+
+              .p-treetable-toggler {
+                width: 1.2rem;
+                height: 1.2rem;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .p-treetable-footer {
+      background: #f0f0f0;
+      padding: 0.4rem;
+      border-width: 1px;
+    }
+  }
+  /* Fim Tabela de Arvore */
+
+  // Correção tabs
+  .mat-tab-group {
+    .mat-tab-header {
+      margin: 5px 0;
+
+      .mat-tab-label-container {
+        .mat-tab-list {
+          .mat-tab-labels {
+            .mat-tab-label {
+              height: 30px;
+              background: #f0f0f0;
+              border: 1px solid #dadada;
+              border-top: none;
+              border-bottom: none;
+              min-width: 120px;
+              opacity: 1;
+              color: #717171;
+
+              &.mat-tab-label-active {
+                background: white;
+                border: 1px solid #dadada;
+                border-top: none;
+                border-bottom: none;
+              }
+
+              .mat-tab-label-content {
+                font-size: 13.5px;
+              }
+            }
+          }
+
+          .mat-ink-bar {
+            background-color: $a2o-azul;
+            top: 0;
+          }
+        }
+      }
+    }
+  }
+}

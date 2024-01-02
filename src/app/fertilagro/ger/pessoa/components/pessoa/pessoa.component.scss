@@ -1,24 +1,33 @@
+/*--------------------------------------------------------------------------------------------
+                                  For Appearance (Outline)
+--------------------------------------------------------------------------------------------*/
 
-.inputs {
-  position: relative;
-  height: 100%;
-  width: 100%;
-  margin: auto;
-  border: 0.5px solid;
+// // Alterar a cor e o plano de fundo da entrada da label do título e o tamanho da título em foco **********
+::ng-deep .mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label {
+ // color: orangered; // lable color
+  background-color: rgb(164, 215, 249); // lable background
+  font-size: 20px !important; // lable font-size
+ // padding: 0 10px; // add padding in lable
+}
+
+// // Alterar a altura de entrada do campo Mat-Form-Field **********
+// ::ng-deep .mat-mdc-text-field-wrapper:not(.mat-mdc-text-field-wrapper--disabled) {
+//   background-color: rgb(255, 123, 0);
+// }
+
+::ng-deep .mat-mdc-text-field-wrapper {
+  padding: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  border-radius: 2px;
+  height: 35px !important;
+  width: 350px !important;
+
+  // Alinha o texto no centro do component Mat-form
+  &.mdc-text-field--outlined {
+    align-items: center !important;
+  }
 }
 
 
-::ng-deep .mat-focused .mat-form-field-label {
-  /*change color of label*/
-  color: green !important;
- }
-
- ::ng-deep.mat-form-field-underline {
-  /*change color of underline*/
-  background-color: green !important;
-}
-
-::ng-deep.mat-form-field-ripple {
- /*change color of underline when focused*/
- background-color: green !important;
-}

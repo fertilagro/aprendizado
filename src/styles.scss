@@ -4,14 +4,23 @@
 // Importação do Theme do material Angular
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-@import 'primeng/resources/primeng.min.css';
-@import 'primeng/resources/themes/saga-blue/theme.css';
+@import "scss/primeng";
 
 
 * {
   font-family: "Roboto", sans-serif;
   font-weight: 600;
 }
+
+body {
+  background-color: white;
+}
+
+// .disabled {
+//   opacity: 0.2;
+//   background: rgb(141, 24, 24);
+//   cursor: not-allowed;
+// }
 
 .row {
   margin-right: 0;
@@ -29,17 +38,16 @@
 .col-9,
 .col-10,
 .col-11,
-.col-12,
-.col-md-8 {
+.col-12 {
    position: relative;
    width: 100%;
    min-height: 1px;
    padding-right: 2px;
    padding-left: 2px;
 
-   align-items: center;
+  // align-items: center;
 
-   //background-color: aqua;
+ //  background-color: aqua;
 }
 
 .card_fertilagro {
