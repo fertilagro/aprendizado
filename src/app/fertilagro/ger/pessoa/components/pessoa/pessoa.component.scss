@@ -2,7 +2,7 @@
                                   For Appearance (Outline)
 --------------------------------------------------------------------------------------------*/
 
-// // Alterar a cor e o plano de fundo da entrada da label do título e o tamanho da título em foco **********
+// Alterar a cor e o plano de fundo da label do título e o tamanho da título em foco **********
 ::ng-deep .mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label {
   background-color: rgb(164, 215, 249); // lable background
   font-size: 20px !important; // lable font-size
@@ -27,10 +27,10 @@
   }
 }
 
+// centraliza o texto da label do título quando não está em Foco
 ::ng-deep .mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-floating-label {
   top: 13px !important;
   left: 0px;
-  color: black;
 }
 
 
