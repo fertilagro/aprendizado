@@ -4,18 +4,14 @@
 
 // // Alterar a cor e o plano de fundo da entrada da label do título e o tamanho da título em foco **********
 ::ng-deep .mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label {
- // color: orangered; // lable color
   background-color: rgb(164, 215, 249); // lable background
   font-size: 20px !important; // lable font-size
- // padding: 0 10px; // add padding in lable
+  padding: 0 10px; // add padding in lable
 }
 
-// // Alterar a altura de entrada do campo Mat-Form-Field **********
-// ::ng-deep .mat-mdc-text-field-wrapper:not(.mat-mdc-text-field-wrapper--disabled) {
-//   background-color: rgb(255, 123, 0);
-// }
-
 ::ng-deep .mat-mdc-text-field-wrapper {
+  padding-bottom: 0;
+  //margin: 0.1em 0;
   padding: auto;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -23,11 +19,18 @@
   border-radius: 2px;
   height: 35px !important;
   width: 350px !important;
+  background: linear-gradient(#e4e4e4, #fff);
 
   // Alinha o texto no centro do component Mat-form
   &.mdc-text-field--outlined {
     align-items: center !important;
   }
+}
+
+::ng-deep .mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-floating-label {
+  top: 13px !important;
+  left: 0px;
+  color: black;
 }
 
 
