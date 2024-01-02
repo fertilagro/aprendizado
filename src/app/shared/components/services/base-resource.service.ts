@@ -37,7 +37,6 @@ export abstract class BaseResourceService<T extends BaseResourceModel> {
     } else {
       url = `${this.apiPath}/${servico ? servico : 'buscarPorId'}`;
     }
-
     return this.http.post(environment.baseUrl + url, { tipo, value })
       .pipe(
         map(this.jsonDataToResource.bind(this)),

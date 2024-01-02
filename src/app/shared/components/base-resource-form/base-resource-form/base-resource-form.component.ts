@@ -136,14 +136,16 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     this.disabilitarCampos = true;
   }
 
-  public buscarId(id1?: any, servico?): Promise<any> {
+  public buscarId(): Promise<any> {
     console.log("buscarId");
     const tela = this;
     let empresa = 1;
     let id = parseInt(this.resourceform.getRawValue().id.id);
+    let servico = undefined;
 
     return this.resourceService.postId({empresa,id} , servico).toPromise()
     .then(resource => {
+      console.log(resource);
       this.buildForm(resource);
       this.resource = resource;
       this.disableCampos = true;

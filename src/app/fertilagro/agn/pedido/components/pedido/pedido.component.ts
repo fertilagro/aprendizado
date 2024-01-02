@@ -1,37 +1,20 @@
-import { Component, Injector, OnInit } from '@angular/core';
+import { Component, Injector, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { BaseResourceFormComponent } from 'src/app/shared/components/base-resource-form/base-resource-form/base-resource-form.component';
 import { HttpUtilService } from 'src/app/shared/components/services/http-util.service';
 import { PedidoModel } from './model/pedido.model';
 import { PedidoService } from './service/pessoa.service';
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];
+import { AmostraServiceService } from '../../../../ger/amostra/components/service/amostra.service.service';
 
 @Component({
   selector: 'fertilagro-pedido',
   templateUrl: './pedido.component.html',
   styleUrls: ['./pedido.component.scss']
 })
-export class PedidoComponent extends BaseResourceFormComponent<PedidoModel> implements OnInit {
+export class PedidoComponent extends BaseResourceFormComponent<PedidoModel> implements OnInit, OnChanges {
   
   colunasAmostras: any[];
+
+  pedidoAmostras: any[];
 
   constructor(
     protected Injector: Injector,
@@ -43,6 +26,11 @@ export class PedidoComponent extends BaseResourceFormComponent<PedidoModel> impl
 
   override ngOnInit(): void {
     super.ngOnInit();
+    this.tabelas();
+    this.resourceform.get('data').valueChanges.subscribe((novoValor) => {
+      console.log('Novo valor de "data":', novoValor);
+      this.pedidoAmostras = this.resource["pedidoAmostras"]
+    });
   }
 
   buildResourceForm() {
@@ -55,6 +43,32 @@ export class PedidoComponent extends BaseResourceFormComponent<PedidoModel> impl
       pessoa: [null],
       status: [null]
     });
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes["data"]) {
+      const valorAnterior = changes["data"].previousValue;
+      const valorAtual = changes["data"].currentValue;
+      
+      console.log(`O valor anterior do meuInput era ${valorAnterior}, o valor atual é ${valorAtual}`);
+    }
+  }
+
+      // Inscreva-se nas mudanças do controle "data"
+
+
+  tabelas() {
+    this.colunasAmostras = [
+      { campo: 'id.id', titulo: 'Código' },
+      { campo: 'id.pedido', titulo: 'Pedido' },
+    ];
+    console.log("entrou na tabelas()")
+  }
+
+  public override buscarId(): Promise<any> {
+      return super.buscarId().then((id) => {
+
+      });
   }
 
 }
