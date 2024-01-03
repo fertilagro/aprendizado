@@ -1,9 +1,8 @@
-import { Component, Injector, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Injector, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { BaseResourceFormComponent } from 'src/app/shared/components/base-resource-form/base-resource-form/base-resource-form.component';
 import { HttpUtilService } from 'src/app/shared/components/services/http-util.service';
 import { PedidoModel } from './model/pedido.model';
 import { PedidoService } from './service/pessoa.service';
-import { AmostraServiceService } from '../../../../ger/amostra/components/service/amostra.service.service';
 
 @Component({
   selector: 'fertilagro-pedido',

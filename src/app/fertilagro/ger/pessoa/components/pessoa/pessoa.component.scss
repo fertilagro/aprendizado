@@ -20,17 +20,7 @@
   // Alinha o texto no centro do component Mat-form
   &.mdc-text-field--outlined {
     align-items: center !important;
-
-    &[disabled] {
-      background: red; // Cor quando desabilitado
-    }
-  
-    &:not([disabled]) {
-      background: blue; // Cor quando habilitado
-    }
   }
-
-
 
 }
 
