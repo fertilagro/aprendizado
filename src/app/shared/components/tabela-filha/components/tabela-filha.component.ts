@@ -17,7 +17,8 @@ export class TabelaFilhaComponent implements OnInit {
   @Input() largura: any[];
 
   constructor(
-    private cd: ChangeDetectorRef) { }
+    private cd: ChangeDetectorRef
+    ) { }
 
   ngOnInit() {
 
