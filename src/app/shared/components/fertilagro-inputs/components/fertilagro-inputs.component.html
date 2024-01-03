@@ -1,3 +1,5 @@
+
+<mat-form-field appearance="outline">
 <mat-label>{{titulo}}</mat-label>
 <input matInput #input class="form-control"
   currencyMask
@@ -8,3 +10,7 @@
   onfocus="this.select();"
   (blur)="aoSairDoCampo(controlador); onTouchedCb($event); inFocus=false; emFoco.emit(inFocus)"
   (focus)="inFocus = true; emFoco.emit(inFocus)">
+</mat-form-field>
+
+
+

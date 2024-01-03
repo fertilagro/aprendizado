@@ -1,10 +1,16 @@
-// // Importacao Bootstrap
-@import '~bootstrap/dist/css/bootstrap.min.css';
 
-// Importação do Theme do material Angular
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-@import "scss/primeng";
+// Importação do Theme do material Angular em arquivo separado
+ @import "@angular/material/prebuilt-themes/indigo-pink.css";
+
+ @import "/src/scss/variaveis";
+
+ @import "/src/scss/primeng";
+
+ @import "/src/scss/material-angular";
+
+// Importacao Bootstrap
+ @import "../node_modules/bootstrap/scss/bootstrap.scss";
 
 
 * {
@@ -16,36 +22,23 @@ body {
   background-color: white;
 }
 
-// .disabled {
-//   opacity: 0.2;
-//   background: rgb(141, 24, 24);
-//   cursor: not-allowed;
-// }
-
 .row {
-  margin-right: 0;
-  margin-left: 0;
+  margin-right: 0 !important;
+  margin-left: 0 !important;
 }
 
-.col-1,
 .col-2,
-.col-3,
 .col-4,
-.col-5,
 .col-6,
-.col-7,
-.col-8,
-.col-9,
 .col-10,
-.col-11,
-.col-12 {
+.col-12,
+.col-md-12 {
    position: relative;
-   width: 100%;
+ //  width: 100%;
    min-height: 1px;
    padding-right: 2px;
    padding-left: 2px;
 
-   text-transform: uppercase;
   // align-items: center;
 
  //  background-color: aqua;
