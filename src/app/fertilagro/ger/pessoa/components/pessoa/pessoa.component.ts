@@ -1,4 +1,4 @@
-import { Component, Injector, OnInit } from '@angular/core';
+import { Component, Injector, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { BaseResourceFormComponent } from 'src/app/shared/components/base-resource-form/base-resource-form/base-resource-form.component';
@@ -12,7 +12,8 @@ import { AutoCompleteCompleteEvent } from 'primeng/autocomplete';
 @Component({
   selector: 'app-pessoa',
   templateUrl: './pessoa.component.html',
-  styleUrls: ['./pessoa.component.scss']
+  styleUrls: ['./pessoa.component.scss'],
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class PessoaComponent extends BaseResourceFormComponent<PessoaModel> implements OnInit {
 
