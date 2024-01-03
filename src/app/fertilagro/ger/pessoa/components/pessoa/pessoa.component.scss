@@ -4,33 +4,40 @@
 
 // Alterar a cor e o plano de fundo da label do título e o tamanho da título em foco **********
 ::ng-deep .mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label {
-  background-color: rgb(164, 215, 249); // lable background
+  background-color: rgb(191, 229, 255); // lable background
   font-size: 20px !important; // lable font-size
   padding: 0 10px; // add padding in lable
 }
 
 ::ng-deep .mat-mdc-text-field-wrapper {
   padding-bottom: 0;
-  //margin: 0.1em 0;
-  padding: auto;
   margin-top: 10px;
   margin-bottom: 10px;
   margin-right: 10px;
   border-radius: 2px;
-  height: 35px !important;
-  width: 350px !important;
-  background: linear-gradient(#e4e4e4, #fff);
+  height: 40px;
+  width: 350px;
 
-  // Alinha o texto no centro do component Mat-form
+  // Alinha o texto no centro do componente Mat-form
   &.mdc-text-field--outlined {
-    align-items: center !important;
+    align-items: center;
+    background: linear-gradient(#e4e4e4, #fff);
+
+    &:not(:disabled) {
+      border: 1px solid #000000;
+      background: #000000;
+    }
   }
 }
+
+  
 
 // centraliza o texto da label do título quando não está em Foco
 ::ng-deep .mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-floating-label {
   top: 13px !important;
   left: 0px;
 }
+
+
 
 
