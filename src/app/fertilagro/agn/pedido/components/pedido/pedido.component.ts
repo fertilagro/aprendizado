@@ -1,4 +1,4 @@
-import { Component, Injector, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Injector, OnInit } from '@angular/core';
 import { BaseResourceFormComponent } from 'src/app/shared/components/base-resource-form/base-resource-form/base-resource-form.component';
 import { HttpUtilService } from 'src/app/shared/components/services/http-util.service';
 import { PedidoModel } from './model/pedido.model';
@@ -9,8 +9,8 @@ import { PedidoService } from './service/pessoa.service';
   templateUrl: './pedido.component.html',
   styleUrls: ['./pedido.component.scss']
 })
-export class PedidoComponent extends BaseResourceFormComponent<PedidoModel> implements OnInit, OnChanges {
-  
+export class PedidoComponent extends BaseResourceFormComponent<PedidoModel> implements OnInit {
+
   colunasAmostras: any[];
 
   pedidoAmostras: any[];
@@ -26,10 +26,11 @@ export class PedidoComponent extends BaseResourceFormComponent<PedidoModel> impl
   override ngOnInit(): void {
     super.ngOnInit();
     this.tabelas();
-    this.resourceform.get('data').valueChanges.subscribe((novoValor) => {
-      console.log('Novo valor de "data":', novoValor);
-      this.pedidoAmostras = this.resource["pedidoAmostras"]
-    });
+
+    // this.resourceform.get('data').valueChanges.subscribe((novoValor) => {
+    //   console.log('Novo valor de "data":', novoValor);
+    //   this.pedidoAmostras = this.resource["pedidoAmostras"]
+    // });
   }
 
   buildResourceForm() {
@@ -44,18 +45,6 @@ export class PedidoComponent extends BaseResourceFormComponent<PedidoModel> impl
     });
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes["data"]) {
-      const valorAnterior = changes["data"].previousValue;
-      const valorAtual = changes["data"].currentValue;
-      
-      console.log(`O valor anterior do meuInput era ${valorAnterior}, o valor atual é ${valorAtual}`);
-    }
-  }
-
-      // Inscreva-se nas mudanças do controle "data"
-
-
   tabelas() {
     this.colunasAmostras = [
       { campo: 'id.id', titulo: 'Código' },
@@ -65,9 +54,7 @@ export class PedidoComponent extends BaseResourceFormComponent<PedidoModel> impl
   }
 
   public override buscarId(): Promise<any> {
-      return super.buscarId().then((id) => {
-
-      });
+      return super.buscarId();
   }
 
 }
