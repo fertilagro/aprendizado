@@ -18,7 +18,6 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
 
   protected formBuilder: FormBuilder;
   protected router: Router;
-  protected mensagem: MessageService;
   private snackBar: MatSnackBar
   public routerActive: ActivatedRoute;
   focus = false;
@@ -38,7 +37,6 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     this.router = this.injector.get(Router);
     this.routerActive = this.injector.get(ActivatedRoute);
     this.snackBar = this.injector.get(MatSnackBar);
-    this.mensagem = this.injector.get(MessageService);
   }
 
   ngOnInit() {
@@ -66,32 +64,38 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
   }
 
   incluir() {
-    this.disabilitarCampos = false;
     this.incluindoAlterarando = true;
+    this.disabilitarCampos = false;
     if (this.resourceform) {
       this.resourceform.reset();
     }
     this.resource = {} as T;
+
     if (this.resourceform.get('status') instanceof FormControl) {
       this.resourceform.get("status").setValue("ATIVO")
     }
   }
 
-  cancelar() {
-    this.disabilitarCampos = true;
-    this.incluindoAlterarando = false;
+  public async cancelar(): Promise<void> {
     this.resource = {} as T;
+
     if (this.incluindoAlterarando && !this.temId()) {
       this.resourceform.reset();
       this.resourceform.disable();
+      this.disabilitarCampos = true;
+      this.incluindoAlterarando = false;
     } else if (this.temId()) {
+      this.disabilitarCampos = true;
+      this.incluindoAlterarando = false;
       this.resourceform.disable();
+      await this.buscarId();
     }
+    return Promise.resolve();
   }
 
   alterar() {
     this.incluindoAlterarando = true;
-    this.disabilitarCampos = true;
+    this.disabilitarCampos = false;
   }
 
   public async salvar(): Promise<any> {
@@ -105,6 +109,13 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
           .salvar(resource)
           .pipe(take(1))
           .subscribe(response => {
+
+            if (this.resourceform.getRawValue().id === null || this.resourceform.getRawValue().id.id === null) {
+              this.snackBar.open('Cadastro realizado com sucesso.', 'ATENÇÃO', {
+                horizontalPosition: this.posicaoHorizontalAlerta,
+                verticalPosition: this.posicaoVerticalAlerta, duration: this.duracaoSegundosAlerta * 1000
+              });
+            }
             this.incluindoAlterarando = false;
             this.buildForm(response);
             this.resource = response;
@@ -118,14 +129,13 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
       } else {
         this.disableCampos = false;
         this.bloqueioTela = false;
-        this.incluindoAlterarando = true;
         this.checkValidationsForm(this.resourceform);
         reject('Erro de validações');
       }
     });
   }
 
-  excluir() {
+  public async excluir(): Promise<void> {
     if (this.resourceform.get('status') instanceof FormControl) {
       this.resourceform.get("status").setValue("EXCLUIDO")
     }

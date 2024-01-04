@@ -3,26 +3,45 @@
     <div class="btn-cad">
 
       <app-basico-botao id="btn-incluir" rotulo="Incluir" icone="add_box"
-      [desabilitar]="!(mostrarIncluir && !emEdicao())" [esconder]="false" (clique)="incluir()" showDelay="1000"></app-basico-botao>
+      [desabilitar]="desabilitarBtnIncluir" [esconder]="false" (clique)="incluir()" showDelay="1000"></app-basico-botao>
 
       <app-basico-botao id="btn-alterar" rotulo="Alterar" icone="edit"
-      [desabilitar]="!(mostrarAlterar && !emEdicao() && temId())" [esconder]="false" (clique)="alterar()" showDelay="1000"></app-basico-botao>
+      [desabilitar]="desabilitarBtnAlterar" [esconder]="false" (clique)="alterar()" showDelay="1000"></app-basico-botao>
 
       <app-basico-botao id="btn-cancelar" rotulo="Cancelar" icone="cancel"
-      [desabilitar]="!(mostrarCancelar && emEdicao())" [esconder]="false" (clique)="cancelar()" showDelay="1000"></app-basico-botao>
+      [desabilitar]="desabilitarBtnCancelar" [esconder]="false" (clique)="cancelar()" showDelay="1000"></app-basico-botao>
 
       <app-basico-botao id="btn-salvar" rotulo="Salvar" icone="save"
-      [desabilitar]="!(mostrarSalvar && emEdicao())" [esconder]="false" (clique)="salvar()" showDelay="1000"></app-basico-botao>
+      [desabilitar]="desabilitarBtnSalvar" [esconder]="false" (clique)="salvar()" showDelay="1000"></app-basico-botao>
 
       <app-basico-botao id="btn-excluir" rotulo="Excluir" icone="delete_outline"
-      [desabilitar]="!(mostrarExcluir && !emEdicao() && temId())" [esconder]="false" (clique)="excluir()" showDelay="1000"></app-basico-botao>
+      [desabilitar]="desabilitarBtnExcluir" [esconder]="false" (clique)="excluir()" showDelay="1000"></app-basico-botao>
 
       <app-basico-botao id="btn-pesquisar" rotulo="Pesquisar" icone="manage_search"
-      [desabilitar]="!(mostrarPesquisar && !emEdicao())"  [esconder]="false" (clique)="pesquisar()" showDelay="1000"></app-basico-botao>
+      [desabilitar]="desabilitarBtnPesquisar"  [esconder]="false" (clique)="pesquisar()" showDelay="1000"></app-basico-botao>
+
     </div>
 
   </div>
 </div>
 <hr />
+
+<!-- <app-basico-botao id="btn-incluir" rotulo="Incluir" icone="add_box"
+[desabilitar]="!(mostrarIncluir && !emEdicao())" [esconder]="false" (clique)="incluir()" showDelay="1000"></app-basico-botao>
+
+<app-basico-botao id="btn-alterar" rotulo="Alterar" icone="edit"
+[desabilitar]="!(mostrarAlterar && !emEdicao() && temId())" [esconder]="false" (clique)="alterar()" showDelay="1000"></app-basico-botao>
+
+<app-basico-botao id="btn-cancelar" rotulo="Cancelar" icone="cancel"
+[desabilitar]="!(mostrarCancelar && emEdicao())" [esconder]="false" (clique)="cancelar()" showDelay="1000"></app-basico-botao>
+
+<app-basico-botao id="btn-salvar" rotulo="Salvar" icone="save"
+[desabilitar]="!(mostrarSalvar && emEdicao())" [esconder]="false" (clique)="salvar()" showDelay="1000"></app-basico-botao>
+
+<app-basico-botao id="btn-excluir" rotulo="Excluir" icone="delete_outline"
+[desabilitar]="!(mostrarExcluir && !emEdicao() && temId())" [esconder]="false" (clique)="excluir()" showDelay="1000"></app-basico-botao>
+
+<app-basico-botao id="btn-pesquisar" rotulo="Pesquisar" icone="manage_search"
+[desabilitar]="!(mostrarPesquisar && !emEdicao())"  [esconder]="false" (clique)="pesquisar()" showDelay="1000"></app-basico-botao> -->
 
 

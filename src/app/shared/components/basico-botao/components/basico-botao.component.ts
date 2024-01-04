@@ -20,8 +20,6 @@ export class BasicoBotaoComponent {
 
   @Input() estilo: string = '';
 
-  @Input('loading') isLoading: boolean;
-
   @Input() classe: string;
 
   @Output() clique = new EventEmitter();
@@ -29,7 +27,7 @@ export class BasicoBotaoComponent {
   constructor() { }
 
   aoClique() {
-    if (!this.desabilitar && !this.isLoading) {
+    if (!this.desabilitar) {
       this.clique.emit();
     }
   }

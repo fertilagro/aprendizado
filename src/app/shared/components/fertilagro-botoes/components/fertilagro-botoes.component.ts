@@ -24,9 +24,9 @@ export class FertilAgroBotoesComponent implements OnInit {
 
   @Input() desabilitarBtnIncluir = false;
 
-  @Input() desabilitarBtnAlterar = false;
-
   @Input() desabilitarBtnSalvar = false;
+
+  @Input() desabilitarBtnAlterar = false;
 
   @Input() desabilitarBtnExcluir = false;
 
@@ -42,33 +42,23 @@ export class FertilAgroBotoesComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.tela) {
-        this.desabilitarBtnIncluir = true;
+        this.desabilitarBtnIncluir = false;
         this.desabilitarBtnAlterar = true;
-        this.desabilitarBtnSalvar = true;
         this.desabilitarBtnExcluir = true;
+        this.desabilitarBtnCancelar = true;
+        this.desabilitarBtnSalvar = true;
     }
   }
 
   incluir() {
     if (this.tela) {
+      this.desabilitarBtnIncluir = true;
+      this.desabilitarBtnCancelar = false;
+      this.desabilitarBtnPesquisar = true;
+      this.desabilitarBtnSalvar = false;
+
       this.btnClickEvent.emit();
       this.tela.incluir();
-    }
-  }
-
-  alterar() {
-    if (this.tela) {
-      this.btnClickEvent.emit();
-      this.tela.alterar();
-    }
-  }
-
-  cancelar() {
-    if (this.tela) {
-      this.btnClickEvent.emit();
-      this.bloqueioTela = true;
-      this.tela.cancelar();
-      this.bloqueioTela = false;
     }
   }
 
@@ -82,10 +72,42 @@ export class FertilAgroBotoesComponent implements OnInit {
     }
   }
 
+  alterar() {
+    if (this.tela) {
+      this.btnClickEvent.emit();
+      this.tela.alterar();
+    }
+  }
+
+  cancelar() {
+    if (this.tela) {
+
+      if (this.temId()) {
+        this.desabilitarBtnCancelar = true;
+        this.desabilitarBtnPesquisar = false;
+        this.desabilitarBtnSalvar = true;
+        this.desabilitarBtnIncluir = true;
+      } else {
+        this.desabilitarBtnCancelar = true;
+        this.desabilitarBtnPesquisar = false;
+        this.desabilitarBtnSalvar = true;
+        this.desabilitarBtnIncluir = false;
+      }
+
+      this.btnClickEvent.emit();
+      this.bloqueioTela = true;
+      this.tela.cancelar().finally(() => {
+        this.bloqueioTela = false;
+      });
+    }
+  }
+
   excluir() {
     if (this.tela) {
       this.btnClickEvent.emit();
-      this.tela.excluir();
+      this.tela.excluir().finally(() => {
+        this.bloqueioTela = false;
+      });
     }
   }
 
