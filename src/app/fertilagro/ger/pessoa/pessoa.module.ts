@@ -1,8 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MessageService } from 'primeng/api';
-import { InputTextModule } from 'primeng/inputtext';
+import { FormsModule } from '@angular/forms';
+import { AutoCompleteModule } from 'primeng/autocomplete';
 import { MessageModule } from 'primeng/message';
 import { BasicoBotaoModule } from 'src/app/shared/components/basico-botao/basico-botao.module';
 import { FertilAgroFkFieldModule } from 'src/app/shared/components/fertilagro-Fkfield/fertilagro-Fkfield.module';
@@ -12,7 +11,6 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { CidadeModule } from '../cidade/cidade.module';
 import { PessoaComponent } from './components/pessoa/pessoa.component';
 import { PessoaRoutingModule } from './pessoa-routing.module';
-import { AutoCompleteModule } from 'primeng/autocomplete';
 
 
 @NgModule({
@@ -34,9 +32,6 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
   ],
   exports: [
     PessoaComponent
-  ],
-  providers: [
-    MessageService
   ]
 })
 export class PessoaModule { }

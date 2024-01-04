@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -11,8 +11,8 @@ import { FertilAgroBotoesModule } from 'src/app/shared/components/fertilagro-bot
 import { FertilAgroInputsModule } from 'src/app/shared/components/fertilagro-inputs/fertilagro-inputs.module';
 import { TabelaFilhaModule } from 'src/app/shared/components/tabela-filha/tabela-filha.module';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { PedidoRoutingModule } from './pedido-routing.module';
 import { PedidoComponent } from './components/pedido/pedido.component';
+import { PedidoRoutingModule } from './pedido-routing.module';
 
 @NgModule({
   declarations: [
@@ -31,6 +31,7 @@ import { PedidoComponent } from './components/pedido/pedido.component';
     FertilAgroBotoesModule,
     FertilAgroDataModule,
     TabelaFilhaModule,
+    FormsModule,
 
     PedidoRoutingModule
   ],

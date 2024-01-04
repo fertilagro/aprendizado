@@ -16,12 +16,16 @@
           </mat-form-field>
         </div>
       </div>
+      <hr class="divisor_form"/>
 
       <div class="row">
+
         <div class="col-8">
-          <app-fertilagro-inputs titulo="Nome" formControlName="nome" [desabilitar]="disabilitarCampos">
+          <app-fertilagro-inputs titulo="Nome" formControlName="nome" 
+          [desabilitar]="disabilitarCampos">
           </app-fertilagro-inputs>
         </div>
+
         <div class="col-4">
           <mat-form-field appearance="outline">
             <mat-label>Estado</mat-label>
@@ -33,6 +37,7 @@
           </mat-form-field>
         </div>
       </div>
+
     </form>
 
   </mat-card-content>

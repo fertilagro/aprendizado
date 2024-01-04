@@ -1,13 +1,11 @@
 
 <mat-form-field appearance="outline">
-<mat-label>{{titulo}}</mat-label>
-<input matInput #input class="form-control"
-  currencyMask
-  [formControl]="controlador"
+  <mat-label>{{titulo}}</mat-label>
+  <input matInput #input currencyMask 
+  [formControl]="controlador" 
   [disableControl]="desabilitar"
-  [readonly]="somenteLeitura"
-  [appAutomaticoFocus]="focus"
-  onfocus="this.select();"
+  [readonly]="somenteLeitura" 
+  [appAutomaticoFocus]="focus" onfocus="this.select();"
   (blur)="aoSairDoCampo(controlador); onTouchedCb($event); inFocus=false; emFoco.emit(inFocus)"
   (focus)="inFocus = true; emFoco.emit(inFocus)">
 </mat-form-field>

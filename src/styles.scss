@@ -34,14 +34,20 @@ body {
 .col-12,
 .col-md-12 {
    position: relative;
- //  width: 100%;
    min-height: 1px;
-   padding-right: 2px;
-   padding-left: 2px;
+   padding-right: 1px;
+   padding-left: 1px;
+}
 
-  // align-items: center;
+.no-gutters {
+  margin-right: 0 !important;
+  margin-left: 0 !important;
 
- //  background-color: aqua;
+  > .col,
+  > [class*="col-"] {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
 }
 
 .card_fertilagro {
@@ -71,4 +77,9 @@ body {
 
 .example-spacer {
   flex: 1 1 auto;
+}
+
+.divisor_form {
+  margin-top: 6px;
+  margin-bottom: 6px;
 }
