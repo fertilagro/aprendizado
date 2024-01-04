@@ -47,9 +47,10 @@ export class PedidoComponent extends BaseResourceFormComponent<PedidoModel> impl
 
   tabelas() {
     this.colunasAmostras = [
-      { campo: 'id.id', titulo: 'Código' },
-      { campo: 'id.pedido', titulo: 'Pedido' },
+      { campo: 'labelFkfield', titulo: 'labelFkfield' },
+      { campo: 'id.id', titulo: 'id' },
     ];
+
     console.log("entrou na tabelas()")
   }
 

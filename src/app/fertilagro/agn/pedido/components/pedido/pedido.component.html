@@ -13,7 +13,7 @@
         <div class="col-2">
           <mat-form-field formGroupName="id" appearance="outline">
             <mat-label>Código</mat-label>
-            <input matInput [disableControl]="true" formControlName="id"
+            <input matInput [disableControl]="false" formControlName="id"
             (blur)="buscarId()">
           </mat-form-field>
         </div>
@@ -21,12 +21,12 @@
 
       <div class="row">
         <div class="col-3">
-          <app-fertilagro-data rotulo="Data" formControlName="data" 
+          <app-fertilagro-data rotulo="Data" formControlName="data"
           [desabilitar]="disabilitarCampos" [focus]="focus"></app-fertilagro-data>
         </div>
 
         <div class="col-9">
-          <app-fertilagro-FkField titulo="Cliente" formControlName="pessoa" 
+          <app-fertilagro-FkField titulo="Cliente" formControlName="pessoa"
           [desabilitar]="disabilitarCampos" tipo="pessoas"></app-fertilagro-FkField>
         </div>
       </div>

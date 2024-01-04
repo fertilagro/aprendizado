@@ -1,0 +1,101 @@
+.colunaIcone {
+  padding: 2px !important;
+}
+
+.error {
+  background: #f56f64 !important;
+  color: #ffffff !important;
+}
+
+.cor-pendencia {
+  background: #ffb0a9 !important;
+  color: #000000 !important;
+}
+
+::ng-deep {
+  body {
+    .p-datatable {
+      .p-datatable-thead {
+        tr {
+          th { // Borda da GRID
+            padding: 0.25em 0.857em;
+            font-weight: 700;
+            color: #333;
+            background: linear-gradient(0deg, #dedede 20%, #f9f9f9 70%);
+            border: 1px solid #456184;
+            border-bottom: none;
+            font-size: 13px;
+
+            &:not(.p-highlight):hover {
+              background: linear-gradient(0deg, #f9f9f9 20%, #dedede 70%);
+            }
+
+            &.p-highlight {
+              background: linear-gradient(to top, #415f83 20%, #5985bb 70%);
+              color: white;
+
+              .p-sortable-column-icon {
+                color: white;
+              }
+
+              &:hover {
+                background: linear-gradient(to top, #5985bb 20%, #415f83 70%);
+                color: white;
+
+                .p-sortable-column-icon {
+                  color: white;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .p-datatable-tbody {
+        tr {
+          &:nth-child(even) {
+            background-color: #f3f3f3;
+
+            &.p-highlight {
+              background: rgba(65, 95, 131, 0.18);
+              color: #2a3e56;
+            }
+          }
+
+          &.p-highlight {
+            background: rgba(65, 95, 131, 0.12);
+            color: #2a3e56;
+          }
+
+          td {
+            background-color: inherit;
+            border: 1px solid #c8c8c8;
+            border-top: none;
+            border-bottom: none;
+            font-size: 13px;
+            padding: 0.25em 0.857em;
+            white-space: nowrap;
+          }
+        }
+      }
+
+      .p-datatable-footer {
+        background: #f0f0f0;
+        padding: 0.4rem;
+        border-width: 1px;
+      }
+    }
+  }
+
+  .mascChecBox {
+    width: 21px;
+    height: 19px;
+    position: absolute;
+    z-index: 1;
+  }
+
+  .a2o-table-tooltip {
+    background: rgb(65, 95, 131);
+    font-size: 0.875rem;
+  }
+}
