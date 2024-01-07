@@ -5,7 +5,7 @@ import { PedidoModel } from './model/pedido.model';
 import { PedidoService } from './service/pessoa.service';
 
 @Component({
-  selector: 'fertilagro-pedido',
+  selector: 'app-pedido',
   templateUrl: './pedido.component.html',
   styleUrls: ['./pedido.component.scss']
 })

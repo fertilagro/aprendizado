@@ -17,8 +17,8 @@
 
     <mat-menu #menu="matMenu">
       <button mat-menu-item (click)="abrirLink('/dashboard')">Home</button>
-      <button mat-menu-item [matMenuTriggerFor]="submenuGeral">Cadastro geral</button>
-      <button mat-menu-item [matMenuTriggerFor]="submenuVenda">Venda</button>
+      <button mat-menu-item [matMenuTriggerFor]="submenuGeral">Cadastro Geral</button>
+      <button mat-menu-item [matMenuTriggerFor]="submenuVenda">Lançamentos</button>
       <!-- Submenu para Geral -->
       <mat-menu #submenuGeral="matMenu">
         <button mat-menu-item (click)="abrirLink('/pessoa')">Pessoa</button>
@@ -29,6 +29,7 @@
       <!-- Submenu para Venda -->
       <mat-menu #submenuVenda="matMenu">
         <!-- Adicione mais itens de submenu conforme necessário -->
+        <button mat-menu-item (click)="abrirLink('/amostra')">Amostra</button>
         <button mat-menu-item (click)="abrirLink('/pedido')">Pedido</button>
       </mat-menu>
     </mat-menu>

@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PessoaComponent } from './fertilagro/ger/pessoa/components/pessoa/pessoa.component';
-import { CidadeComponent } from './fertilagro/ger/cidade/components/cidade/cidade.component';
+import { AppComponent } from './app.component';
 import { PedidoComponent } from './fertilagro/agn/pedido/components/pedido/pedido.component';
+import { CidadeComponent } from './fertilagro/ger/cidade/components/cidade/cidade.component';
+import { PessoaComponent } from './fertilagro/ger/pessoa/components/pessoa/pessoa.component';
+import { amostraComponent } from './fertilagro/agn/amostra/components/amostra.component';
+import { FertilAgroComponent } from './fertilagro/fertilagro/fertilagro.component';
 
 const routes: Routes = [
   {
@@ -15,6 +18,9 @@ const routes: Routes = [
   //   pathMatch: "full"
   // },
   {
+    path:"dashboard", component: FertilAgroComponent
+  },
+  {
     path:"pessoa", component: PessoaComponent
   },
   {
@@ -23,12 +29,9 @@ const routes: Routes = [
   {
     path:"pedido", component: PedidoComponent
   },
-  // {
-  //   path:"", component: AppComponent
-  // },
-  // {
-  //   path:"dashboard", component: AppComponent
-  // }
+  {
+    path:"amostra", component: amostraComponent
+  },
 ];
 
 @NgModule({

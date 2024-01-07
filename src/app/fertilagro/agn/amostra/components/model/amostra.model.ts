@@ -1,8 +1,8 @@
-import { PessoaModel } from "src/app/fertilagro/ger/pessoa/components/pessoa/model/pessoa.model";
+import { PessoaModel } from '../../../../ger/pessoa/components/pessoa/model/pessoa.model';
 
 export class AmostraModel {
-  constructor (
-    public id?: any,
+  constructor(
+    public id?: string,
     public propriedade?: string,
     public cliente?: PessoaModel,
     public solicitante?: string,
@@ -12,7 +12,7 @@ export class AmostraModel {
     public tipoAnalise?: string,
     public valor?: number,
     public observacao?: string
-  ) {}
+  ) { }
 
   static fromJson(jsonData: any): AmostraModel {
     return Object.assign(new AmostraModel(), jsonData);

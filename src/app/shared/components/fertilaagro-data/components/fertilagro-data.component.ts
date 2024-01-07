@@ -17,17 +17,10 @@ export const DATA_CONTROL_VALUE_ACCESSOR: any = {
 })
 export class FertilAgroDataComponent implements OnInit {
 
-  /** Título que será apresentado ao lado ou acima do campo. */
   @Input() rotulo: string;
-  /** Desabilitar pop up data. */
-  @Input() desabilitarPopUp: boolean;
-  /** Valor interno do campo. */
+  @Input() desabilitarPopUp = false;
   valorInterno: Date;
-  /** Responsável desabilitar o campo.
-   *
-   *  Default: false
-   */
-  @Input() desabilitar: boolean;
+  @Input() desabilitar = false;
   /** Define se o campo terá o foco automático */
   @Input() focus: boolean;
   /** Evento disparado ao perder o foco */
@@ -89,7 +82,6 @@ export class FertilAgroDataComponent implements OnInit {
         data = momentDate.format('YYYY-MM-DD');
         form = momentDate.format('DD/MM/YYYY');
       }
-
       this.valorDatePicker = this.valorInterno;
       this.controlador.setValue(form);
       this.onChangeCb(data);
@@ -115,14 +107,8 @@ export class FertilAgroDataComponent implements OnInit {
     this.onTouchedCb = fn;
   }
 
-  setDisabledState?(isDisabled: boolean): void {
-    this.desabilitar = isDisabled;
-    this.desabilitarPopUp = isDisabled;
-  }
-
   aoAlterar(event) {
-    // console.log(event);
-    // this.value = event;
+     console.log(event);
   }
 
   /** Método responsável por converter a data digitada em objeto do tipo Date */

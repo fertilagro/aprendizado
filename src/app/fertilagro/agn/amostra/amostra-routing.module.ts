@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AmostraComponent } from './amostra/amostra.component';
+import { amostraComponent } from './components/amostra.component';
 
 const amostraRoutes: Routes = [
-  {
-    path: '', component: AmostraComponent, data: {title: 'Amostras'}
-  }
+    {
+        path: 'amostra', component: amostraComponent
+    }
 ];
 
 @NgModule({

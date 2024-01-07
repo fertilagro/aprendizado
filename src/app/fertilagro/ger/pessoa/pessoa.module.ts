@@ -19,7 +19,6 @@ import { PessoaRoutingModule } from './pessoa-routing.module';
   ],
   imports: [
     CommonModule,
-    PessoaRoutingModule,
     BasicoBotaoModule,
     FertilAgroBotoesModule,
     FertilAgroInputsModule,
@@ -29,6 +28,8 @@ import { PessoaRoutingModule } from './pessoa-routing.module';
     CidadeModule,
     MessageModule,
     AutoCompleteModule,
+
+    PessoaRoutingModule,
   ],
   exports: [
     PessoaComponent
