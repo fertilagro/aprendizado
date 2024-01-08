@@ -6,7 +6,7 @@
       [desabilitar]="desabilitarBtnIncluir" [esconder]="false" (clique)="incluir()" showDelay="1000"></app-basico-botao>
 
       <app-basico-botao id="btn-alterar" rotulo="Alterar" icone="edit"
-      [desabilitar]="desabilitarBtnAlterar" [esconder]="false" (clique)="alterar()" showDelay="1000"></app-basico-botao>
+      [desabilitar]="desabilitarBtnAlterar && !this.temId()" [esconder]="false" (clique)="alterar()" showDelay="1000"></app-basico-botao>
 
       <app-basico-botao id="btn-cancelar" rotulo="Cancelar" icone="cancel"
       [desabilitar]="desabilitarBtnCancelar" [esconder]="false" (clique)="cancelar()" showDelay="1000"></app-basico-botao>

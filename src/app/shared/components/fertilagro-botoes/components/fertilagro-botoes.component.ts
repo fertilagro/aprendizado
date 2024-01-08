@@ -48,6 +48,9 @@ export class FertilAgroBotoesComponent implements OnInit {
         this.desabilitarBtnCancelar = true;
         this.desabilitarBtnSalvar = true;
     }
+    if (this.temId()) {
+      this.desabilitarBtnAlterar = false;
+    }
   }
 
   incluir() {
@@ -74,6 +77,13 @@ export class FertilAgroBotoesComponent implements OnInit {
 
   alterar() {
     if (this.tela) {
+      if (this.temId()) {
+        this.desabilitarBtnIncluir = true;
+       // this.desabilitarBtnAlterar = true;
+        this.desabilitarBtnExcluir = true;
+        this.desabilitarBtnCancelar = false;
+        this.desabilitarBtnSalvar = false;
+      }
       this.btnClickEvent.emit();
       this.tela.alterar();
     }

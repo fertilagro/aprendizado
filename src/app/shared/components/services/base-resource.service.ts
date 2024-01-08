@@ -34,6 +34,8 @@ export abstract class BaseResourceService<T extends BaseResourceModel> {
 
     if (tipo === "pedidos") {
       url = `${this.apiPath}/${servico ? servico : 'buscarPorIdPedido'}`;
+    } else if (tipo === "cidades") {
+        url = `${this.apiPath}/${servico ? servico : 'buscarPorIdCidade'}`;
     } else {
       url = `${this.apiPath}/${servico ? servico : 'buscarPorId'}`;
     }
