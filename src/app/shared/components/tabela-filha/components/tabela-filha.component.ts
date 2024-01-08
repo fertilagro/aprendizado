@@ -13,6 +13,8 @@ export class TabelaFilhaComponent implements OnInit {
   @Input() dados: any[];
   /** tamanho do crid */
   @Input() altura: any[];
+  /** tamanho do crid */
+  @Input() alturaScroll: any[];
   /** largura do grid */
   @Input() largura: any[];
 

@@ -3,34 +3,26 @@
   <p-table
   [columns]="colunas"
   [value]="dados"
-  [tableStyle]="{ 'min-width': '50rem' }">
+  columnResizeMode="expand"
+  [resizableColumns]="true"
+  [scrollable]="true"
+  scrollHeight="350px">
 
     <ng-template pTemplate="header" let-columns>
-
           <tr>
-              <th *ngFor="let col of columns">
+              <th *ngFor="let col of columns" pResizableColumn [style.width]="col.largura">
                   {{ col?.titulo }}
               </th>
           </tr>
-
       </ng-template>
 
-
-
-
-
       <ng-template pTemplate="body" let-rowData let-columns="columns">
-
-
-
           <tr>
-              <td *ngFor="let col of columns">
+              <td *ngFor="let col of columns" pResizableColumn [style.width]="col.largura">
                   {{ rowData[col?.campo] }}
               </td>
           </tr>
-
       </ng-template>
-
 
   </p-table>
 

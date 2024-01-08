@@ -14,6 +14,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
   incluindoAlterarando = false;
   disabilitarCampos = true;
   bloqueioTela = false;
+  disable: boolean;
   disableCampos: boolean;
 
   protected formBuilder: FormBuilder;
@@ -42,6 +43,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
   ngOnInit() {
      this.buildResourceForm();
      this.disabilitarCampos = true;
+     this.disable = true;
   }
 
   protected abstract buildResourceForm(data?: any): void;
@@ -84,9 +86,11 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
       this.resourceform.disable();
       this.disabilitarCampos = true;
       this.incluindoAlterarando = false;
+      this.disable = true;
     } else if (this.temId()) {
       this.disabilitarCampos = true;
       this.incluindoAlterarando = false;
+      this.disable = true;
       this.resourceform.disable();
       await this.buscarId();
     }
@@ -120,6 +124,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
             this.buildForm(response);
             this.resource = response;
             this.bloqueioTela = false;
+            this.disable = true;
             resolve(response);
           }, error => {
             this.disableCampos = false;
@@ -159,6 +164,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
       this.buildForm(resource);
       this.resource = resource;
       this.disableCampos = true;
+      this.disable = true;
       this.incluindoAlterarando = false;
       return Promise.resolve();
       }
@@ -245,4 +251,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     return this.resource ? this.resource[atributo] : undefined;
   }
 
+  habilitarId() {
+    this.disable = true;
+  }
 }
