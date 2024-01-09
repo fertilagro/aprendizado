@@ -5,6 +5,7 @@ import { FertilAgroBotoesComponent } from './components/fertilagro-botoes.compon
 import { BasicoBotaoModule } from '../basico-botao/basico-botao.module';
 import { MatIconModule } from '@angular/material/icon';
 
+
 @NgModule({
   declarations: [
     FertilAgroBotoesComponent
@@ -13,7 +14,8 @@ import { MatIconModule } from '@angular/material/icon';
     CommonModule,
     SharedModule,
     BasicoBotaoModule,
-    MatIconModule
+    MatIconModule,
+
     ],
   exports: [
     FertilAgroBotoesComponent

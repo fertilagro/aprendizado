@@ -49,7 +49,7 @@ export class FertilAgroBotoesComponent implements OnInit {
         this.desabilitarBtnSalvar = true;
     }
     if (this.temId()) {
-      this.desabilitarBtnAlterar = false;
+   
     }
   }
 
