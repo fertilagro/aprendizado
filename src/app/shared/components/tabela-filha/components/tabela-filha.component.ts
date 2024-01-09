@@ -17,6 +17,12 @@ export class TabelaFilhaComponent implements OnInit {
   @Input() alturaScroll: any[];
   /** largura do grid */
   @Input() largura: any[];
+  /** Define loading de carregamento da grid */
+  @Input() loading: boolean;
+  /** Registro que esta selecionado na tabela */
+  @Input() dataKey: string;
+
+  selecionados: any[];
 
   constructor(
     private cd: ChangeDetectorRef

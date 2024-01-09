@@ -5,8 +5,25 @@
   [value]="dados"
   columnResizeMode="expand"
   [resizableColumns]="true"
+  pResizableColumnDisabled=true
   [scrollable]="true"
-  scrollHeight="350px">
+  scrollHeight="350px"
+  [loading]="loading"
+  selectionMode="multiple"
+  [(selection)]="selecionados"
+  [dataKey]="dataKey">
+
+    <!-- [columns]="colunas"
+  [value]="dados"
+  columnResizeMode="expand"
+  [resizableColumns]="true"
+  pResizableColumnDisabled=true
+  [scrollable]="true"
+  scrollHeight="350px"
+  [loading]="loading"
+  selectionMode="single"
+  [(selection)]="selecionados"
+  [dataKey]="dataKey"> -->
 
     <ng-template pTemplate="header" let-columns>
           <tr>
@@ -19,12 +36,12 @@
           </tr>
       </ng-template>
 
-      <ng-template pTemplate="body" let-rowData let-columns="columns">
-        <tr>
+      <ng-template pTemplate="body" let-rowData let-columns="columns" let-rowIndex="rowIndex">
+        <tr [pSelectableRow]="rowData" [pSelectableRowIndex]="rowIndex">
             <td>
                 <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
             </td>
-            <td *ngFor="let col of columns" pResizableColumn>
+            <td *ngFor="let col of columns" class="ui-resizable-column">
                 {{ rowData[col?.campo] }}
             </td>
         </tr>
