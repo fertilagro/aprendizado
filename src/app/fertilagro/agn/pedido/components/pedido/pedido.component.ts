@@ -15,7 +15,7 @@ export class PedidoComponent extends BaseResourceFormComponent<PedidoModel> impl
 
   pedidoAmostras: any[];
 
-  selecionados: [];
+  selecionados: any[] = [];
 
   constructor(
     protected Injector: Injector,
@@ -57,6 +57,11 @@ export class PedidoComponent extends BaseResourceFormComponent<PedidoModel> impl
 
   public override buscarId(): Promise<any> {
       return super.buscarId();
+  }
+
+  teste() {
+    let sele: any[];
+    sele = this.selecionados;
   }
 
 }

@@ -11,7 +11,7 @@
 
   [loading]="loading"
 
-  selectionMode="multiple"
+  [selectionMode]="desabilitarSelecao ? null : (tipoSelecao == 'multipla' ? 'multiple' : 'single')"
   [(selection)]="selecionados"
   (onRowSelect)="aoSelecionar($event)"
   [dataKey]="dataKey">
