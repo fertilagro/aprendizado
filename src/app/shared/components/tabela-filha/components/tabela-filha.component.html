@@ -8,22 +8,13 @@
   pResizableColumnDisabled=true
   [scrollable]="true"
   scrollHeight="350px"
+
   [loading]="loading"
+
   selectionMode="multiple"
   [(selection)]="selecionados"
+  (onRowSelect)="aoSelecionar($event)"
   [dataKey]="dataKey">
-
-    <!-- [columns]="colunas"
-  [value]="dados"
-  columnResizeMode="expand"
-  [resizableColumns]="true"
-  pResizableColumnDisabled=true
-  [scrollable]="true"
-  scrollHeight="350px"
-  [loading]="loading"
-  selectionMode="single"
-  [(selection)]="selecionados"
-  [dataKey]="dataKey"> -->
 
     <ng-template pTemplate="header" let-columns>
           <tr>
@@ -36,6 +27,7 @@
           </tr>
       </ng-template>
 
+      
       <ng-template pTemplate="body" let-rowData let-columns="columns" let-rowIndex="rowIndex">
         <tr [pSelectableRow]="rowData" [pSelectableRowIndex]="rowIndex">
             <td>

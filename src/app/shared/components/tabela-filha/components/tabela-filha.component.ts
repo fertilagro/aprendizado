@@ -1,4 +1,5 @@
-import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { BaseResourceFormComponent } from '../../base-resource-form/base-resource-form/base-resource-form.component';
 
 @Component({
   selector: 'app-tabela-filha',
@@ -21,6 +22,12 @@ export class TabelaFilhaComponent implements OnInit {
   @Input() loading: boolean;
   /** Registro que esta selecionado na tabela */
   @Input() dataKey: string;
+  /** Componente pai da tabela filha (componente onde esta usando a tabela filha) */
+  @Input() pai: BaseResourceFormComponent<any>;
+
+  @Output() selecionar = new EventEmitter<any>();
+
+  tipoSelecao = 'multipla';
 
   selecionados: any[];
 
@@ -34,6 +41,16 @@ export class TabelaFilhaComponent implements OnInit {
 
   ngAfterViewInit() {
     this.cd.detectChanges();
+  }
+
+  aoSelecionar(event: any) {
+    if (this.tipoSelecao === 'multipla') {
+      if (event.type === 'checkbox') {
+        const index = this.selecionados.findIndex(val => val === event.data);
+        index < 0 ? this.selecionados.push(event.data) : this.selecionados.splice(index, 1);
+      }
+    }
+    this.selecionar.emit(event);
   }
 
 }

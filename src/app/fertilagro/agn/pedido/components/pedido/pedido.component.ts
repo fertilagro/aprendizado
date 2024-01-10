@@ -15,6 +15,8 @@ export class PedidoComponent extends BaseResourceFormComponent<PedidoModel> impl
 
   pedidoAmostras: any[];
 
+  selecionados: [];
+
   constructor(
     protected Injector: Injector,
     protected pedidoService: PedidoService,
