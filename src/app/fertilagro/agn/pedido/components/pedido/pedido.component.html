@@ -27,7 +27,7 @@
 
         <div class="col-9">
           <app-fertilagro-FkField titulo="Cliente" formControlName="pessoa"
-          [desabilitar]="disabilitarCampos" tipo="pessoas"></app-fertilagro-FkField>
+          [desabilitar]="disabilitarCampos" tipo="pessoas" style="text-transform: uppercase;"></app-fertilagro-FkField>
         </div>
       </div>
 
@@ -36,8 +36,13 @@
       <mat-tab-group dynamicHeight>
         <mat-tab label="Amostras">
           <app-tabela-filha
+<<<<<<< HEAD
           [colunas]="colunasAmostras" [dados]="getLista('pedidoAmostras')" tipoSelecao="multipla"
           [selecionados]="this.selecionados">
+=======
+          [colunas]="colunasAmostras" [dados]="getLista('pedidoAmostras')" tipoSelecao='multipla'
+          [selecionados]="selecionados">
+>>>>>>> 295d02c3e3c6378f275ad4f7be7183bb4ddcdbe7
           </app-tabela-filha>
         </mat-tab>
 
@@ -45,6 +50,8 @@
         </mat-tab>
 
       </mat-tab-group>
+
+      <button (click)="testando()"></button>
 
 
     </form>

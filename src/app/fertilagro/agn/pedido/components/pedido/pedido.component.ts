@@ -12,15 +12,17 @@ import { PedidoService } from './service/pessoa.service';
 export class PedidoComponent extends BaseResourceFormComponent<PedidoModel> implements OnInit {
 
   colunasAmostras: any[];
-
   pedidoAmostras: any[];
 
+<<<<<<< HEAD
+=======
+  // selecão grid
+>>>>>>> 295d02c3e3c6378f275ad4f7be7183bb4ddcdbe7
   selecionados: any[] = [];
 
   constructor(
     protected Injector: Injector,
     protected pedidoService: PedidoService,
-    private httpServ: HttpUtilService,
   ) {
     super(Injector, new PedidoModel(), pedidoService, PedidoModel.fromJson);
   }
@@ -28,11 +30,6 @@ export class PedidoComponent extends BaseResourceFormComponent<PedidoModel> impl
   override ngOnInit(): void {
     super.ngOnInit();
     this.tabelas();
-
-    // this.resourceform.get('data').valueChanges.subscribe((novoValor) => {
-    //   console.log('Novo valor de "data":', novoValor);
-    //   this.pedidoAmostras = this.resource["pedidoAmostras"]
-    // });
   }
 
   buildResourceForm() {
@@ -59,9 +56,15 @@ export class PedidoComponent extends BaseResourceFormComponent<PedidoModel> impl
       return super.buscarId();
   }
 
+<<<<<<< HEAD
   teste() {
     let sele: any[];
     sele = this.selecionados;
+=======
+  testando() {
+    let teste: any[] = [];
+    teste = this.selecionados;
+>>>>>>> 295d02c3e3c6378f275ad4f7be7183bb4ddcdbe7
   }
 
 }
