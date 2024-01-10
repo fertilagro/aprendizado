@@ -24,12 +24,12 @@ export class TabelaFilhaComponent implements OnInit {
   @Input() dataKey: string;
   /** Componente pai da tabela filha (componente onde esta usando a tabela filha) */
   @Input() pai: BaseResourceFormComponent<any>;
+  /** Registros que estão selecionados na tabela */
+  @Input() selecionados: any[] = [];
 
   @Output() selecionar = new EventEmitter<any>();
 
   tipoSelecao = 'multipla';
-
-  selecionados: any[];
 
   constructor(
     private cd: ChangeDetectorRef
