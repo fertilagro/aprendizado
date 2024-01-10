@@ -33,9 +33,10 @@
 
       <mat-tab-group dynamicHeight>
         <mat-tab label="Amostras">
-          <app-tabela-filha
-          [colunas]="colunasAmostras" [dados]="getLista('pedidoAmostras')">
-          </app-tabela-filha>
+          <!-- <app-tabela-filha
+          [colunas]="colunasAmostras" [dados]="getLista('pedidoAmostras')" tipoSelecao='multipla' 
+          [(selecionados)]="selecionados">
+          </app-tabela-filha> -->
         </mat-tab>
 
         <mat-tab label="Financeiro">
