@@ -28,17 +28,11 @@ export class TabelaFilhaComponent implements OnInit {
   @Input() selecionados: any[] = [];
 
   @Output() selecionar = new EventEmitter<any>();
+  /** Define se a tabela tera a seleção habilitada */
+  @Input() desabilitarSelecao = false;
 
-    /** Define se a tabela tera a seleção habilitada */
-    @Input() desabilitarSelecao = false;
+  @Input() tipoSelecao: string;
 
-<<<<<<< HEAD
-  @Input() tipoSelecao:string;
-
-  @Input() selecionados: any[];
-
-=======
->>>>>>> 295d02c3e3c6378f275ad4f7be7183bb4ddcdbe7
   constructor(
     private cd: ChangeDetectorRef
     ) { }

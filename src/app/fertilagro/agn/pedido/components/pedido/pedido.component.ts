@@ -13,11 +13,6 @@ export class PedidoComponent extends BaseResourceFormComponent<PedidoModel> impl
 
   colunasAmostras: any[];
   pedidoAmostras: any[];
-
-<<<<<<< HEAD
-=======
-  // selecão grid
->>>>>>> 295d02c3e3c6378f275ad4f7be7183bb4ddcdbe7
   selecionados: any[] = [];
 
   constructor(
@@ -56,15 +51,10 @@ export class PedidoComponent extends BaseResourceFormComponent<PedidoModel> impl
       return super.buscarId();
   }
 
-<<<<<<< HEAD
-  teste() {
-    let sele: any[];
-    sele = this.selecionados;
-=======
+
   testando() {
     let teste: any[] = [];
     teste = this.selecionados;
->>>>>>> 295d02c3e3c6378f275ad4f7be7183bb4ddcdbe7
   }
 
 }
