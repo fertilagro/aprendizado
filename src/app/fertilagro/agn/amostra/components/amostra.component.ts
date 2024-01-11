@@ -3,6 +3,8 @@ import { BaseResourceFormComponent } from "src/app/shared/components/base-resour
 import { HttpUtilService } from 'src/app/shared/components/services/http-util.service';
 import { AmostraModel } from "./model/amostra.model";
 import { AmostraService } from './service/amostra.service';
+import { Observable } from 'rxjs';
+
 
 @Component({
 selector: 'app-amostra',
@@ -10,6 +12,8 @@ templateUrl: './amostra.component.html',
 styleUrls: ['./amostra.component.scss']
 })
 export class amostraComponent extends BaseResourceFormComponent<AmostraModel> implements OnInit {
+
+    tipoAnalise$: Observable<any>;
 
     constructor(
         protected Injector: Injector,
@@ -36,9 +40,14 @@ export class amostraComponent extends BaseResourceFormComponent<AmostraModel> im
             observacao: [null],
         });
     }
-
+    
     override ngOnInit(): void {
+        this.enums();
         super.ngOnInit();
+    }
+
+    enums() {
+        this.tipoAnalise$ = this.httpServ.enumeradorService('EstadoEnum');
     }
 
 }

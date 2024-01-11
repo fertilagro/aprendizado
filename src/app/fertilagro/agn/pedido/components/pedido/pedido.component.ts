@@ -1,4 +1,4 @@
-import { Component, Injector, OnInit } from '@angular/core';
+import { Component, Injector, OnInit, SimpleChanges } from '@angular/core';
 import { BaseResourceFormComponent } from 'src/app/shared/components/base-resource-form/base-resource-form/base-resource-form.component';
 import { HttpUtilService } from 'src/app/shared/components/services/http-util.service';
 import { PedidoModel } from './model/pedido.model';
@@ -38,6 +38,10 @@ export class PedidoComponent extends BaseResourceFormComponent<PedidoModel> impl
       status: [null]
     });
   }
+
+  // ngOnChanges(changes: SimpleChanges) {
+  //   this.resourceform.get("pessoa").setValue(changes['pessoa'].currentValue.toUpperCase());
+  // }
 
   tabelas() {
     this.colunasAmostras = [
