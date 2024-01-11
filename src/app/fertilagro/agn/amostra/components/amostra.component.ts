@@ -40,14 +40,14 @@ export class amostraComponent extends BaseResourceFormComponent<AmostraModel> im
             observacao: [null],
         });
     }
-    
+
     override ngOnInit(): void {
         this.enums();
         super.ngOnInit();
     }
 
     enums() {
-        this.tipoAnalise$ = this.httpServ.enumeradorService('EstadoEnum');
+        this.tipoAnalise$ = this.httpServ.enumeradorService('AmostraEnum');
     }
 
 }

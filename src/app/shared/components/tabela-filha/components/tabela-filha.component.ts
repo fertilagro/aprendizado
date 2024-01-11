@@ -8,37 +8,24 @@ import { BaseResourceFormComponent } from '../../base-resource-form/base-resourc
 })
 export class TabelaFilhaComponent implements OnInit {
 
-  /** Colunas que deseja montar na tabela */
-  @Input() colunas: any[];
-  /** Lista de registros que deseja montar na tabela */
-  @Input() dados: any[];
-  /** tamanho do crid */
-  @Input() altura: any[];
-  /** tamanho do crid */
-  @Input() alturaScroll: any[];
-  /** largura do grid */
-  @Input() largura: any[];
-  /** Define loading de carregamento da grid */
-  @Input() loading: boolean;
-  /** Registro que esta selecionado na tabela */
-  @Input() dataKey: string;
-  /** Componente pai da tabela filha (componente onde esta usando a tabela filha) */
   @Input() pai: BaseResourceFormComponent<any>;
-  /** Registros que estão selecionados na tabela */
+  @Input() colunas: any[];
+  @Input() dados: any[];
+  @Input() dataKey: string;
   @Input() selecionados: any[] = [];
+  @Input() selecionado: any;
+  @Input() tipoSelecao: string;
 
   @Output() selecionar = new EventEmitter<any>();
-  /** Define se a tabela tera a seleção habilitada */
-  @Input() desabilitarSelecao = false;
-
-  @Input() tipoSelecao: string;
+  @Output() selecionadosChange = new EventEmitter<any[]>();
+  @Output() selecionadoChange = new EventEmitter<any>();
 
   constructor(
     private cd: ChangeDetectorRef
     ) { }
 
   ngOnInit() {
-
+    this.tipoSelecao = "multipla";
   }
 
   ngAfterViewInit() {
@@ -52,7 +39,19 @@ export class TabelaFilhaComponent implements OnInit {
         index < 0 ? this.selecionados.push(event.data) : this.selecionados.splice(index, 1);
       }
     }
+    // permite que outras partes do código sejam notificadas sobre a seleção
     this.selecionar.emit(event);
+  }
+
+  aoAlterarSelecao(event: any[]) {
+  /*  if (this.tipoSelecao === 'multipla') {
+      this.selecionados = event;
+      this.selecionadosChange.emit(this.selecionados);
+      this.selecionadoChange.emit(event.length > 0 ? event[event.length - 1] : undefined);
+    } else {
+      this.selecionado = event;
+      this.selecionadoChange.emit(event);
+    }*/
   }
 
 }

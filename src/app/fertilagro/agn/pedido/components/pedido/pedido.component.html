@@ -35,7 +35,7 @@
         <mat-tab label="Amostras">
           <app-tabela-filha
           [colunas]="colunasAmostras" [dados]="getLista('pedidoAmostras')" tipoSelecao='multipla'
-          [selecionados]="selecionados">
+          [(selecionados)]="selecionados">
           </app-tabela-filha>
         </mat-tab>
 
