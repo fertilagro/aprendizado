@@ -13,7 +13,7 @@ styleUrls: ['./amostra.component.scss']
 })
 export class amostraComponent extends BaseResourceFormComponent<AmostraModel> implements OnInit {
 
-    tipoAnalise$: Observable<any>;
+    matriz$: Observable<any>;
 
     constructor(
         protected Injector: Injector,
@@ -35,7 +35,7 @@ export class amostraComponent extends BaseResourceFormComponent<AmostraModel> im
             entrada: [null],
             saida: [null],
             descricaoAmostra: [null],
-            tipoAnalise: [null],
+            matriz: [null],
             valor: [null],
             observacao: [null],
         });
@@ -47,7 +47,7 @@ export class amostraComponent extends BaseResourceFormComponent<AmostraModel> im
     }
 
     enums() {
-        this.tipoAnalise$ = this.httpServ.enumeradorService('AmostraEnum');
+        this.matriz$ = this.httpServ.enumeradorService('MatrizEnum');
     }
 
 }

@@ -9,6 +9,11 @@
         onfocus="this.select();"
         [matAutocomplete]="auto">
 
+        <button type="button" mat-icon-button matSuffix [disabled]="desabilitar"
+        class="btn-fkfield" tabindex="-1">
+        <mat-icon>manage_search<em class="btnPesquisar fas fa-search fa-xs"></em></mat-icon>
+      </button>
+
       <mat-autocomplete #auto="matAutocomplete" autoActiveFirstOption
       [displayWith]="displayFn.bind(this)" (optionSelected)="selecionando($event)">
         <mat-option *ngFor="let option of opcoesFiltradas | async" [value]="option">

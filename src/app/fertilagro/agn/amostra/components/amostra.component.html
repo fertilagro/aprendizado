@@ -20,7 +20,7 @@
 
             <div class="row">
                 <div class="col-6">
-                    <app-fertilagro-inputs titulo="Proprietário" formControlName="propriedade"
+                    <app-fertilagro-inputs titulo="Propriedade" formControlName="propriedade"
                     [desabilitar]="disabilitarCampos" style="text-transform: uppercase;">
                     </app-fertilagro-inputs>
                 </div>
@@ -50,28 +50,35 @@
             </div>
 
             <div class="row">
-                <div class="col-6">
+                <div class="col-12">
                     <app-fertilagro-inputs titulo="Descrição" formControlName="descricaoAmostra"
                     [desabilitar]="disabilitarCampos" style="text-transform: uppercase;">
                     </app-fertilagro-inputs>
                 </div>
 
-                <div class="col-3">
+                <div class="col-4">
                   <mat-form-field appearance="outline">
-                    <mat-label>Tipo Análise</mat-label>
-                    <mat-select formControlName="tipoAnalise" [disableControl]="disabilitarCampos">
-                      <mat-option *ngFor="let i of tipoAnalise$ | async" [value]="i">
+                    <mat-label>TIPO MATRIZ</mat-label>
+                    <mat-select formControlName="matriz" [disableControl]="disabilitarCampos">
+                      <mat-option *ngFor="let i of matriz$ | async" [value]="i">
                         {{i}}
                       </mat-option>
                     </mat-select>
                   </mat-form-field>
                 </div>
+                
+                <div class="col-4">
+                  <app-fertilagro-inputs titulo="Tipo Análise" formControlName="tipoAnalise" [desabilitar]="disabilitarCampos"
+                    style="text-transform: uppercase;">
+                  </app-fertilagro-inputs>
+                </div>
 
-                <div class="col-3">
+                <div class="col-4">
                     <app-fertilagro-inputs titulo="VALOR" formControlName="valor"
                     [desabilitar]="disabilitarCampos">
                     </app-fertilagro-inputs>
                 </div>
+
             </div>
 
             <div class="row">
