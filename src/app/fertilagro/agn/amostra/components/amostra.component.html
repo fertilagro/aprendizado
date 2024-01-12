@@ -33,7 +33,7 @@
 
             <div class="row">
                 <div class="col-6">
-                    <app-fertilagro-inputs titulo="Proprietário" formControlName="propriedade"
+                    <app-fertilagro-inputs titulo="Solicitante" formControlName="solicitante"
                     [desabilitar]="disabilitarCampos" style="text-transform: uppercase;">
                     </app-fertilagro-inputs>
                 </div>
@@ -58,7 +58,7 @@
 
                 <div class="col-4">
                   <mat-form-field appearance="outline">
-                    <mat-label>TIPO MATRIZ</mat-label>
+                    <mat-label>MATRIZ</mat-label>
                     <mat-select formControlName="matriz" [disableControl]="disabilitarCampos">
                       <mat-option *ngFor="let i of matriz$ | async" [value]="i">
                         {{i}}
@@ -66,9 +66,9 @@
                     </mat-select>
                   </mat-form-field>
                 </div>
-                
+
                 <div class="col-4">
-                  <app-fertilagro-inputs titulo="Tipo Análise" formControlName="tipoAnalise" [desabilitar]="disabilitarCampos"
+                  <app-fertilagro-inputs titulo="TIPO ANÁLISE" formControlName="tipoAnalise" [desabilitar]="disabilitarCampos"
                     style="text-transform: uppercase;">
                   </app-fertilagro-inputs>
                 </div>

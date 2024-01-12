@@ -9,6 +9,7 @@ export class AmostraModel {
     public entrada?: Date,
     public saida?: Date,
     public descricaoAmostra?: string,
+    public matriz?: string,
     public tipoAnalise?: string,
     public valor?: number,
     public observacao?: string

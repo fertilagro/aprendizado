@@ -36,6 +36,7 @@ export class amostraComponent extends BaseResourceFormComponent<AmostraModel> im
             saida: [null],
             descricaoAmostra: [null],
             matriz: [null],
+            tipoAnalise: [null],
             valor: [null],
             observacao: [null],
         });
