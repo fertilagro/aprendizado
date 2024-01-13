@@ -54,4 +54,9 @@ export class TabelaFilhaComponent implements OnInit {
     }*/
   }
 
+   imprimirDados(rowData) {
+    console.log(rowData);
+    return rowData;
+  }
+
 }

@@ -33,8 +33,15 @@
         </td>
 
         <td *ngFor="let col of columns" class="ui-resizable-column">
-          {{ rowData[col?.campo] }}
+          {{ rowData[col.campo] }}
         </td>
+
+        <td>
+            <ng-template let-value="value">
+              {{ imprimirDados(rowData) }}
+            </ng-template>
+        </td>
+        
       </tr>
     </ng-template>
 
