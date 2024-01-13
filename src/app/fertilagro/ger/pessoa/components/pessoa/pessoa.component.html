@@ -23,10 +23,16 @@
           <app-fertilagro-inputs titulo="Razão Social" formControlName="razaoSocial" [desabilitar]="disabilitarCampos">
           </app-fertilagro-inputs>
         </div>
+
         <div class="col-3">
-          <app-fertilagro-inputs titulo="Cnpj/Cpf" formControlName="cnpjCpf" [desabilitar]="disabilitarCampos">
-          </app-fertilagro-inputs>
+          <mat-form-field appearance="outline">
+            <mat-label>Cnpj/Cpf</mat-label>
+            <input matInput title="Cnpj/Cpf" [disableControl]="disabilitarCampos" formControlName="cnpjCpf" maxlength="18"
+              (blur)="formatarCnpj()">
+          </mat-form-field>
         </div>
+
+
       </div>
 
       <div class="row">

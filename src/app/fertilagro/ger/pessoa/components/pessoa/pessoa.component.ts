@@ -51,4 +51,14 @@ export class PessoaComponent extends BaseResourceFormComponent<PessoaModel> impl
     this.status$ = this.httpServ.enumeradorService('StatusEnum');
   }
 
+  formatarCnpj() {
+    const valor = this.resourceform.get("cnpjCpf").value;
+
+    if (valor.length > 11) {
+      this.resourceform.get("cnpjCpf").setValue(super.mascaraCnpj(valor));
+    } else {
+      this.resourceform.get("cnpjCpf").setValue(super.mascaraCpf(valor));
+    }
+  }
+
 }

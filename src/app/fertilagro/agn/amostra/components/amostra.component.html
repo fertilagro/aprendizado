@@ -21,12 +21,12 @@
             <div class="row">
                 <div class="col-6">
                     <app-fertilagro-inputs titulo="Propriedade" formControlName="propriedade"
-                    [desabilitar]="disabilitarCampos" style="text-transform: uppercase;">
+                    [desabilitar]="disabilitarCampos">
                     </app-fertilagro-inputs>
                 </div>
                 <div class="col-6">
                     <app-fertilagro-FkField titulo="Cliente" formControlName="cliente"
-                    [desabilitar]="disabilitarCampos" tipo="pessoas" style="text-transform: uppercase;">
+                    [desabilitar]="disabilitarCampos" tipo="pessoas">
                   </app-fertilagro-FkField>
                   </div>
             </div>
@@ -34,17 +34,17 @@
             <div class="row">
                 <div class="col-6">
                     <app-fertilagro-inputs titulo="Solicitante" formControlName="solicitante"
-                    [desabilitar]="disabilitarCampos" style="text-transform: uppercase;">
+                    [desabilitar]="disabilitarCampos">
                     </app-fertilagro-inputs>
                 </div>
                 <div class="col-3">
                     <app-fertilagro-data rotulo="Entrada" formControlName="entrada"
-                    [desabilitar]="disabilitarCampos" [focus]="focus" style="text-transform: uppercase;">
+                    [desabilitar]="disabilitarCampos" [focus]="focus">
                     </app-fertilagro-data>
                 </div>
                 <div class="col-3">
                     <app-fertilagro-data rotulo="Saída" formControlName="saida"
-                    [desabilitar]="disabilitarCampos" [focus]="focus" style="text-transform: uppercase;">
+                    [desabilitar]="disabilitarCampos" [focus]="focus">
                     </app-fertilagro-data>
                 </div>
             </div>
@@ -52,7 +52,7 @@
             <div class="row">
                 <div class="col-12">
                     <app-fertilagro-inputs titulo="Descrição" formControlName="descricaoAmostra"
-                    [desabilitar]="disabilitarCampos" style="text-transform: uppercase;">
+                    [desabilitar]="disabilitarCampos">
                     </app-fertilagro-inputs>
                 </div>
 
@@ -68,16 +68,30 @@
                 </div>
 
                 <div class="col-4">
-                  <app-fertilagro-inputs titulo="TIPO ANÁLISE" formControlName="tipoAnalise" [desabilitar]="disabilitarCampos"
-                    style="text-transform: uppercase;">
+                  <app-fertilagro-inputs titulo="Tipo Análise" formControlName="tipoAnalise" [desabilitar]="disabilitarCampos">
                   </app-fertilagro-inputs>
                 </div>
 
-                <div class="col-4">
-                    <app-fertilagro-inputs titulo="VALOR" formControlName="valor"
+                <!-- <div class="col-4">
+                    <app-fertilagro-inputs type="number" titulo="VALOR" formControlName="valor"
                     [desabilitar]="disabilitarCampos">
                     </app-fertilagro-inputs>
-                </div>
+                </div> -->
+
+                <div class="col-4">
+                <mat-form-field appearance="outline">
+                  <mat-label>Valor</mat-label>
+                  <input matInput [disableControl]="disabilitarCampos" formControlName="valor"
+                  (blur)="formatarValor()">
+                </mat-form-field>
+              </div>
+
+                <!-- <div class="col-4">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Valor</mat-label>
+                    <input type="number" title="Cnpj/Cpf" [disableControl]="disabilitarCampos" formControlName="valor">
+                  </mat-form-field>
+                </div> -->
 
             </div>
 
@@ -89,7 +103,7 @@
                     [disableControl]="disabilitarCampos"> </textarea>
                   </mat-form-field>
                 </div>
-              </div>
+            </div>
 
         </form>
 

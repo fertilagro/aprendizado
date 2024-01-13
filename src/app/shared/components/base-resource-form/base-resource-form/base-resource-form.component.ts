@@ -254,4 +254,26 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
   habilitarId() {
     this.disable = true;
   }
+
+  mascaraCpf(valor) {
+    return valor.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/g, "\$1.\$2.\$3\-\$4");
+  }
+
+  mascaraCnpj(valor) {
+    return valor.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/g, "\$1.\$2.\$3\/\$4\-\$5");
+  }
+
+  mascaraMoedaReal(valor: number): string {
+    // Remove caracteres não numéricos
+    let valorNumerico = valor.toString().replace(/[^0-9]/g, "");
+
+    // Limita o valor a 15 dígitos
+    if (valorNumerico.length > 15) {
+      valorNumerico = valorNumerico.substring(0, 15);
+    }
+
+    // Aplica a máscara
+    return `R$ ${valorNumerico.padStart(15, "0")},${valorNumerico.slice(-2)}`;
+  }
+
 }

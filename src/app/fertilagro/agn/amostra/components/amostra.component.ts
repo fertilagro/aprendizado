@@ -51,4 +51,9 @@ export class amostraComponent extends BaseResourceFormComponent<AmostraModel> im
         this.matriz$ = this.httpServ.enumeradorService('MatrizEnum');
     }
 
+    formatarValor() {
+      let valor = this.resourceform.get("valor").value;
+      this.resourceform.get("valor").setValue(super.mascaraMoedaReal(valor));
+    }
+
 }
