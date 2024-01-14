@@ -106,7 +106,8 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     return new Promise(async (resolve, reject) => {
       this.disabilitarCampos = true;
       this.incluindoAlterarando = false;
-      const resource: T = this.jsonDataToResourceFn(this.validaFormAoSalvar(this.resourceform.getRawValue()));
+      let resource: T = this.jsonDataToResourceFn(this.validaFormAoSalvar(this.resourceform.getRawValue()));
+      //this.tratarCamposAntesSalvar(resource);
       console.log(resource);
       if (this.resourceform.valid) {
         this.resourceService
@@ -263,17 +264,51 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     return valor.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/g, "\$1.\$2.\$3\/\$4\-\$5");
   }
 
-  mascaraMoedaReal(valor: number): string {
-    // Remove caracteres não numéricos
-    let valorNumerico = valor.toString().replace(/[^0-9]/g, "");
-
-    // Limita o valor a 15 dígitos
-    if (valorNumerico.length > 15) {
-      valorNumerico = valorNumerico.substring(0, 15);
-    }
-
-    // Aplica a máscara
-    return `R$ ${valorNumerico.padStart(15, "0")},${valorNumerico.slice(-2)}`;
+  mascaraMoedaReal(valor1: string): string {
+    valor1 = valor1.replace(',','.');
+    return `R$ ${valor1}`;
   }
+
+  // private tratarCamposAntesSalvar(data: any, formGroup?: FormGroup, recursivo = false) {
+  //   const json = {};
+  //   if (!formGroup) {
+  //     formGroup = this.resourceform;
+  //   }
+  //   formGroup.reset();
+  //   for (const formData of Object.keys(formGroup.getRawValue())) {
+  //     if (data) {
+  //       for (const elementData of Object.keys(data)) {
+  //         if (elementData.includes("valor")) {
+
+
+
+
+
+
+
+  //           if (data[elementData] != null && data[elementData] !== undefined && data[elementData] !== 'Invalid date') {
+  //             if (recursivo && formGroup.get(formData) instanceof FormGroup) {
+  //               this.buildForm(data[elementData], formGroup.get(formData) as FormGroup, recursivo);
+  //             } else {
+  //               json[formData] = data[elementData];
+  //             }
+  //           } else {
+  //             if (formGroup.get(formData) instanceof FormArray) {
+  //               /**
+  //                * se houver adição de novos tipos de objeto ao formGroup adicionar
+  //                * mais else if com as respectivas instancias e inicializações
+  //                */
+  //               json[formData] = [];
+  //             } else {
+  //               json[formData] = '';
+  //             }
+  //           }
+  //           break;
+  //         }
+  //       }
+  //     }
+  //   }
+  //   formGroup.patchValue(json);
+  // }
 
 }
