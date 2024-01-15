@@ -97,7 +97,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     return Promise.resolve();
   }
 
-  alterar() {
+  async alterar() {
     this.incluindoAlterarando = true;
     this.disabilitarCampos = false;
   }
@@ -265,50 +265,12 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
   }
 
   mascaraMoedaReal(valor1: string): string {
-    valor1 = valor1.replace(',','.');
     return `R$ ${valor1}`;
   }
 
-  // private tratarCamposAntesSalvar(data: any, formGroup?: FormGroup, recursivo = false) {
-  //   const json = {};
-  //   if (!formGroup) {
-  //     formGroup = this.resourceform;
-  //   }
-  //   formGroup.reset();
-  //   for (const formData of Object.keys(formGroup.getRawValue())) {
-  //     if (data) {
-  //       for (const elementData of Object.keys(data)) {
-  //         if (elementData.includes("valor")) {
-
-
-
-
-
-
-
-  //           if (data[elementData] != null && data[elementData] !== undefined && data[elementData] !== 'Invalid date') {
-  //             if (recursivo && formGroup.get(formData) instanceof FormGroup) {
-  //               this.buildForm(data[elementData], formGroup.get(formData) as FormGroup, recursivo);
-  //             } else {
-  //               json[formData] = data[elementData];
-  //             }
-  //           } else {
-  //             if (formGroup.get(formData) instanceof FormArray) {
-  //               /**
-  //                * se houver adição de novos tipos de objeto ao formGroup adicionar
-  //                * mais else if com as respectivas instancias e inicializações
-  //                */
-  //               json[formData] = [];
-  //             } else {
-  //               json[formData] = '';
-  //             }
-  //           }
-  //           break;
-  //         }
-  //       }
-  //     }
-  //   }
-  //   formGroup.patchValue(json);
-  // }
+  convertValorSalvarRegistro(valor1: string): string {
+    valor1 = valor1.replace(',','.').replace('R$ ','');
+    return valor1;
+  }
 
 }

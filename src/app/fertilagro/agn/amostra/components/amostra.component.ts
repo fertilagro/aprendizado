@@ -56,4 +56,9 @@ export class amostraComponent extends BaseResourceFormComponent<AmostraModel> im
       this.resourceform.get("valor").setValue(super.mascaraMoedaReal(valor));
     }
 
+    override async salvar() {
+        this.resourceform.get("valor").setValue(super.convertValorSalvarRegistro(this.resourceform.get("valor").value));
+        super.salvar();
+    }
+
 }

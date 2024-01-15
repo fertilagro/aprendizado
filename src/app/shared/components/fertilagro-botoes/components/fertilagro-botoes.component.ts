@@ -49,7 +49,7 @@ export class FertilAgroBotoesComponent implements OnInit {
         this.desabilitarBtnSalvar = true;
     }
     if (this.temId()) {
-   
+
     }
   }
 
@@ -71,6 +71,11 @@ export class FertilAgroBotoesComponent implements OnInit {
       this.bloqueioTela = true;
       this.tela.salvar().finally(() => {
         this.bloqueioTela = false;
+        this.desabilitarBtnIncluir = false;
+        this.desabilitarBtnAlterar = false;
+        this.desabilitarBtnCancelar = true;
+        this.desabilitarBtnSalvar = true;
+        this.desabilitarBtnPesquisar = false;
       });
     }
   }
@@ -79,24 +84,27 @@ export class FertilAgroBotoesComponent implements OnInit {
     if (this.tela) {
       if (this.temId()) {
         this.desabilitarBtnIncluir = true;
-       // this.desabilitarBtnAlterar = true;
-        this.desabilitarBtnExcluir = true;
+        this.desabilitarBtnAlterar = false;
         this.desabilitarBtnCancelar = false;
         this.desabilitarBtnSalvar = false;
+        this.desabilitarBtnExcluir = true;
+        this.desabilitarBtnPesquisar = true;
       }
       this.btnClickEvent.emit();
-      this.tela.alterar();
+      this.tela.alterar().finally(() => {
+      });
     }
   }
 
   cancelar() {
     if (this.tela) {
-
       if (this.temId()) {
+        this.desabilitarBtnIncluir = false;
+        this.desabilitarBtnAlterar = false;
         this.desabilitarBtnCancelar = true;
-        this.desabilitarBtnPesquisar = false;
         this.desabilitarBtnSalvar = true;
-        this.desabilitarBtnIncluir = true;
+        this.desabilitarBtnExcluir = false;
+        this.desabilitarBtnPesquisar = false;
       } else {
         this.desabilitarBtnCancelar = true;
         this.desabilitarBtnPesquisar = false;
