@@ -12,7 +12,8 @@
                 <div class="col-2">
                   <mat-form-field formGroupName="id" appearance="outline">
                     <mat-label>ID</mat-label>
-                    <input matInput [disableControl]="true" formControlName="id">
+                    <input matInput [disableControl]="true" formControlName="id"
+                    (dblclick)="habilitarId()" (blur)="buscarId()" onfocus="this.select();">
                   </mat-form-field>
                 </div>
               </div>

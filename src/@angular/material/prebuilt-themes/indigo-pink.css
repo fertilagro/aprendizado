@@ -1905,8 +1905,8 @@ html {
 
 .mat-mdc-snack-bar-container {
   --mdc-snackbar-supporting-text-font: Roboto, sans-serif;
-  --mdc-snackbar-supporting-text-line-height: 20px;
-  --mdc-snackbar-supporting-text-size: 14px;
+  --mdc-snackbar-supporting-text-line-height: 50px;
+  --mdc-snackbar-supporting-text-size: 15px;
   --mdc-snackbar-supporting-text-weight: 400
 }
 

@@ -61,4 +61,9 @@ export class amostraComponent extends BaseResourceFormComponent<AmostraModel> im
         super.salvar();
     }
 
+    override async buscarId() {
+        super.buscarId();
+        this.resourceform.get("id").disable();
+    }
+
 }

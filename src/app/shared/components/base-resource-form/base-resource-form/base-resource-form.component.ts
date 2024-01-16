@@ -126,6 +126,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
                 verticalPosition: this.posicaoVerticalAlerta, duration: this.duracaoSegundosAlerta * 1000
               });
             }
+
             this.incluindoAlterarando = false;
             this.buildForm(response);
             this.resource = response;
@@ -157,7 +158,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     this.disabilitarCampos = true;
   }
 
-  public buscarId(): Promise<any> {
+  async buscarId(): Promise<any> {
     console.log("buscarId");
     const tela = this;
     let empresa = 1;
@@ -170,11 +171,25 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
       this.buildForm(resource);
       this.resource = resource;
       this.disableCampos = true;
-      this.disable = true;
       this.incluindoAlterarando = false;
+
+      if (resource?.id === null) {
+        this.snackBar.open(`Cadastro não localizado `, 'ATENÇÃO', {
+          horizontalPosition: this.posicaoHorizontalAlerta,
+          verticalPosition: this.posicaoVerticalAlerta, duration: this.duracaoSegundosAlerta * 1000
+        });
+      }
+      this.desabilitarId();
       return Promise.resolve();
       }
-    ).catch(error => {})
+    ).catch(error => {
+      this.resourceform.reset();
+      this.desabilitarId();
+      this.snackBar.open(`Cadastro não localizado `, 'ATENÇÃO', {
+        horizontalPosition: this.posicaoHorizontalAlerta,
+        verticalPosition: this.posicaoVerticalAlerta, duration: this.duracaoSegundosAlerta * 1000
+      });
+    })
 
   }
 
@@ -257,10 +272,6 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     return this.resource ? this.resource[atributo] : undefined;
   }
 
-  habilitarId() {
-    this.disable = true;
-  }
-
   mascaraCpf(valor) {
     return valor.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/g, "\$1.\$2.\$3\-\$4");
   }
@@ -281,6 +292,18 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
       valor1 = valor1.replace(',','.');
     }
     return valor1;
+  }
+
+  habilitarId() {
+    if (this.resourceform.getRawValue()?.id instanceof Object) {
+      this.resourceform.get("id").enable();
+    }
+  }
+
+  desabilitarId() {
+    if (this.resourceform.getRawValue()?.id instanceof Object) {
+      this.resourceform.get("id").disable();
+    }
   }
 
 }
