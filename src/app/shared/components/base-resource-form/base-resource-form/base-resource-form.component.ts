@@ -120,6 +120,11 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
                 horizontalPosition: this.posicaoHorizontalAlerta,
                 verticalPosition: this.posicaoVerticalAlerta, duration: this.duracaoSegundosAlerta * 1000
               });
+            } else {
+              this.snackBar.open('Atualizado com sucesso.', 'ATENÇÃO', {
+                horizontalPosition: this.posicaoHorizontalAlerta,
+                verticalPosition: this.posicaoVerticalAlerta, duration: this.duracaoSegundosAlerta * 1000
+              });
             }
             this.incluindoAlterarando = false;
             this.buildForm(response);
@@ -269,7 +274,12 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
   }
 
   convertValorSalvarRegistro(valor1: string): string {
-    valor1 = valor1.replace(',','.').replace('R$ ','');
+    if (String(valor1).includes("R$")) {
+      valor1 = valor1.replace('R$ ','');
+    }
+    if (String(valor1).includes(",")) {
+      valor1 = valor1.replace(',','.');
+    }
     return valor1;
   }
 

@@ -35,10 +35,13 @@ export abstract class BaseResourceService<T extends BaseResourceModel> {
     if (tipo === "pedidos") {
       url = `${this.apiPath}/${servico ? servico : 'buscarPorIdPedido'}`;
     } else if (tipo === "cidades") {
-        url = `${this.apiPath}/${servico ? servico : 'buscarPorIdCidade'}`;
-    } else {
-      url = `${this.apiPath}/${servico ? servico : 'buscarPorId'}`;
+      url = `${this.apiPath}/${servico ? servico : 'buscarPorIdCidade'}`;
+    } else if (tipo === "amostras") {
+      url = `${this.apiPath}/${servico ? servico : 'buscarPorIdAmostra'}`;
+    } else if (tipo === "pessoas") {
+      url = `${this.apiPath}/${servico ? servico : 'buscarPorIdPessoa'}`;
     }
+    
     return this.http.post(environment.baseUrl + url, { tipo, value })
       .pipe(
         map(this.jsonDataToResource.bind(this)),

@@ -84,7 +84,7 @@ export class FertilAgroBotoesComponent implements OnInit {
     if (this.tela) {
       if (this.temId()) {
         this.desabilitarBtnIncluir = true;
-        this.desabilitarBtnAlterar = false;
+        this.desabilitarBtnAlterar = true;
         this.desabilitarBtnCancelar = false;
         this.desabilitarBtnSalvar = false;
         this.desabilitarBtnExcluir = true;
@@ -110,6 +110,7 @@ export class FertilAgroBotoesComponent implements OnInit {
         this.desabilitarBtnPesquisar = false;
         this.desabilitarBtnSalvar = true;
         this.desabilitarBtnIncluir = false;
+        this.desabilitarBtnAlterar = true;
       }
 
       this.btnClickEvent.emit();
