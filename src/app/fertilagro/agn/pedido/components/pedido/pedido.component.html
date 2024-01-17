@@ -13,8 +13,8 @@
         <div class="col-2">
           <mat-form-field formGroupName="id" appearance="outline">
             <mat-label>Código</mat-label>
-            <input matInput [disableControl]="false" formControlName="id"
-            (blur)="buscarId()">
+            <input matInput [disableControl]="true" formControlName="id"
+            (dblclick)="habilitarId()" (blur)="buscarId()" onfocus="this.select();">
           </mat-form-field>
         </div>
       </div>
@@ -35,7 +35,7 @@
         <mat-tab label="Amostras">
           <app-tabela-filha
           [colunas]="colunasAmostras" [dados]="getLista('pedidoAmostras')" tipoSelecao='multipla'
-          [(selecionados)]="selecionados">
+          [selecionados]="selecionados">
           </app-tabela-filha>
         </mat-tab>
 

@@ -39,10 +39,6 @@ export class PedidoComponent extends BaseResourceFormComponent<PedidoModel> impl
     });
   }
 
-  // ngOnChanges(changes: SimpleChanges) {
-  //   this.resourceform.get("pessoa").setValue(changes['pessoa'].currentValue.toUpperCase());
-  // }
-
   tabelas() {
     this.colunasAmostras = [
       { campo: 'dataKey', titulo: 'labelFkfield' },
@@ -50,11 +46,6 @@ export class PedidoComponent extends BaseResourceFormComponent<PedidoModel> impl
     ];
     console.log("entrou na tabelas()")
   }
-
-  public override buscarId(): Promise<any> {
-      return super.buscarId();
-  }
-
 
   testando() {
     let teste: any[] = [];

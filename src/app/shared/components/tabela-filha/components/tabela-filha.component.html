@@ -1,16 +1,15 @@
 <div>
-  <p-table
+  <p-table #tabela
   [columns]="colunas"
   [value]="dados"
   columnResizeMode="expand"
-  [resizableColumns]="true"
-  pResizableColumnDisabled=true
+  [resizableColumns]=true
   [scrollable]="true"
   scrollHeight="350px"
+  [selection]="selecionados"
   (selectionMode)="tipoSelecao"
-  [(selection)]="selecionados"
   (onRowSelect)="aoSelecionar($event)"
-  (selectionChange)="aoAlterarSelecao($event)"
+  (onRowUnselect)="aoDesselecionar($event)"
   [dataKey]="dataKey">
 
     <ng-template pTemplate="header" let-columns>
@@ -36,12 +35,6 @@
           {{ rowData[col.campo] }}
         </td>
 
-        <td>
-            <ng-template let-value="value">
-              {{ imprimirDados(rowData) }}
-            </ng-template>
-        </td>
-        
       </tr>
     </ng-template>
 
