@@ -41,15 +41,11 @@ export class PedidoComponent extends BaseResourceFormComponent<PedidoModel> impl
 
   tabelas() {
     this.colunasAmostras = [
-      { campo: 'dataKey', titulo: 'dataKey' },
-      { campo: 'amostra.id', titulo: 'Sol', campoConverter: (value) => {
-        console.log(typeof value);
-        if (typeof value === 'object') {
-          return value.id;
-        } else {
-          return value;
-        }
-      } },
+      { campo: 'idAmostra', titulo: 'Código' },
+      { campo: 'propriedade', titulo: 'Propriedade' },
+      { campo: 'nomeCliente', titulo: 'Cliente' },
+      { campo: 'solicitante', titulo: 'Solicitante' },
+      { campo: 'entrada', titulo: 'Dt Entrada' },
     ];
   }
 

@@ -1,1 +1,49 @@
 
+::ng-deep {
+  body {
+    .p-datatable {
+      .p-datatable-thead {
+        tr {
+          th { // Borda da GRID
+            padding: 0.25em 0.857em;
+            font-weight: 800;
+            color: #333;
+            background: linear-gradient(0deg, #dcdbe6 20%, #d4f3ff 70%);
+            border: 0.5px solid #b8b8b8;
+            border-bottom: none;
+            font-size: 15px;
+          }
+        }
+      }
+
+      .p-datatable-tbody {
+        tr {
+          &:nth-child(even) {
+            background-color: #f0f0f0; // cor zebrado linha 2
+
+            &.p-highlight {
+              background: rgba(65, 95, 131, 0.18);
+              color: #2a3e56;
+            }
+          }
+
+          &.p-highlight {
+            background: rgba(65, 95, 131, 0.12);
+            color: #2a3e56;
+          }
+
+          td {
+            background-color: inherit;
+            border: 1px solid #a3a3a3;
+            border-top: none;
+            border-bottom: none;
+            font-size: 16px;
+            padding: 0.25em 0.857em;
+            white-space: nowrap;
+            font-weight: 450;
+          }
+        }
+      }
+    }
+  }
+}
