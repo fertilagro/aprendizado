@@ -2,6 +2,7 @@
   <p-table #tabela
   [columns]="colunas"
   [value]="dados"
+  [style]="{width: largura, whiteSpace: 'nowrap'}"
   columnResizeMode="expand"
   [resizableColumns]=true
   [scrollable]="true"
@@ -12,36 +13,35 @@
   (onRowUnselect)="aoDesselecionar($event)"
   [dataKey]="dataKey">
 
+  <ng-template pTemplate="colgroup" let-columns>
+    <colgroup>
+      <col *ngFor="let col of columns" [style.width]="col.largura">
+    </colgroup>
+  </ng-template>
+
     <ng-template pTemplate="header" let-columns>
       <tr>
         <th style="width: 2.25em">
           <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
         </th>
-
         <th *ngFor="let col of columns" pResizableColumn>
           {{ col?.titulo }}
         </th>
       </tr>
     </ng-template>
 
-
     <ng-template pTemplate="body" let-rowData let-columns="columns" let-rowIndex="rowIndex">
       <tr [pSelectableRow]="rowData" [pSelectableRowIndex]="rowIndex">
         <td>
           <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
         </td>
-
         <td *ngFor="let col of columns" class="ui-resizable-column">
           {{ rowData[col.campo] }}
         </td>
-
-
-
-
-
       </tr>
     </ng-template>
 
   </p-table>
+
 </div>
 

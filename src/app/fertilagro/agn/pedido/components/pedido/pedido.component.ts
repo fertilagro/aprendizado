@@ -41,11 +41,17 @@ export class PedidoComponent extends BaseResourceFormComponent<PedidoModel> impl
 
   tabelas() {
     this.colunasAmostras = [
-      { campo: 'idAmostra', titulo: 'Código' },
-      { campo: 'propriedade', titulo: 'Propriedade' },
-      { campo: 'nomeCliente', titulo: 'Cliente' },
-      { campo: 'solicitante', titulo: 'Solicitante' },
-      { campo: 'entrada', titulo: 'Dt Entrada' },
+      { campo: 'idAmostra', titulo: 'Código', largura: '30px'  },
+      { campo: 'propriedade', titulo: 'Propriedade', largura: '30px'  },
+      { campo: 'nomeCliente', titulo: 'Cliente', largura: '30px'  },
+      { campo: 'solicitante', titulo: 'Solicitante', largura: '30px'  },
+      { campo: 'entrada', titulo: 'Dt Entrada', largura: '30px'  },
+      { campo: 'saida', titulo: 'Dt Saída', largura: '30px'  },
+      { campo: 'descricaoAmostra', titulo: 'Descrição', largura: '30px'  },
+      { campo: 'matriz', titulo: 'Matriz', largura: '30px'  },
+      { campo: 'tipoAnalise', titulo: 'Tipo Analise', largura: '30px'  },
+      { campo: 'valor', titulo: 'Valor', largura: '30px'  },
+      { campo: 'observacao', titulo: 'Observacao', largura: '30px'  },
     ];
   }
 

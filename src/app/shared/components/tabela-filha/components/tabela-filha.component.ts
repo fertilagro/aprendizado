@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { Table, TableHeaderCheckbox } from 'primeng/table';
+import { Table } from 'primeng/table';
 import { BaseResourceFormComponent } from '../../base-resource-form/base-resource-form/base-resource-form.component';
 
 @Component({
@@ -15,6 +15,7 @@ export class TabelaFilhaComponent implements OnInit {
   @Input() dataKey: string;
   @Input() selecionados: any[];
   @Input() selecionado: any;
+  @Input() largura: string;
 
   @Output() selecionadoChange = new EventEmitter<any>();
   @Output() selecionar = new EventEmitter<any>();
